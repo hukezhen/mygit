@@ -1,0 +1,298 @@
+{extend name="layout" /}
+{block name="title"}首页{/block}
+{block name='body_css'}orderlist-box{/block}
+{block name="body"}
+<div class="w1200">
+    <div class="order-list-left">
+        <div class="title">
+            <span class="order-list-text">订单列表 <img src="__HOME_IMG__/gantanhao.png"></span>
+            <p class="customized-products">定制产品<input id="dingzhi" type="checkbox" value="{$state}" name="" {if $state == 2} checked {/if}></p>
+            <select id="status">
+                <option value="0" {if $status== 0} selected {/if}>订单状态-全部</option>
+                <option value="1" {if $status== 1} selected {/if}>订单状态-待付款</option>
+                <option value="2" {if $status== 2} selected {/if}>订单状态-待发货</option>
+                <option value="3" {if $status== 3} selected {/if}>订单状态-待收货</option>
+                <option value="4" {if $status== 4} selected {/if}>订单状态-已完成</option>
+            </select>
+        </div>
+        <ul class="orderlist">
+            {volist name='list' id="vo"}
+            <li {if $id==$vo.id }class="active" {/if} onclick="orderDetail({$vo.id})">
+            <p class="txt01">TANA{$vo.id} <span>
+                    {switch $vo.status }
+                    {case 2 } 待发货{/case}
+                    {case 3 } 待收货{/case}
+                    {case 4 } 已完成{/case}
+                    {default /}待付款
+                    {/switch}<br></span>
+                <em class="yidong-jiantou"><img src="__HOME_IMG__/jiantou.png"></em>
+            </p>
+            <p class="txt02"></p>
+            <!-- 移动端结构 -->
+            <p class="yidong-order-type">
+                {switch $vo.status }
+                {case 2 } 待发货{/case}
+                {case 3 } 待收货{/case}
+                {case 4 } 已完成{/case}
+                {default /}待付款
+                {/switch}
+                <em style="padding-left: 10px;">{$vo.update_time|date="Y-m-d H:i"}</em>
+            </p>
+            <!-- 移动端结构 -->
+            {if $vo.state == 2}
+            <p class="txt03">{$vo.nickname} <span>{$vo.telephone}</span><span class="dingzhi-tips">个性定制</span></p>
+            {/if}
+            {php} $address = json_decode($vo['address'],true); {/php}
+            <p class="txt04">{$address.region} {$address.address}</p>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+
+    <div class="order-list-right custom-order-list">
+        <div class="order-number-text">
+            <div class="order-nuber">订单号 TANA{$order.id}</div>
+            <p class="zhuangt-time">下单时间：{$order.create_time|date="Y-m-d H:i"} <span>{switch $order.status }
+                        {case 2 } 待发货{/case}
+                        {case 3 } 待收货{/case}
+                        {case 4 } 已完成{/case}
+                        {default /}待付款
+                        {/switch}</span></p>
+        </div>
+
+        <div class="wuliu-danhao">
+            <div class="wuliu-left">
+                {if !empty($orders.logistics)}
+                <div class="wuliu-items"><span>物流单号</span><p>{$order.logistics}</p></div>
+                {/if}
+                {php}
+                $invoice = @json_decode($order['invoice'],true);
+                {/php}
+                {if !empty($invoice.invoice_company)}
+                <div class="wuliu-items">
+                    <span>发票信息</span>
+                    <p>{$invoice.invoice_company}</p>
+                </div>
+                {/if}
+                {if !empty($invoice.invoice_bank)}
+                <div class="wuliu-items">
+                    <span>开户行</span>
+                    <p>{$invoice.invoice_bank}</p>
+                </div>
+                {/if}
+            </div>
+            <div class="wuliu-right">
+                {if !empty($orders.logistics_time)}
+                <div class="wuliu-items deliverytime"><span>发货时间</span><p>{$orders.logistics_time|date='Y-m-d H:i'}</p></div>
+                {/if}
+                {if !empty($invoice.invoice_tax)}
+                <div class="wuliu-items">
+                    <span>税号</span>
+                    <p>{$invoice.invoice_tax}</p>
+                </div>
+                {/if}
+                {if !empty($invoice.invoice_card)}
+                <div class="wuliu-items">
+                    <span>开户行账号</span>
+                    <p>{$invoice.invoice_card}</p>
+                </div>
+                {/if}
+            </div>
+        </div>
+
+    <div class="order-detail-overflow">
+        {volist name="order.detail" id="v"}
+        <div class="order-detail">
+            <div class="order-detail-img">
+                <img src="{$v.cover|get_file_path}">
+                <p class="dinghuoshul"><span>订货数量: </span><span style="padding-left: 10px;">{if $order.state == 2} {$v.number}套({$v.number*4}只) {else /}{$v.number/4}套({$v.number}只) {/if}</span></p>
+                <p class="dinghuoshul">
+                    <span class="order-detail-price">{if $order.state == 2} {$v.price} {else /}{$v.price*4}{/if}<em>RMB</em></span><span>/套(4只)</span>
+                </p>
+                {if $order.state == 2}
+                <p class="or-customized">是否定制  <span>是</span></p>
+                {/if}
+            </div>
+            <div class="right-order-detail">
+                <table class="table-list">
+                    <tr>
+                        <td style="width: 33.333%">
+                            <p>轮毂型号</p>
+                            <span>{$v.part_number}</span>
+                        </td>
+                        <td style="width:  33.333%">
+                            <p>所属系列</p>
+                            <span>{$v.series_text}</span>
+                        </td>
+                        <td style="width:  33.333%">
+                            <p>尺寸</p>
+                            <span>{$v.diameter}X{$v.width}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>品牌</p>
+                            <span>{$v.brand_text}</span>
+                        </td>
+                        <td>
+                            <p>车型</p>
+                            <span>{$v.motorcycle_type_text}</span>
+                        </td>
+                        <td>
+                            <p>ET</p>
+                            <span>{$v.et}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>螺栓孔数</p>
+                            <span>{$v.olt_hole}</span>
+                        </td>
+                        <td>
+                            <p>PCD</p>
+                            <span>{$v.pcd}</span>
+                        </td>
+                        <td>
+                            <p>中心孔直径</p>
+                            <span>{$v.center_hole}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>车辆类型</p>
+                            <span>{$v.vehicle_type_text}</span>
+                        </td>
+                        <td>
+                            <p>成型工艺</p>
+                            <span>{$v.molding_process_text}</span>
+                        </td>
+                        <td>
+                            <!--                            <p>颜色</p>-->
+                            <!--                            <span>蓝色</span>-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        {/volist}
+    </div>
+
+        <div class="dingdan-bg">
+            <p><span>总计</span>{$order.moneys} <span>RMB</span></p>
+            <p class="margin-l100"><span>最终价格</span>{$order.moneys}<span>RMB</span></p>
+            <div class="delivery-time">
+                {if $order.state == 2}
+                <p><span>预计发货时间</span> 八到十周</p>
+<!--                <p><span>支付方式</span> 支付宝</p>-->
+                {/if}
+            </div>
+            <button class="qiandan-btn" onclick="openOrder({$order.status},{$order.id})">
+                {switch $order.status }
+                {case 2 } 联系客服{/case}
+                {case 3 } 确认收货{/case}
+                {case 4 } 售后{/case}
+                {default /}立即付款
+                {/switch}
+            </button>
+        </div>
+        <p class="kefu-email">客服邮箱：
+            <a href="mailto:service@tana-wheels.com">service@tana-wheels.com</a>
+        </p>
+
+    </div>
+</div>
+{/block}
+{block name="js"}
+
+<script src="__HOME_JS__/jquery-3.2.1.min.js"></script>
+<script src="__HOME_JS__/step-all.js"></script>
+
+<script type="text/javascript" src="__LIBS__/layer/layer.js"></script>
+<script type="text/javascript">
+    $("#status").change(function () {
+        var statusVal = $(this).val();
+        var stateVal = $("#dingzhi").val();
+        location.href = '/orders/state/'+stateVal+'/status/' + statusVal + '.html';
+    });
+    //滚动到指定位置
+    if($(".orderlist .active").offset() != "" && $(".orderlist .active").offset() != null){
+        $(".orderlist").animate({scrollTop:$(".orderlist .active").offset().top - 180},'slow');
+    }
+
+    function orderDetail(id) {
+        if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            location.href = '/orders_detail/id/' + id + '.html';
+        } else {
+            location.href = '/orders/id/' + id + '.html';
+        }
+    }
+
+    /**
+     * 订单提示
+     * @param type
+     */
+    function openOrder(type, id) {
+        var content = '您需要联系客服以便完成订单 备货、签署合同等事宜';
+        if (type === 2) {
+            content = '请联系客服查询订单详细进度和预计发货时间';
+            layer.open({
+                title: '温馨提示'
+                , content: content
+            });
+        } else if (type === 4) {
+            content = '请联系客服处理售后事宜！';
+            layer.open({
+                title: '温馨提示'
+                , content: content
+            });
+        } else if (type === 3) {
+            $.ajax({
+                url: window.location.href,
+                type: 'post',
+                data: {id:id},
+                success: function (res) {
+                    if (res.code === 1) {
+                        content = '确认收货成功！';
+                        layer.open({
+                            title: '温馨提示'
+                            , content: content
+                            ,end:function(){
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        content = res.msg;
+                        layer.open({
+                            title: '温馨提示'
+                            , content: content
+                        });
+                    }
+                },
+                error: function () {
+                    content = '网络异常';
+                    layer.open({
+                        title: '温馨提示'
+                        , content: content
+                    });
+                }
+            })
+        } else {
+            location.href = '/payment/id/' + id + '.html';
+        }
+    }
+
+
+    $("#dingzhi").click(function(){
+        console.log(123);
+        if ($(this).get(0).checked) {
+            console.log(1);console.log(123);
+            location.href = '/orders/state/2.html';
+            // do something
+        }else{
+            console.log(2);
+            location.href = '/orders/state/1.html';
+        }
+    })
+
+</script>
+{/block}

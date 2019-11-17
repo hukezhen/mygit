@@ -1,0 +1,179 @@
+{extend name="layout" /}
+{block name="title"}个性定制 第三步 共五步{/block}
+{block name="css"}
+{/block}
+{block name="body"}
+
+<!-- pc端定制step3开始 -->
+<div class="customized-step1-box step3-flex-box">
+    <div class="customized-content">
+        <div class="closexxxx"><img src="__HOME_IMG__/close-xxx.svg"></div>
+        <div class="left-and-right">
+            <div class="left-step active3">
+                <ul class="step-list">
+                    <li>选择定制工艺和颜色<br>输入车辆信息</li>
+                    <li>注册/登录<br>阅读流程</li>
+                    <li>确认定制数量、金额<br>确认定制细节</li>
+                    <li>支付全款<br>设计师对接开始定制</li>
+                    <li>在订单中心跟踪订单</li>
+                </ul>
+                <div class="step-unmber-box"></div>
+                <p class="statement-box"><span>*</span>使用定制服务即表示：<br>
+                    您已阅读并认可<a href="javascript:;">《戴特® TANA 免责声明》</a></p>
+            </div>
+
+            <div class="right-sweiper-box">
+                <div class="product-detail pc-product-detail">
+                    <div class="detailimg-content">
+                        <img src="{$model.cover|get_file_path}" width="250" />
+                    </div>
+                    <div class="detailtext">
+                        <p class="jichu-zongjia">
+                            <em>售价：</em><span>¥{$model.price}/套（4只）
+                            <input class="price" type="hidden" value="{$model.price}" />
+                            <input class="banner" type="hidden" value="{$banner}" />
+                            <input class="marking" type="hidden" value="{$marking}" />
+                            <!-- <br>(设计费¥5000+四只轮毂¥{$model.price}) -->
+                            </span></p>
+                        <div class="bug-number-box">
+                            <span>购买数量：</span>
+                            <div class="jia-jian-btn">
+                                <button class="jian-btn">—</button>
+                                <input name="" placeholder="1" class="num" type="text" value="1" readonly>
+                                <button class="jia-btn">+</button>
+                            </div>
+                            <em class="tao-zi">套</em>
+                        </div>
+                        <p><em>设计费：</em><span>¥5000</span></p>
+                        <p><em>合计价格：</em><span><i class="to_pr">{$model.price}</i> x <i class="to_num">1</i> + 5000.00 = <i class="total_price">{$model.price+5000.00}</i></span>元</p>
+                        <div class="bug-number-box">
+                            <span>配送地址：</span>
+                            <div class="delivery-address">
+                                <textarea readonly="readonly">{$address.region}{$address.address}</textarea><a href="{:url('/modify_address')}" class="modify-address-btn">修改地址</a>
+                            </div>
+                        </div>
+                        <a class="pc-settlement-btn pay" href="javascript:;">结算</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表面工艺及颜色 开始 -->
+        <div class="biaom-gongyi-box">
+            <a class="step3-last-step" href="{:url('/custom/step2',['id' => $model['id']])}?banner={$banner}&marking={$marking}"><img
+                    src="__HOME_IMG__/last-step-btn.svg"></a>
+        </div>
+        <!-- 表面工艺及颜色 结束 -->
+    </div>
+    <div class="customized-step-footer">
+        <span><img src="__HOME_IMG__/warning-icon.svg">
+            特别说明：基础总价中含5000元设计费（在支付后生产前如若退单，在基础总价上扣除设计费后原路退换）
+        </span>
+    </div>
+</div>
+<!-- pc端定制step3结束 -->
+
+<!-- 移动端定制step3开始 -->
+<div class="yid-step3-box">
+    <div class="yi-step01"><img src="__HOME_IMG__/yid-step3.svg"></div>
+
+    <div class="product-detail">
+        <img src="{$model.cover|get_file_path}">
+        <p><em>表面状态：</em><span>{$model.title}</span></p>
+        <p><em>基础总价：</em><span>¥{$model.price}元/套(4只)
+            <!-- <br>(设计费¥5000+四只轮毂¥{$model.price}) -->
+        </span></p>
+        <div class="bug-number-box">
+            <span>购买数量：</span>
+            <div class="jia-jian-btn">
+                <button class="jian-btn">—</button>
+                <input name="" placeholder="1" value="1" class="num" type="text" readonly>
+                <button class="jia-btn">+</button>
+            </div>
+            <em class="tao-zi">套</em>
+        </div>
+        <p><em>设计费：</em><span>¥5000</span></p>
+        <p><em>合计价格：</em><span><i class="to_pr">{$model.price}</i> x <i class="to_num">1</i> + 5000.00 = <i class="total_price">{$model.price+5000.00}.00</i></span>元</p>
+        <div class="bug-number-box">
+            <span>配送地址：</span>
+            <div class="delivery-address">
+                <textarea readonly="readonly">{$address.region}{$address.address}</textarea><a href="{:url('/modify_address')}" class="modify-address-btn">修改地址</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-btn-box">
+        <a href="{:url('/custom/step2',['id' => $model['id']])}?banner={$banner}&marking={$marking}"><img src="__HOME_IMG__/last-step-btn.svg"></a>
+        <a href="javascript:;" class="pay"><img src="__HOME_IMG__/jiesuan-btn.svg"></a>
+    </div>
+
+    <div class="yid-customized-footer step-footer">
+        <img src="__HOME_IMG__/warning-icon.svg">
+        <span>特别说明：基础总价中含5000元设计费（在支付后生产前
+如若退单，在基础总价上扣除设计费后原路退换）</span>
+    </div>
+</div>
+<!-- 移动端定制step3结束 -->
+{/block}
+{block name="js"}
+<script src="__HOME_JS__/step-all.js"></script>
+<script type="text/javascript">
+    $(".jia-btn").click(function () {
+        var num = parseFloat($(".num").val()),
+            price = $(".price").val(),
+            number = num+1,
+            total = (price*number).toFixed(2),
+            price_total = (((total*100)+500000)/100).toFixed(2);
+        $(".num").val(number);
+        $(".to_num").html(number);
+        $(".to_pr").html(price);
+        $(".total_price").html(price_total);
+    })
+
+    $(".jian-btn").click(function () {
+        var num = parseFloat($(".num").val()),
+            price = $(".price").val(),
+            number = num-1,
+            total = (price*number).toFixed(2),
+            price_total = (((total*100)+500000)/100).toFixed(2);
+
+        if(number < 1){
+            layer.msg("数量不能小于1");
+            return false;
+        }
+
+        $(".num").val(number);
+        $(".to_num").html(number);
+        $(".to_pr").html(price);
+        $(".total_price").html(price_total);
+    });
+
+
+    $(".pay").click(function(){
+        var numberVal = $('input[class="num"]').val(),
+            banner = $(".banner").val(),
+            marking = $(".marking").val();
+        $.ajax({
+            url: window.location.href,
+            data: {
+                number: numberVal,
+                banner : banner,
+                marking : marking,
+            },
+            type: 'post',
+            success: function (res) {
+                // console.log(res);
+                if (res.code === 1) {
+                    location.href = '/custom/step4/id/' + res.data.id + '.html?banner='+banner+'&marking='+marking;
+                } else {
+                    layer.msg(res.msg)
+                }
+            },
+            error: function () {
+                layer.msg('请登录后在结算');
+            }
+        })
+    })
+
+
+</script>
+{/block}

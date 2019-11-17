@@ -1,0 +1,182 @@
+{extend name="layout" /}
+{block name="title"}首页{/block}
+{block name="css"}
+<link rel="stylesheet" href="__HOME_LIBS__/videojs/video-js.min.css">
+{/block}
+{block name="body"}
+<div class="left-sweiper">
+    <div class="swiper-container" id="index-wrapper">
+        <div class="swiper-wrapper" >
+            {volist name="carousel" id="vo"}
+            <div class="swiper-slide">
+                <a href="{$vo.url}"></a>
+                <img src="{$vo.cover|get_file_path}">
+            </div>
+            {/volist}
+        </div>
+
+        <!-- <div class="swiper-pagination"></div> -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+
+<div class="w1200">
+    <!-- 视频 -->
+    <div id="video">
+        <dl style="display: block">
+            <dt class="pin">精彩视频</dt>
+            <dt class="ji">Brilliant Videos</dt>
+            <dd class="vidoe-box">
+                <video id="my-video" class="video-js cidoe-mask" style="background: none;opacity:1;" width="100%" height="100%" controls preload="auto" poster="{:get_file_path(config('video_index_cover'))}" data-setup="{}">
+                    <source src="{:get_file_path(config('video_index'))}" type="video/mp4">
+                    <p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a> </p>
+                </video>
+<!--                <div class="videoname-box" onclick="location.href='#'">-->
+<!--                    <div class="video-name">-->
+<!--                        <p>{:config('video_index_title')}</p>-->
+<!--                        <p>{:date('Y-m-d',config('video_index_date'))}</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </dd>
+        </dl>
+
+
+        <div class="newproduct">
+            <h5 class="pin">新品展示</h5>
+            <p class="ji">New Presents</p>
+            <div class="newproduct-list">
+                {volist name="newProduct" id="vo"}
+                {if $i == 1}
+                <div class="xin">
+                    <a href="{:url('/detail',['id'=>$vo.id])}">
+                        <img src="{if !empty($vo.recommend_img)}  {$vo.recommend_img|get_file_path} {else /} {$vo.cover|get_file_path} {/if}">
+                        <div class="hover00"></div>
+                        <div class="modeldd">{$vo.part_number}</div>
+                    </a>
+                </div>
+                {/if}
+                {if $i == 2}
+                <div class="pinpaiming">
+                    <a href="{:url('/detail',['id'=>$vo.id])}">
+                        <img src="{if !empty($vo.recommend_img)}  {$vo.recommend_img|get_file_path} {else /} {$vo.cover|get_file_path} {/if}">
+                        <div class="hover00"></div>
+                        <div class="modeldd">{$vo.part_number}</div>
+                    </a>
+                </div>
+                {/if}
+                {if $i == 3}
+                <div class="zhanimg">
+                {/if}
+                    {if $i > 2}
+                    <a href="{:url('/detail',['id'=>$vo.id])}">
+                        <img src="{if !empty($vo.recommend_img)}  {$vo.recommend_img|get_file_path} {else /} {$vo.cover|get_file_path} {/if}">
+                        <div class="hover00"></div>
+                        <div class="modeldd">{$vo.part_number}</div>
+                    </a>
+                    {/if}
+                {if $i == count($newProduct)}
+                </div>
+                {/if}
+                {/volist}
+            </div>
+        </div>
+
+        <div class="newproduct">
+            <h5 class="pin">热销爆款</h5>
+            <p class="ji">Blockbuster Wheels</p>
+            <div class="sell-well">
+                <div class="left-but swiper-button-prev" style="background-image: none;">
+                    <a href="#"><img src="__HOME_IMG__/left-but.png"></a>
+                </div>
+                <div class="swiper-container" id="index-wrapper2">
+                    <div class="swiper-wrapper">
+                        {volist name="sellProduct" id="vo"}
+                        {if $i%3 == 1 || $i == 1}
+                        <div class="swiper-slide">
+                            {/if}
+                            <div class="lunbitem" onclick="location.href='{:url(\'/detail\',[\'id\'=>$vo.id])}'">
+                                <a href="#"><img src="{if !empty($vo.recommend_img)}  {$vo.recommend_img|get_file_path} {else /} {$vo.cover|get_file_path} {/if}"></a>
+                                <div class="hover00"></div>
+                                <div class="modeldd">{$vo.part_number}</div>
+                            </div>
+                            {if $i%3 == 0 || $i == count($sellProduct)}
+                            </div>
+                            {/if}
+                        {/volist}
+                    </div>
+                </div>
+                <div class="right-but swiper-button-next" style="background-image: none;">
+                    <a href="#"><img src="__HOME_IMG__/right-but.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{/block}
+{block name="js"}
+<!--<script type="text/javascript" src="__LIBS__/videojs/video.min.js"></script>-->
+<!--<script src="http://vjs.zencdn.net/5.19/lang/zh-CN.js"></script>-->
+<script type="text/javascript">
+    var mySwiper = new Swiper('#index-wrapper', {
+        pagination: '.swiper-pagination', paginationClickable: true, effect : 'fade',
+        speed: 1000,
+        autoplay: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        on: {
+            init: function () {
+                swiperAnimateCache(this); //隐藏动画元素
+                this.emit('slideChangeTransitionEnd');//在初始化时触发一次slideChangeTransitionEnd事件
+            },
+            slideChangeTransitionEnd: function () {
+                swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+                this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
+            }
+        }
+    });
+
+
+    new Swiper('#index-wrapper2', {
+        autoplay: true,
+        navigation: {
+            nextEl: '.right-but',
+            prevEl: '.left-but',
+        },
+        on: {
+            init: function () {
+                swiperAnimateCache(this); //隐藏动画元素
+                this.emit('slideChangeTransitionEnd');//在初始化时触发一次slideChangeTransitionEnd事件
+            },
+            slideChangeTransitionEnd: function () {
+                swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+                this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
+            }
+        }
+    });
+
+
+    // var myPlayer = videojs('my-video');
+    // videojs("my-video").ready(function(){
+    //     var myPlayer = this;
+    //     myPlayer.play();
+    // });
+    var clenitheight = $(window).height() - 100;
+    // $(".left-sweiper img").css("height",clenitheight+"px")
+    // if ($(window).width()<768) {
+    //     $("#index-wrapper .swiper-slide").css("height",clenitheight/100-1+"rem")
+    // } else{
+    //     $("#index-wrapper .swiper-slide").css("height",clenitheight+"px")
+    // }
+
+    $(".vidoe-box").css("height",clenitheight-150)
+
+
+</script>
+{/block}
+

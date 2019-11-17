@@ -1,0 +1,419 @@
+{extend name="layout" /}
+{block name="title"}购物车{/block}
+{block name="css"}
+{/block}
+{block name="body"}
+<!-- pc端购物车开始 -->
+<div class="shop-car-box pc-gouwuche">
+    <div class="shop-car-tips"><span>购物车</span>当您购买的产品库存量不足时，我们将安排增产补量，因此发货时间将推迟至四周以后。敬请谅解。</div>
+    <div class="shopcar-list">
+        <table cellspacing="0">
+            <tr>
+                <th class="checkbox-td"><input class="pc-checkbox-btn-all" type="checkbox" checked>全选</th>
+                <th class="goods-type">商品型号</th>
+                <th>产品单价（元）</th>
+                <th class="buy-number">购买数量（个）</th>
+                <th>小计（元）</th>
+                <th>操作</th>
+            </tr>
+        </table>
+        <div class="shop-buy-car-list">
+            {if count($model) >= 1}
+            <table cellspacing="0">
+                {foreach $model as $key => $val}
+                <tr>
+                    <td class="checkbox-td">
+                        <input checked class="pc-checkbox-btn" data-align="{$val.number}" data-to="{$val.id}"
+                               data-id="{$val.goods_id}" name="box"
+                               type="checkbox" value="{$val.price*$val.number}">
+                        <img class="goumai-car-img" src="{$val.cover|get_file_path}">
+                    </td>
+                    <td class="goods-type"><p class="pin-pai-name">{$val.part_number}</p></td>
+                    <td><p class="price">{$val.price}</p></td>
+                    <td class="buy-number">
+                        <div class="jia-jian-btn">
+                            <button class="jian-btn pc-jian">—</button>
+                            <input name="" placeholder="1" type="text" value="{$val.number}" readonly>
+                            <button class="jia-btn pc-jia">+</button>
+                        </div>
+                    </td>
+                    <td><p class="price">{$val.price*$val.number}</p></td>
+                    <td><a class="delete-btn" href="javascript:;" onclick="getShopCartDelete({$val.goods_id})">删除</a>
+                    </td>
+                </tr>
+                {/foreach}
+            </table>
+            {else /}
+            <p class="no-page">暂无商品~</p>
+            {/if}
+        </div>
+
+        <div class="settlement-bg">
+            <div class="w1200">
+                <p class="pc-delete-selection del_all" data-type="pc">删除选中</p>
+                <a class="settlement-btn" href="javascript:;" data-type="pc">
+                    结算
+                </a>
+                <p class="product-type">
+                    <span>合计：</span>
+                    <span class="product-price">{$price}</span>
+                    <!--                    <span>（不含运费）</span>-->
+                </p>
+                <p class="product-type">
+                    <span>已选产品</span>
+                    <span class="product-number">{$number}</span>
+                    <span>个型号</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- pc端购物车结束 -->
+
+<!-- 移动端购物车开始 -->
+<div class="shop-car-box yid-gouwuche">
+    <div class="shop-car-tips"><span>购物车</span></div>
+    <div class="shopcar-list">
+        {if count($model) >= 1}
+        <ul class="yd-buy-car-list">
+            {foreach $model as $key => $val}
+            <li class="deletebtnbox">
+                <a href="javascript:;">
+                    <div class="rolling-area" style="left: 0 !important;">
+                        <div class="left-prudact-img">
+                            <input checked class="web-checkbox-btn" data-align="{$val.number}" data-to="{$val.id}" data-id="{$val.goods_id}" name="web-box" type="checkbox" value="{$val.price*$val.number}">
+                            <img class="goumai-car-img" src="{$val.cover|get_file_path}">
+                        </div>
+                        <div class="prudact-price">
+                            <div class="jia-jian-btn">
+                                <button class="jian-btn web-jian">—</button>
+                                <input name="" placeholder="1" value="{$val.number}" data-to="{$val.price}" type="text"
+                                       readonly>
+                                <button class="jia-btn web-jia">+</button>
+                            </div>
+                            <p class="danjia-box">单价 <span>{$val.price} 元</span></p>
+                            <p class="subtotal-box">小计 <span>{$val.price*$val.number} 元</span></p>
+                        </div>
+                    </div>
+                    <div class="deletebtnbtn" style="display: none" onclick="getShopCartDelete({$val.goods_id})">删除
+                    </div>
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+        {else /}
+        <p class="no-page">暂无商品~</p>
+        {/if}
+        <div class="yid-settlement-bg"></div>
+
+        <div class="w1200 yid-settlement-text">
+            <div class="all-election">
+                <input class="checkbox-btn web-checkbox-btn-all" name="" checked type="checkbox">全选
+            </div>
+            <div class="delete-selection del_all" data-type="mobile">删除选中</div>
+            <div class="product-box">
+                <p class="product-type">
+                    <span>已选产品</span>
+                    <span class="product-number">{$number}</span>
+                    <span>个型号</span>
+                </p>
+                <p class="product-type">
+                    <span>合计：</span>
+                    <span class="product-price">{$price}</span>
+                </p>
+            </div>
+            <a class="settlement-btn" href="javascript:;" data-type="mobile">
+                结算
+            </a>
+        </div>
+
+
+    </div>
+</div>
+<!-- 移动端购物车结束 -->
+{/block}
+{block name="js"}
+<script type="text/javascript">
+
+    //全选 反选
+    $(".pc-checkbox-btn-all").click(function () {
+        var price_arr = [];
+        var price = 0;
+        if ($(this).is(':checked')) {
+            $(".pc-checkbox-btn").prop('checked', true);
+            $('input[name="box"]:checked').each(function () {
+                price_arr.push($(this).val());//向数组中添加元素
+            });
+            $.each(price_arr, function (i, n) {
+                price = (((price * 100) + (n * 100)) / 100).toFixed(2);
+            });
+        } else {
+            $(".pc-checkbox-btn").prop('checked', false);
+        }
+        $(".product-number").html(price_arr.length);
+        $(".product-price").html(price);
+    });
+
+    //全选 反选
+    $(".web-checkbox-btn-all").click(function () {
+        var price_arr = [];
+        var price = 0;
+        if ($(this).is(':checked')) {
+            $(".web-checkbox-btn").prop('checked', true);
+            $('input[name="web-box"]:checked').each(function () {
+                price_arr.push($(this).val());//向数组中添加元素
+            });
+            $.each(price_arr, function (i, n) {
+                price = (((price * 100) + (n * 100)) / 100).toFixed(2);
+            });
+        } else {
+            $(".web-checkbox-btn").prop('checked', false);
+        }
+        $(".product-number").html(price_arr.length);
+        $(".product-price").html(price);
+    });
+
+
+    //增加数量
+    $(".pc-jia").click(function () {
+        var number = parseFloat($(this).prev().val()),
+            price = $(this).parent().parent().prev().children().html(),
+            num = number + 4,
+            total = (price * num).toFixed(2),
+            product_price_total = Number(0);
+        $(this).prev().val(num);
+        $(this).parent().parent().next().children().html(total);
+        $(this).parent().parent().prev().prev().prev().children('input').val(total);
+        $(this).parent().parent().prev().prev().prev().children('input').attr('data-align', num);
+
+        $('input[name="box"]:checked').each(function () {
+            product_price_total += Number($(this).val());
+        });
+        $(".product-price").html(product_price_total.toFixed(2));
+
+    });
+
+    //减少数量
+    $(".pc-jian").click(function () {
+        var number = parseFloat($(this).next().val()),
+            price = $(this).parent().parent().prev().children().html(),
+            num = number - 4,
+            total = (price * num).toFixed(2),
+            product_price_total = Number(0);
+        if (number <= 4) {
+            layer.msg("数量不能小于4");
+            return false;
+        }
+        $(this).next().val(num);
+        $(this).parent().parent().next().children().html(total);
+        $(this).parent().parent().prev().prev().prev().children('input').val(total);
+        $(this).parent().parent().prev().prev().prev().children('input').attr('data-align', num);
+
+        $('input[name="box"]:checked').each(function () {
+            product_price_total += Number($(this).val());
+        });
+        $(".product-price").html(product_price_total.toFixed(2));
+    });
+
+    //web增加数量
+    $(".web-jia").click(function () {
+        var number = parseFloat($(this).prev().val()),
+            price = $(this).prev().data('to'),
+            num = number + 4,
+            total = (price * num).toFixed(2),
+            product_price_total = Number(0);
+        $(this).prev().val(num);
+        $(this).parent().next().next().children('span').html(total);
+        $(this).parent().parent().prev().children('input').val(total);
+        $(this).parent().parent().prev().children('input').attr('data-align', num);
+
+        $('input[name="wxb-box"]:checked').each(function () {
+            product_price_total += Number($(this).val());
+        });
+        $(".product-price").html(product_price_total.toFixed(2));
+    });
+
+    //web
+    $(".web-jian").click(function () {
+        var number = parseFloat($(this).next().val()),
+            price = $(this).next().data('to'),
+            num = number - 4,
+            total = (price * num).toFixed(2)
+            , product_price_total = Number(0);
+        if (number <= 4) {
+            layer.msg("数量不能小于4只");
+            return false;
+        }
+        $(this).next().val(num);
+        $(this).parent().next().next().children('span').html(total);
+        $(this).parent().parent().prev().children('input').val(total);
+        $(this).parent().parent().prev().children('input').attr('data-align', num);
+        $('input[name="wxb-box"]:checked').each(function () {
+            product_price_total += Number($(this).val());
+        });
+        $(".product-price").html(product_price_total.toFixed(2));
+    });
+
+
+    //删除购物车
+    function getShopCartDelete(id) {
+        layer.confirm('该操作不可逆，是否确定删除？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            $.ajax({
+                type: "post",
+                data: {id: id},
+                url: "{:url('/index/cart/delete')}",
+                success: function (res) {
+                    layer.msg(res.msg);
+                    if (res.code == 1) {
+                        window.location.reload();
+                    }
+
+                }, error: function () {
+                    layer.msg('网络异常');
+                }
+            })
+        })
+    }
+
+    //pc
+    $(".pc-checkbox-btn").click(function () {
+        var price_arr = new Array();
+        var price = 0;
+        //获取选中复选框长度
+        var length = $("input[name=box]:checked").length;
+        //所有复选框的长度
+        var len = $("input[name=box]").length;
+        if (length == len) {
+            $(".pc-checkbox-btn-all").get(0).checked = true; //$(".call").get(0)是找到对应的
+        } else {
+            $(".pc-checkbox-btn-all").get(0).checked = false;
+        }
+        $('input[name="box"]:checked').each(function () {
+            price_arr.push($(this).val());//向数组中添加元素
+        });
+        $.each(price_arr, function (i, n) {
+            price = (((price * 100) + (n * 100)) / 100).toFixed(2);
+        });
+
+        $(".product-number").html(price_arr.length);
+        $(".product-price").html(price);
+    });
+
+    //web
+    $(".web-checkbox-btn").click(function () {
+        var price_arr = new Array();
+        var price = 0;
+
+        //获取选中复选框长度
+        var length = $("input[name=web-box]:checked").length;
+        //所有复选框的长度
+        var len = $("input[name=web-box]").length;
+        if (length == len) {
+            $(".web-checkbox-btn-all").get(0).checked = true; //$(".call").get(0)是找到对应的
+        } else {
+            $(".web-checkbox-btn-all").get(0).checked = false;
+        }
+
+        $('input[name="web-box"]:checked').each(function () {
+            price_arr.push($(this).val());//向数组中添加元素
+        });
+        $.each(price_arr, function (i, n) {
+            price = (((price * 100) + (n * 100)) / 100).toFixed(2);
+        });
+        // console.log(price);
+        $(".product-number").html(price_arr.length);
+        $(".product-price").html(price);
+    });
+
+
+    //结算
+    $("body").on('click', '.settlement-btn', function () {
+        var id_arr = [];
+        var num_arr = [];
+        var sid_arr = [];
+        var mode = $(this).data('type');
+        if (mode === 'pc') {
+            $('input[name="box"]:checked').each(function () {
+                id_arr += $(this).data('id') + ',';//向数组中添加元素
+                num_arr += $(this).data('align') + ',';
+                sid_arr += $(this).data('to') + ',';
+            });
+        }
+        if (mode === 'mobile') {
+            $('input[name="web-box"]:checked').each(function () {
+                id_arr += $(this).data('id') + ',';//向数组中添加元素
+                num_arr += $(this).data('align') + ',';
+                sid_arr += $(this).data('to') + ',';
+            });
+        }
+        if (id_arr.length < 1) {
+            layer.msg("请先添加商品");
+            return false;
+        }
+        $.ajax({
+            type: 'post',
+            data: {id: id_arr, num: num_arr, sid: sid_arr},
+            url: "/index/orders/save.html",
+            success: function (res) {
+                layer.msg(res.msg);
+                if (res.code === 1) {
+                    window.location.href = '/payment/id/' + res.data.id + '.html';
+                }
+            }
+        })
+    });
+
+
+    var v = 0;
+    $(".goumai-car-img").click(function () {
+        if (v == 0) {
+            $(this).parent().parent().next().show();
+            $(this).parent().parent().animate({"left": '-2rem'}, 500);
+            v = 1;
+        } else {
+            $(this).parent().parent().next().hide();
+            $(this).parent().parent().animate({"left": '0rem'}, 500);
+            v = 0;
+        }
+    });
+
+    //删除选中
+    $('.del_all').click(function () {
+        var id_arr = ''
+            , mode = $(this).attr('data-type');
+        if (mode === 'pc') {
+            $('input[name="box"]:checked').each(function () {
+                id_arr += $(this).attr('data-id') + ',';//向数组中添加元素
+            });
+        }
+        if (mode === 'mobile') {
+            $('input[name="web-box"]:checked').each(function () {
+                id_arr += $(this).attr('data-id') + ',';//向数组中添加元素
+            });
+        }
+        id_arr = id_arr.substr(0, id_arr.length - 1);
+        layer.confirm('该操作不可逆，是否确定删除？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            $.ajax({
+                type: "post",
+                data: {id: id_arr},
+                url: "{:url('/index/cart/delete')}",
+                success: function (res) {
+                    // console.log(res);
+                    // return false;
+                    layer.msg(res.msg);
+                    if (res.code == 1) {
+                        window.location.reload();
+                    }
+
+                }, error: function () {
+                    layer.msg('网络异常');
+                }
+            })
+        })
+    })
+</script>
+{/block}

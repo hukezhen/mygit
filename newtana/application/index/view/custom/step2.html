@@ -1,0 +1,562 @@
+{extend name="layout" /}
+{block name="title"}个性定制 第二步 共五步{/block}
+{block name="css"}
+{/block}
+{block name="body"}
+<!-- pc端定制step2开始 -->
+<div class="customized-step1-box">
+    <div class="customized-content">
+        <!-- <div class="closexxxx"><img src="__HOME_IMG__/close-xxx.svg"></div> -->
+        <div class="left-and-right">
+            <div class="left-step active2">
+                <ul class="step-list">
+                    <li>选择定制工艺和颜色<br>输入车辆信息</li>
+                    <li>注册/登录<br>阅读流程</li>
+                    <li>确认定制数量、金额<br>确认定制细节</li>
+                    <li>支付全款<br>设计师对接开始定制</li>
+                    <li>在订单中心跟踪订单</li>
+                </ul>
+                <div class="step-unmber-box"></div>
+                <p class="statement-box"><span>*</span>使用定制服务即表示：<br>
+                    您已阅读并认可<a href="javascript:;">《戴特® TANA 免责声明》</a></p>
+            </div>
+            <!-- 右侧开始 -->
+            <div class="step-right-box pc-duan-step2">
+                <div class="right-list-box">
+                    <div class="yid-register-list">
+                        {if empty($Think.session.users)}
+                        <!-- 注册开始 -->
+                        <form action="{:url('/web_register')}" method="post">
+                            <div class="registerbox">
+                                <ul class="register-list-box">
+
+                                    <li>
+                                        <span class="lianxi-ren-box">用户账号</span>
+                                        <input name="username" id="pc_username" placeholder="请输入用户账号" type="text">
+                                        <i></i>
+                                    </li>
+                                    <li>
+                                        <span class="lianxi-ren-box">用户类型</span>
+                                        <div class="customer-type">
+                                            <div class="qiye-yonghu">
+                                                <input class="radio" name="type" checked="" type="radio" value="0"><span
+                                                    class="yonghu-txt">个体用户</span>
+                                            </div>
+                                            <div class="qiye-yonghu">
+                                                <input class="radio" name="type" type="radio" value="1"><span
+                                                    class="yonghu-txt">企业用户</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="lianxi-ren-box">个人或企业名称</span>
+                                        <input name="nickname" placeholder="请输入名称" type="text">
+                                        <i></i>
+                                    </li>
+
+                                    <li>
+                                        <span class="lianxi-ren-box">手机</span>
+                                        <input type="text" class="web_telephone" id="pc_telephone" name="telephone"
+                                               placeholder="请输入手机号">
+                                        <i></i>
+                                    </li>
+                                    <li>
+                                        <span class="lianxi-ren-box">电子邮箱</span>
+                                        <input type="text" name="email" class="email" placeholder="请输入您的电子邮箱">
+                                        <i></i>
+                                    </li>
+                                    <li>
+                                        <span class="lianxi-ren-box">登录密码</span>
+                                        <input type="password" name="password" class="password" placeholder="请输入登录密码">
+                                        <i></i>
+                                    </li>
+                                    <li class="password-again">
+                                        <span class="lianxi-ren-box">确认密码</span>
+                                        <input type="password" name="oldPassword" class="oldPassword"
+                                               placeholder="请再次输入上边的登录密码">
+                                        <i></i>
+                                    </li>
+                                    <li class="duanxin-yanz-ma">
+                                        <span class="lianxi-ren-box">图形码</span>
+                                        <input type="text" name="code" class="web_code" placeholder="请输入右侧图形码">
+                                        <img class="yanzhenma" src="{:captcha_src()}">
+                                        <i></i>
+                                    </li>
+                                    <li class="duanxin-yanz-ma">
+                                        <span class="lianxi-ren-box">短信验证码</span>
+                                        <input type="text" name="sms_code" class="sms_code" placeholder="请输入短信验证码">
+                                        <button type="button" class="verification-code veri_code">发送验证码</button>
+                                    </li>
+                                </ul>
+                                <p class="agreement-explain">注册即同意<a
+                                        href="javascript:;">《隐私政策》</a>
+                                </p>
+                                <button type="submit" class="register-btn" onclick="getRegister()">注册</button>
+                                <a href="javascript:;" class="log-in-immediately">已有账号？立刻登录&gt;&gt;</a>
+                            </div>
+                        </form>
+                        <!-- 注册结束 -->
+                        <!-- 登录开始 -->
+                        <div class="login-box" style="display: none;">
+                            <ul class="register-list-box">
+                                <li>
+                                    <span class="lianxi-ren-box">注册手机号</span>
+                                    <input type="text" name="username_pc" placeholder="请输入手机号">
+                                </li>
+                                <li>
+                                    <span class="lianxi-ren-box">登录密码</span>
+                                    <input type="password" name="password_pc" placeholder="请输入登录密码">
+                                </li>
+                            </ul>
+
+                            <a href="javascript:;" class="register-btn" onclick="getLogin('pc')">登录</a>
+
+                            <a href="javascript:;" class="log-in-immediately">没有账号？立即注册>&gt;&gt;</a>
+                        </div>
+                        <!-- 登录结束 -->
+                        {else /}
+                        <!-- 登录成功开始 -->
+                        <div class="pc-successful-login-box">
+                            <img src="__HOME_IMG__/icon-duigou.svg">
+                            <p class="successful-login">您已成功登录<br>
+                                请点击右下角“下一步”继续</p>
+                        </div>
+                        {/if}
+                        <!-- 登录成功结束 -->
+
+                    </div>
+
+
+                    <div class="rgiht-text001">
+                        <p>注册完毕后，接下来确认定制轮毂生产数量。</p>
+
+                        <p>轮毂具体的造型：例如轮辋、辐条和轮毂中心的形状，请在填完表格和支付全款后，与设计师进行在线或当面沟通确定。</p>
+
+                        <p>当您付完全款后，请保持您的手机畅通，我们会安排专门设计师与您对接，对接时间为工作日：上午10：00至下午17:00之间。</p>
+
+                        <p>
+                            因为是私人定制服务，我们提供的都是一流的服务，所以我们尊重每一个客户。我们的设计师会在属于您的时间内，与您充分沟通，了解各方面的信息，并且会给您及时查看设计进度与阶段性设计成果，也请您积极配合，以便我们达成顺利合作。</p>
+
+                        <p>与设计师沟通完毕并确认最终轮毂的样式后，您可通过订单中心找到定制订单，并跟踪它的状态。</p>
+
+                        <p>如遇到问题，请随时联系我们的客服，客服邮箱：service@tana-wheels.com，客服电话：13911681730</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧结束 -->
+        </div>
+
+        <!-- 表面工艺及颜色 开始 -->
+        <div class="biaom-gongyi-box">
+            <a href="{:url('/custom/step1',['id' => $model['id']])}?banner={$banner}&marking={$marking}"
+               class="last-step-btn"><img src="__HOME_IMG__/last-step-btn.svg"></a>
+            <div class="product-detail pc-product-detail">
+                <img class="detail-img" src="{$custom.cover|get_file_path}">
+                <div class="detail-jianjie">
+                    <p><em>表面状态：</em><span>{$custom.title}</span></p>
+                    <p><em>基础总价：</em><span>¥{$custom.price+5000}(设计费¥5000+四只轮毂¥{$custom.price})</span></p>
+                </div>
+            </div>
+            {if empty($Think.session.users)}
+            <a href="javascript:;"
+               class="xiayibu-btn"><img src="__HOME_IMG__/xiayibu-btn.svg"></a>
+            {else /}
+            <a href="{:url('/custom/step3',['id' => $model['id']])}?banner={$banner}&marking={$marking}"
+               class="xiayibu-btn"><img src="__HOME_IMG__/xiayibu-btn.svg"></a>
+            {/if}
+        </div>
+        <!-- 表面工艺及颜色 结束 -->
+    </div>
+    <div class="customized-step-footer">
+        <span><img src="__HOME_IMG__/warning-icon.svg">
+            特别说明：基础总价中含5000元设计费（在支付后生产前如若退单，在基础总价上扣除设计费后原路退换）
+        </span>
+    </div>
+</div>
+<!-- pc端定制step2结束 -->
+
+<!-- 移动端定制step2开始 -->
+
+<div class="yid-step2-box">
+    <div class="yi-step01"><img src="__HOME_IMG__/yid-step2.svg"></div>
+    <!-- 注册开始 -->
+    {if empty($Think.session.users)}
+    <div class="yid-step2-main-box register">
+        <form action="{:url('/web_register')}" method="post">
+            <div class="yid-register-list">
+                <ul class="register-list-box">
+                    <li>
+                        <span class="lianxi-ren-box">用户账号</span>
+                        <input name="username" class="web_username" placeholder="请输入用户账号" type="text" />
+                        <i></i>
+                    </li>
+                    <li>
+                        <span class="lianxi-ren-box">用户类型</span>
+                        <div class="customer-type">
+                            <div class="qiye-yonghu">
+                                <input class="radio" name="type" checked="" type="radio" value="0"><span
+                                    class="yonghu-txt">个体用户</span>
+                            </div>
+                            <div class="qiye-yonghu">
+                                <input class="radio" name="type" type="radio" value="1"><span
+                                    class="yonghu-txt">企业用户</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="lianxi-ren-box">个人或企业名称</span>
+                        <input name="nickname" placeholder="请输入名称" type="text">
+                        <i></i>
+                    </li>
+                    <li>
+                        <span>登录密码</span>
+                        <input type="password" name="password" class="web_password" id="password" placeholder="请输入登录密码">
+                        <i></i>
+                    </li>
+                    <li class="password-again">
+                        <span>确认密码</span>
+                        <input type="password" name="oldPassword" id="oldPassword" placeholder="请再次输入上边的登录密码">
+                        <i></i>
+                    </li>
+                    <li>
+                        <span class="lianxi-ren-box">手机</span>
+                        <input type="text" name="telephone" id="wap_telephone" placeholder="请输入手机号">
+                        <i></i>
+                    </li>
+                    <li>
+                        <span>电子邮箱</span>
+                        <input type="text" name="email" id="email" placeholder="请输入您的电子邮箱">
+                        <i></i>
+                    </li>
+                    <li class="duanxin-yanz-ma">
+                        <span class="lianxi-ren-box">图形码</span>
+                        <input type="text" name="code" id="wap_code" placeholder="请输入右侧图形码">
+                        <img class="yanzhenma" src="{:captcha_src()}">
+                    </li>
+                    <li class="duanxin-yanz-ma">
+                        <span class="lianxi-ren-box">短信验证码</span>
+                        <input type="text" name="sms_code" id="sms_code" placeholder="请输入短信验证码">
+                        <button type="button" class="verification-code verif_code">发送验证码</button>
+                    </li>
+                </ul>
+
+                <p class="agreement-explain">注册即同意<a href="javascript:;">《隐私政策》</a>
+                </p>
+                <button type="submit" class="register-btn">注册</button>
+                <a href="javascript:;" class="log-in-immediately">已有账号？立刻登录>></a>
+            </div>
+        </form>
+    </div>
+    <!-- 注册结束 -->
+    <!-- 登录开始 -->
+    <div class="yid-step2-main-box login" style="display: none;">
+        <div class="yid-register-list">
+            <ul class="register-list-box">
+                <li>
+                    <span class="lianxi-ren-box">手机</span>
+                    <input type="text" name="wap_username" placeholder="请输入手机号">
+                </li>
+                <li>
+                    <span class="lianxi-ren-box">登录密码</span>
+                    <input type="password" name="wap_password" placeholder="请输入登录密码">
+                </li>
+            </ul>
+            <a href="javascript:;" class="register-btn" onclick="getLogin('mobile')">登录</a>
+
+            <a href="javascript:;" class="log-in-immediately">没有账号？立即注册>></a>
+
+        </div>
+    </div>
+    {else /}
+    <!-- 登录结束 -->
+    <!-- 已成功登录开始 -->
+    <div class="yid-step2-main-box">
+        <div class="successful-login-box">
+            <img src="__HOME_IMG__/icon-duigou.svg">
+            <p class="successful-login">您已成功登录<br>
+                请点击右下角“下一步”继续</p>
+        </div>
+    </div>
+
+    <!-- 已成功登录结束 -->
+
+    <div class="customizat-process">
+        <h3>定制流程简介</h3>
+        <p>注册完毕后，接下来确认定制轮毂生产数量。</p>
+
+        <p>轮毂具体的造型：例如轮辋、辐条和轮毂中心的形状，请在填完表格和支付全款后，与设计师进行在线或当面沟通确定。</p>
+
+        <p>当您付完全款后，请保持您的手机畅通，我们会安排专门设计师与您对接，对接时间为工作日：上午10：00至下午17:00之间。</p>
+
+        <p>
+            因为是私人定制服务，我们提供的都是一流的服务，所以我们尊重每一个客户。我们的设计师会在属于您的时间内，与您充分沟通，了解各方面的信息，并且会给您及时查看设计进度与阶段性设计成果，也请您积极配合，以便我们达成顺利合作。</p>
+
+        <p>与设计师沟通完毕并确认最终轮毂的样式后，您可通过订单中心找到定制订单，并跟踪它的状态。</p>
+
+        <p>如遇到问题，请随时联系我们的客服，客服邮箱：service@tana-wheels.com，客服电话：13911681730</p>
+    </div>
+
+    <div class="product-detail">
+        <img src="{$custom.cover|get_file_path}">
+        <p><em>表面状态：</em><span>{$custom.title}</span></p>
+        <p><em>基础总价：</em><span>¥{$model.price+5000}<br>(设计费¥5000+四只轮毂¥{$model.price})</span></p>
+    </div>
+
+    <div class="footer-btn-box">
+        <a href="{:url('/custom/step1',['id' => $model['id']])}?banner={$banner}&marking={$marking}"><img
+                src="__HOME_IMG__/last-step-btn.svg"></a>
+        <a href="{:url('/custom/step3',['id' => $model['id']])}?banner={$banner}&marking={$marking}"><img
+                src="__HOME_IMG__/xiayibu-btn.svg"></a>
+    </div>
+
+    <div class="yid-customized-footer step-footer">
+        <img src="__HOME_IMG__/warning-icon.svg">
+        <span>特别说明：基础总价中含5000元设计费（在支付后生产前
+如若退单，在基础总价上扣除设计费后原路退换）</span>
+    </div>
+    {/if}
+</div>
+<!-- 移动端定制step2结束 -->
+{/block}
+{block name="js"}
+<script src="__HOME_JS__/step-all.js"></script>
+<script type="text/javascript">
+    $(".log-in-immediately").click(function () {
+        $(".registerbox").toggle();
+        $(".register").toggle();
+        $(".login-box").toggle();
+        $(".login").toggle();
+    });
+
+
+    $('input').keyup(function () {
+        var name = $(this).attr('name')
+            , val = $(this).val();
+        if (name === 'username') {
+            if (val.length < 4 || val.length > 16) {
+                $(this).next().removeClass('green-tis').addClass('red-wariing');
+            } else {
+                $(this).next().removeClass('red-wariing').addClass('green-tis');
+            }
+        } else if (name === 'telephone') {
+            if (!(/^1([3456789])\d{9}$/.test(val))) {
+                $(this).next().removeClass('green-tis').addClass('red-wariing');
+            } else {
+                $(this).next().removeClass('red-wariing').addClass('green-tis');
+            }
+        } else if (name === 'email') {
+            if (!(/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(val))) {
+                $(this).next().removeClass('green-tis').addClass('red-wariing');
+            } else {
+                $(this).next().removeClass('red-wariing').addClass('green-tis');
+            }
+        } else if (name === 'password' || name === 'oldPassword') {
+            if (val.length < 6 || val.length > 16) {
+                $(this).next().removeClass('green-tis').addClass('red-wariing');
+            } else {
+                $(this).next().removeClass('red-wariing').addClass('green-tis');
+            }
+        }
+
+
+    });
+
+
+    //监听验证码更换
+    $('.yanzhenma').click(function () {
+        $(this).attr('src', '{:captcha_src()}?t={:time()}')
+    });
+
+    var result = true;
+    //PC 验证码
+    $(".veri_code").click(function () {
+        var telephone = $.trim($("#pc_telephone").val())
+            , time = 60
+            , code = $(".web_code").val()
+            , password = $(".password").val()
+            , username = $('#pc_username').val();
+
+
+        if (result === false) {
+            layer.msg("操作过于频繁,请在倒计时结束后再次发送！");
+            return false;
+        }
+        if (username.length < 4 || username.length > 16) {
+            layer.msg("用户账号的长度为4-16位！");
+            return false;
+        }
+        if (password.length < 6 || password.length > 16) {
+            layer.msg("登录密码的长度为6-16位！");
+            return false;
+        }
+        if (telephone == "" || telephone == null) {
+            $(".error").show();
+            layer.msg("手机号码不能为空");
+            return false;
+        }
+        if (code == "" || code == null) {
+            layer.msg("图形码不能为空");
+            return false;
+        }
+        var index = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+        $.ajax({
+            type: 'post',
+            data: {telephone: telephone, scene: 8, nation_code: 86, code: code, username: username, password: password},
+            url: "/index/sms/save",
+            success: function (res) {
+                // console.log(res);
+                // return false;
+                layer.close(index);
+                if (res.code == 0) {
+                    layer.msg(res.msg);
+                    return false;
+                }
+                if (res.code == 1) {
+                    if (time == 60) {
+                        var time1 = setInterval(function () {
+                            if (time == 0) {
+                                $(".veri_code").html("重新发送");
+                                $(".veri_code").removeAttr("disabled");
+                                result = true;
+                                time = 60;
+                                clearInterval(time1);
+                            } else {
+                                $(".veri_code").attr("disabled", "true");
+                                $(".veri_code").html("重新发送(" + time + ")");
+                                result = false;
+                                time--;
+                            }
+                        }, 1000);
+                    }
+                }
+            }
+        })
+    });
+
+
+    //web
+    $(".verif_code").click(function () {
+        var telephone = $.trim($("#wap_telephone").val())
+            , code = $("#wap_code").val()
+            , password = $(".web_password").val()
+            , time = 60
+            , username = $('.web_username').val();
+
+
+        if (result === false) {
+            layer.msg("操作过于频繁,请在倒计时结束后再次发送！");
+            return false;
+        }
+        if (username.length < 4 || username.length > 16) {
+            layer.msg("用户账号的长度为4-16位！");
+            return false;
+        }
+        if (password.length < 6 || password.length > 16) {
+            layer.msg("登录密码的长度为6-16位！");
+            return false;
+        }
+
+        if (telephone == "" || telephone == null) {
+            $(".error").show();
+            layer.msg("手机号码不能为空");
+            return false;
+        }
+
+        if (code == "" || code == null) {
+            layer.msg("图形码不能为空");
+            return false;
+        }
+
+        if (result == false) {
+            layer.msg("发送中");
+            return false;
+        }
+
+
+        var index = layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+
+        $.ajax({
+            type: 'post',
+            data: {telephone: telephone, scene: 8, nation_code: 86, code: code, username: username, password: password},
+            url: "/index/sms/save",
+            success: function (res) {
+                // console.log(res);
+                // return false;
+                layer.close(index);
+                if (res.code == 0) {
+                    layer.msg(res.msg);
+                    return false;
+                }
+                if (res.code == 1) {
+                    if (time == 60) {
+                        var time1 = setInterval(function () {
+                            if (time == 0) {
+                                $(".verif_code").html("重新发送");
+                                $(".verif_code").removeAttr("disabled");
+                                result = true;
+                                time = 60;
+                                clearInterval(time1);
+                            } else {
+                                $(".verif_code").attr("disabled", "true");
+                                $(".verif_code").html("重新发送(" + time + ")");
+                                result = false;
+                                time--;
+                            }
+                        }, 1000);
+                    }
+                }
+            }
+        })
+    });
+
+
+    function getLogin(mode) {
+        var username = '',
+            password = '';
+        if (mode === 'pc') {
+            username = $('input[name="username_pc"]').val();
+            password = $('input[name="password_pc"]').val();
+        }
+        if (mode === 'mobile') {
+            username = $('input[name="wap_username"]').val();
+            password = $('input[name="wap_password"]').val();
+        }
+
+        if (username.length < 3) {
+            layer.msg('用户名不能少于三位！');
+            return false;
+        }
+        if (password.length < 6) {
+            layer.msg('密码不能少于6位！');
+            return false;
+        }
+        $.ajax({
+            type: 'post',
+            url: "/login",
+            data: {
+                username: username,
+                password: password
+            },
+            success: function (res) {
+                // console.log(res);
+                // return false;
+                if (res.code === 1) {
+                    location.reload();
+                } else {
+                    layer.msg(res.msg)
+                }
+            },
+            error: function () {
+                layer.msg('网络异常');
+            }
+        })
+
+    }
+
+
+</script>
+{/block}

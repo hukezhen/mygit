@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="750">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="__HOME_CSS__/reset.css">
+    <link rel="stylesheet" href="__HOME_CSS__/lungustyle.css">
+    <title>订单详情</title>
+</head>
+<body>
+
+<script type="javascript">
+    $("#expandContent").click(function () {
+        document.getElementById('neirong').style.height = 'auto';
+        $('#read-more').hide();
+    })
+</script>
+<script type="text/javascript">(function (win) {
+    var doc = win.document, html = doc.documentElement, option = html.getAttribute("data-use-rem");
+    if (option === null) {
+        return
+    }
+    var baseWidth = parseInt(option).toString() === "NaN" ? 640 : parseInt(option);
+    var grids = baseWidth / 100;
+    var clientWidth = html.clientWidth || 320;
+    html.style.fontSize = clientWidth / grids + "px";
+    var testDom = document.createElement("div");
+    var testDomWidth = 0;
+    var adjustRatio = 0;
+    testDom.style.cssText = "height:0;width:1rem;";
+    doc.body.appendChild(testDom);
+    var calcTestDom = function () {
+        testDomWidth = testDom.offsetWidth;
+        if (testDomWidth !== Math.round(clientWidth / grids)) {
+            adjustRatio = clientWidth / grids / testDomWidth;
+            var reCalcRem = clientWidth * adjustRatio / grids;
+            html.style.fontSize = reCalcRem + "px"
+        } else {
+            doc.body.removeChild(testDom)
+        }
+    };
+    setTimeout(calcTestDom, 20);
+    var reCalc = function () {
+        var newCW = html.clientWidth;
+        if (newCW === clientWidth) {
+            return
+        }
+        clientWidth = newCW;
+        html.style.fontSize = newCW * (adjustRatio ? adjustRatio : 1) / grids + "px"
+    };
+    if (!doc.addEventListener) {
+        return
+    }
+    var resizeEvt = "orientationchange" in win ? "orientationchange" : "resize";
+    win.addEventListener(resizeEvt, reCalc, false);
+    doc.addEventListener("DOMContentLoaded", reCalc, false)
+})(window);</script>
+<div class="w1200">
+
+
+    <div class="order-list-right" style="display: block;">
+        <div class="order-nuber"><img src="__HOME_IMG__/fanhui.png" onclick="window.history.go(-1)">订单号
+            TANA{$order.id}
+        </div>
+        <p class="zhuangt-time">下单时间：{$order.create_time|date="Y-m-d H:i"} <span>{switch $order.status }
+                    {case 2 } 待发货{/case}
+                    {case 3 } 待收货{/case}
+                    {case 4 } 已完成{/case}
+                    {default /}待付款
+                    {/switch}</span></p>
+
+        <div class="wuliu-danhao">
+            <div class="wuliu-left">
+                {if !empty($orders.logistics)}
+                <div class="wuliu-items"><span>物流单号</span><p>{$order.logistics}</p></div>
+                {/if}
+                {php}
+                $invoice = @json_decode($order['invoice'],true);
+                {/php}
+                {if !empty($invoice.invoice_company)}
+                <div class="wuliu-items">
+                    <span>发票信息</span>
+                    <p>{$invoice.invoice_company}</p>
+                </div>
+                {/if}
+                {if !empty($invoice.invoice_bank)}
+                <div class="wuliu-items">
+                    <span>开户行</span>
+                    <p>{$invoice.invoice_bank}</p>
+                </div>
+                {/if}
+            </div>
+            <div class="wuliu-right">
+                {if !empty($orders.logistics_time)}
+                <div class="wuliu-items deliverytime"><span>发货时间</span><p>{$orders.logistics_time|date='Y-m-d H:i'}</p></div>
+                {/if}
+                {if !empty($invoice.invoice_tax)}
+                <div class="wuliu-items">
+                    <span>税号</span>
+                    <p>{$invoice.invoice_tax}</p>
+                </div>
+                {/if}
+                {if !empty($invoice.invoice_card)}
+                <div class="wuliu-items">
+                    <span>开户行账号</span>
+                    <p>{$invoice.invoice_card}</p>
+                </div>
+                {/if}
+            </div>
+        </div>
+            
+        {volist name="order.detail" id="v"}
+        <div class="order-detail">
+            <div class="order-detail-img">
+                <img src="{$v.cover|get_file_path}">
+                <p class="dinghuoshul"><span>订货数量: </span><span style="padding-left: 10px;">{if $order.state == 2} {$v.number}套({$v.number*4}个) {else /}{$v.number/4}套({$v.number}个) {/if}</span></p>
+                <p class="dinghuoshul">
+                    <span class="order-detail-price">{if $order.state == 2} {$v.price} {else /}{$v.price*4}{/if}<em>RMB</em></span><span>/套(4只)</span>
+                </p>
+            </div>
+            <div class="right-order-detail">
+                <table class="table-list">
+                    <tr>
+                        <td style="width: 33.333%">
+                            <p>轮毂型号</p>
+                            <span>{$v.part_number}</span>
+                        </td>
+                        <td style="width:  33.333%">
+                            <p>所属系列</p>
+                            <span>{$v.series_text}</span>
+                        </td>
+                        <td style="width:  33.333%">
+                            <p>尺寸</p>
+                            <span>{$v.diameter}X{$v.width}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>品牌</p>
+                            <span>{$v.brand_text}</span>
+                        </td>
+                        <td>
+                            <p>车型</p>
+                            <span>{$v.motorcycle_type_text}</span>
+                        </td>
+                        <td>
+                            <p>ET</p>
+                            <span>{$v.et}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>螺栓孔数</p>
+                            <span>{$v.olt_hole}</span>
+                        </td>
+                        <td>
+                            <p>PCD</p>
+                            <span>{$v.pcd}</span>
+                        </td>
+                        <td>
+                            <p>中心孔直径</p>
+                            <span>{$v.center_hole}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>车辆类型</p>
+                            <span>{$v.vehicle_type_text}</span>
+                        </td>
+                        <td>
+                            <p>成型工艺</p>
+                            <span>{$v.molding_process_text}</span>
+                        </td>
+                        <td>
+                            <!--                            <p>颜色</p>-->
+                            <!--                            <span>蓝色</span>-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        {/volist}
+        <div class="dingdan-bg yidongquerenbtn">
+            <p class="order-detail-price"><span>总计</span>{$order.moneys}<span>RMB</span></p>
+
+            <button class="qiandan-btn" onclick="openOrder({$order.status},{$order.id})">
+                {switch $order.status}
+                {case 2 } 联系客服{/case}
+                {case 3 } 确认收货{/case}
+                {case 4 } 评价{/case}
+                {default /}立即付款
+                {/switch}
+            </button>
+        </div>
+        <p class="kefu-email">客服邮箱：
+            <a href="mailto:service@tana-wheels.com">service@tana-wheels.com</a>
+        </p>
+
+    </div>
+</div>
+
+<script src="__HOME_JS__/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__LIBS__/layer/mobile/layer.js"></script>
+<script type="text/javascript">
+    /**
+     * 订单提示
+     * @param type
+     */
+    function openOrder(type, id) {
+        var content = '您需要联系客服以便完成订单 备货、签署合同等事宜';
+        if (type === 2) {
+            content = '请联系客服查询订单详细进度和预计发货时间';
+            layer.open({
+                title: '温馨提示'
+                , content: content
+            });
+        } else if (type === 4) {
+            content = '本功能即将开放，敬请期待';
+            layer.open({
+                title: '温馨提示'
+                , content: content
+            });
+        } else if (type === 3) {
+            $.ajax({
+                url: window.location.href,
+                type: 'post',
+                success: function (res) {
+                    if (res.code === 1) {
+                        content = '确认收货成功！';
+                        layer.open({
+                            title: '温馨提示'
+                            , content: content
+                        });
+                    } else {
+                        content = res.msg;
+                        layer.open({
+                            title: '温馨提示'
+                            , content: content
+                        });
+                    }
+                },
+                error: function () {
+                    content = '网络异常';
+                    layer.open({
+                        title: '温馨提示'
+                        , content: content
+                    });
+                }
+            })
+        } else {
+            location.href = '/payment/id/' + id + '/mode/1.html';
+            return false;
+        }
+    }
+</script>
+
+</body>
+</html>

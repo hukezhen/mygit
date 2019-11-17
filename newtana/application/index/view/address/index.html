@@ -1,0 +1,458 @@
+{extend name="layout" /}
+{block name="title"}首页{/block}
+{block name='body_css'}orderlist-box{/block}
+{block name="body"}
+<link rel="stylesheet" href="__HOME_CSS__/weui.css"/>
+<link rel="stylesheet" href="__HOME_CSS__/weuix.css"/>
+<style>
+    .weui-cell__ft a {
+        line-height: 3em;
+    }
+
+    .name-and-address p {
+        font-size: .8em;
+    }
+</style>
+<!-- pc端地址管理开始 -->
+<div class="shop-car-box address-management">
+    <div class="shop-car-tips">
+        <div class="crumbs-box2"><a href="personal_data.html">个人资料</a><em>></em><span>地址管理</span></div>
+        <span>地址管理</span>
+    </div>
+    <div class="shopcar-list">
+        <table cellspacing="0">
+            <tr>
+                <th class="th0">选择</th>
+                <th class="th1">收货人名称</th>
+                <th class="th2">所在地区（省/市/区）</th>
+                <th class="th3">详细地址</th>
+                <th class="th4">联系电话</th>
+                <th class="th5">操作</th>
+                <th class="th6">是否默认</th>
+            </tr>
+        </table>
+        <div class="shop-buy-car-list">
+            <table cellspacing="0">
+                {foreach $model as $key => $val}
+                <tr>
+                    <td class="th0"><input class="address-radio" type="radio" name="1" value="{$val.id}" onclick="choiceId({$val.id})"></td>
+                    <td class="th1">{$val.name}</td>
+                    <td class="th2">{$val.region}</td>
+                    <td class="th3">{$val.address}</td>
+                    <td class="th4">{$val.postal_code}</td>
+                    <td class="th5">
+                        <a class="modify-btn edit" href="javascript:;" data-id="{$val.id}">修改</a>
+                        <span class="line">|</span>
+                        <a class="delete-btn" href="javascript:;" onclick="getDelete({$val.id})">删除</a>
+                    </td>
+                    <td class="th6">
+                        {if condition="$val['default'] == 1"}
+                        <span class="default-address" onclick="window.history.go(-1)">默认地址</span>
+                        {else /}
+                        <a href="javascript:;" onclick="getDefault({$val.id})">设置默认</a>
+                        {/if}
+                    </td>
+                </tr>
+                {/foreach}
+
+            </table>
+
+            <div class="add-address">
+                <a href="javascript:;" onclick="getAddressCreate()" style="color: #ffffff">新增地址</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- pc端地址管理结束 -->
+<!-- 移动端地址管理开始 -->
+<div class="shop-car-box modify-address-box">
+    <div class="shop-car-tips">
+        <div class="crumbs-box2"><a href="personal_data.html">个人资料</a><em>></em><span>地址管理</span></div>
+        <span>地址管理</span>
+    </div>
+    <div class="shopcar-list">
+        <div class="yd-buy-car-list weui-cells">
+            {foreach $model as $key => $val}
+            <!--            <li class="deletebtnbox weui-cell_swiped">-->
+            <!--                <div class="addressbox" style="left: 0.5rem;">-->
+            <!--                    <div class="name-and-address">-->
+            <!--                        <p><span>{$val.name}</span><span>{$val.postal_code}</span>-->
+            <!--                            {if condition="$val['default'] == 1"}-->
+            <!--                            <a href="javascript:;" class="default-address-link">-->
+            <!--                                <span class="default-address-btn">默认地址</span>-->
+            <!--                            </a>-->
+            <!--                            {else /}-->
+            <!--                            <a href="javascript:;"  onclick="getDefault({$val.id})" class="default-address-link">-->
+            <!--                                <span class="default-address-btn" style="background-color: #2692EF">设置默认</span>-->
+            <!--                            </a>-->
+            <!--                            {/if}-->
+            <!--                        </p>-->
+            <!--                        <p>{$val.region}{$val.address}</p>-->
+            <!--                    </div>-->
+            <!--                    <div class="edit-icon">-->
+            <!--                        <a class="edit-btn" href="{:url('/index/index/address_update',['id' => $val['id']])}">-->
+            <!--                            <img src="__HOME_IMG__/bianji.svg" width="17" height="17">-->
+            <!--                        </a>-->
+            <!--                        <a class="edit-btn" href="javascript:;" onclick="getDelete({$val.id})">-->
+            <!--                            <img src="__HOME_IMG__/delete.png">-->
+            <!--                        </a>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <div class="deletebtnbtn" style="display: none">-->
+            <!--                    &lt;!&ndash; <img src="img/shanchu.svg"> &ndash;&gt;-->
+            <!--                    <p class="delete-address">删除地址</p>-->
+            <!--                </div>-->
+            <!--            </li>-->
+            <div class="weui-cell weui-cell_swiped" id="s1">
+                <div class="weui-cell__bd">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <div class="name-and-address">
+                                <p style="height: 2.5em"><span>{$val.name}</span><span>{$val.postal_code}</span>
+                                    {if condition="$val['default'] == 1"}
+                                    <a href="javascript:;" class="default-address-link">
+                                        <span class="default-address-btn">当前地址</span>
+                                    </a>
+                                    {else /}
+                                    <a href="javascript:;" onclick="getDefault({$val.id})" class="default-address-link">
+                                        <span class="default-address-btn" style="background-color: #2692EF">使用该地址</span>
+                                    </a>
+                                    {/if}
+                                </p>
+                                <p>{$val.region}{$val.address}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-cell__ft">
+                    <a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout" onclick="getDelete({$val.id})"
+                       href="javascript:">删除</a>
+                    <a class="weui-swiped-btn weui-swiped-btn_default close-swipeout"
+                       href="{:url('/index/index/address_update',['id' => $val['id']])}">修改</a>
+                </div>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+    <div class="yid-add-address">
+        <a href="/address_create">添加新地址</a>
+    </div>
+</div>
+<!-- 移动端地址管理结束 -->
+{/block}
+{block name="js"}
+<script src="__HOME_JS__/zepto.min.js"></script>
+<script src="__HOME_JS__/zepto.weui.js"></script>
+<script type="text/javascript">
+
+    $('.weui-cell_swiped').swipeout('open') //打开
+    $('.weui-cell_swiped').swipeout('close') //关闭
+
+    function getAddressCreate() {
+        var content = '<tr>\n <td class="th0"></td>' +
+            '                    <td class="th1"><input type="text" name="" class="name" placeholder=""></td>\n' +
+            '                    <td class="th3">\n' +
+            '                        <div class="shen-shi-xian">\n' +
+            '                            <div class="select-box">' +
+            '                               <span class="address">北京 北京市 东城区</span>' +
+            '                                   <span class="dizhi-jiantou">' +
+            '                                       <img src="/static/home/img/dizhi-jiantou.svg">' +
+            '                                   </span>' +
+            '                               </div>\n' +
+            '                            <div class="option-box" style="display: none">\n' +
+            '                                <div class="shen-shi-xian-nav">\n' +
+            '                                    <a href="javascript:;" data-type="2" class="province">省</a>\n' +
+            '                                    <a href="javascript:;" data-type="3" class="city">市</a>\n' +
+            '                                    <a href="javascript:;" data-type="1" class="active area">区/县</a>\n' +
+            '                                </div>\n' +
+            '                                <ul class="shen-shi-xian-list">\n' +
+            '                                    <li>东城区</li>\n' +
+            '                                </ul>\n' +
+            '                            </div>\n' +
+            '                        </div>\n' +
+            '                    </td>\n' +
+            '                    <td class="th3"><input type="text" class="info_address" placeholder="" name=""></td>\n' +
+            '                    <td class="th4"><input type="text" placeholder="" class="postal_code" name=""></td>\n' +
+            '                    <td class="th5">\n' +
+            '                        <div class="xiugai-dizhi">\n' +
+            '                            <a href="javascript:;" class="modify-btn" onclick="postAddressCreate()">保存</a>\n' +
+            '                            <span class="line">|</span>\n' +
+            '                            <a href="javascript:getGiveUp();" class="delete-btn">放弃</a>\n' +
+            '                        </div>\n' +
+            '                    </td>\n' +
+            '                    <td class="th6 default_address">默认地址</td>\n' +
+            '                </tr>';
+        $(".shop-buy-car-list table").append(content);
+    }
+
+
+    $("body").on("click", ".select-box", function () {
+        $(".shen-shi-xian-nav a").siblings().removeClass('active');
+        $(".province").addClass('active');
+        $.ajax({
+            type: 'get',
+            url: "{:url('/index/address/region')}",
+            success: function (res) {
+                var content = "";
+                $.each(res.data, function (i, n) {
+                    content += '<li data-type="' + n.level + '" data-toggle="' + n.pid + '" data-id="' + n.id + '">' + n.name + '</li>';
+                })
+                $(".shen-shi-xian-list").html(content);
+            }
+        })
+        $(".option-box").toggle();
+    })
+
+    $("body").on("click", ".shen-shi-xian-list li", function () {
+        var id = $(this).data('id'),
+            name = $(this).html(),
+            toggle = $(this).data('toggle'),
+            level = $(this).data('type');
+
+        if (level == 1) {
+            $(".address").empty();
+            $(".province").removeClass('active');
+            $(".city").addClass('active');
+            $(".province").attr('data-to', toggle);
+        }
+
+        if (level == 2) {
+            $(".city").removeClass('active');
+            $(".area").addClass('active');
+            $(".city").attr('data-to', toggle);
+        }
+
+        if (level == 3) {
+            $(".option-box").hide();
+            $(".area").attr('data-to', toggle);
+        }
+
+        $.ajax({
+            type: 'get',
+            data: {pid: id},
+            url: "{:url('/index/address/region')}",
+            success: function (res) {
+                var content = "";
+                $.each(res.data, function (i, n) {
+                    content += '<li data-type="' + n.level + '" data-toggle="' + n.pid + '" data-id="' + n.id + '">' + n.name + '</li>';
+                })
+                $(".shen-shi-xian-list").html(content);
+            }
+        })
+        $(".address").append(name + " ");
+    })
+
+
+    $(".modify-btn").click(function () {
+
+    })
+
+
+    //新增地址
+    function postAddressCreate() {
+        var name = $.trim($(".name").val()),
+            region = $(".address").html(),
+            address = $(".info_address").val(),
+            postal_code = $(".postal_code").val();
+
+        if (name == "" || name == null) {
+            layer.msg("联系人不能为空");
+            return false;
+        }
+        if (region == "" || region == null) {
+            layer.msg("地区不能为空");
+            return false;
+        }
+        if (address == "" || address == null) {
+            layer.msg("详细地址不能为空");
+            return false;
+        }
+        if (postal_code == "" || postal_code == null) {
+            layer.msg("联系电话不能为空");
+            return false;
+        }
+
+
+        if (postal_code.length != 11) {
+            layer.msg("联系电话长度不符合要求 11");
+            return false;
+        }
+
+        $.ajax({
+            type: 'post',
+            data: {name: name, region: region, address: address, postal_code: postal_code},
+            url: "{:url('/address_create')}",
+            success: function (res) {
+                layer.msg(res.msg);
+                if (res.code == 1) {
+                    location.href = '/modify_address.html?mode=2';
+                }
+            }
+        })
+    }
+
+
+    // $("body").on('click', '.default_address', function () {
+    //     $(this).addClass('default-address');
+    // })
+
+    /**
+     * 修改url中的参数
+     * @param url
+     * @param arg
+     * @param arg_val
+     * @returns {string|*|string}
+     */
+    function changeURLArg(url,arg,arg_val){
+        var pattern=arg+'=([^&]*)';
+        var replaceText=arg+'='+arg_val;
+        if(url.match(pattern)){
+            var tmp='/('+ arg+'=)([^&]*)/gi';
+            tmp=url.replace(eval(tmp),replaceText);
+            return tmp;
+        }else{
+            if(url.match('[\?]')){
+                return url+'&'+replaceText;
+            }else{
+                return url+'?'+replaceText;
+            }
+        }
+    }
+
+    /**
+     * 选择地址
+     * @param id
+     */
+    function choiceId(id) {
+        var url = '{:session(\'settlement_url\')}';
+        location.href = changeURLArg(url,'address_id',id)
+    }
+
+    //默认地址
+    function getDefault(id) {
+        if (id == '' || id == null) {
+            layer.msg("参数传递错误");
+            return false;
+        }
+        var url = '{:session(\'settlement_url\')}';
+
+        $.ajax({
+            type: 'get',
+            data: {id: id},
+            url: "/index/address/default.html",
+            success: function (res) {
+                layer.msg(res.msg, {
+                    time: 2000
+                }, function () {
+                    if (url != ''){
+                        location.href = changeURLArg(url,'address_id',id)
+                    }else{
+                        location.reload();
+                    }
+                });
+            }
+        })
+    }
+
+
+    //删除地址
+    function getDelete(id) {
+        if (id == '' || id == null) {
+            layer.msg("参数传递错误");
+            return false;
+        }
+
+        $.ajax({
+            type: 'get',
+            data: {id: id},
+            url: "{:url('/index/address/delete')}",
+            success: function (res) {
+                layer.msg(res.msg);
+                if (res.code == 1) {
+                    location.href = '/modify_address.html?mode=2';
+                }
+            }
+        })
+    }
+
+    $(document).on('click', '.edits', function () {
+        layer.msg("您有地址尚在修改中");
+        return false;
+    });
+
+
+    $(document).on('click', '.edit', function () {
+        $(".edit").addClass('edits').removeClass('edit');
+        var id = $(this).data('id'),
+            name = $(this).parent().prev().prev().prev().prev().html(),
+            region = $(this).parent().prev().prev().prev().html(),
+            address = $(this).parent().prev().prev().html(),
+            phone = $(this).parent().prev().html();
+
+        $(this).parent().prev().prev().prev().prev().html('<input type="text" name="" value="' + name + '" class="name" placeholder="">');
+        $(this).parent().prev().prev().prev().html('<div class="shen-shi-xian">\n' +
+            '                            <div class="select-box"><span class="address">' + region + '</span>                                   <span class="dizhi-jiantou">                                       <img src="/static/home/img/dizhi-jiantou.svg">                                   </span>                               </div>\n' +
+            '                            <div class="option-box" style="display: none">\n' +
+            '                                <div class="shen-shi-xian-nav">\n' +
+            '                                    <a href="javascript:;" data-type="2" class="province">省</a>\n' +
+            '                                    <a href="javascript:;" data-type="3" class="city">市</a>\n' +
+            '                                    <a href="javascript:;" data-type="1" class="active area">区/县</a>\n' +
+            '                                </div>\n' +
+            '                                <ul class="shen-shi-xian-list">\n' +
+            '                                    <li>东城区</li>\n' +
+            '                                </ul>\n' +
+            '                            </div>\n' +
+            '                        </div>');
+        $(this).parent().prev().prev().html('<input type="text" class="info_address" value="' + address + '" placeholder="" name="">');
+        $(this).parent().prev().html('<input type="text" placeholder="" class="postal_code" value="' + phone + '" name="">');
+        $(this).parent().html('<a href="javascript:;" class="modify-btn" onclick="postAddressUpdate(' + id + ')">保存</a>\n' +
+            '                            <span class="line">|</span>\n' +
+            '                            <a href="javascript:;" class="delete-btn" onclick="getGiveUp()">放弃</a>');
+    });
+
+
+    function postAddressUpdate(id) {
+        var name = $.trim($(".name").val()),
+            region = $(".address").html(),
+            address = $(".info_address").val(),
+            phone = $(".postal_code").val();
+
+        if (name == "" || name == null) {
+            layer.msg("联系人不能为空");
+            return false;
+        }
+        if (region == "" || region == null) {
+            layer.msg("地区不能为空");
+            return false;
+        }
+        if (address == "" || address == null) {
+            layer.msg("详细地址不能为空");
+            return false;
+        }
+        if (phone == "" || phone == null) {
+            layer.msg("联系电话不能为空");
+            return false;
+        }
+
+        $.ajax({
+            type: 'post',
+            data: {name: name, region: region, address: address, postal_code: phone},
+            url: "/index/address/update/id/" + id + ".html",
+            success: function (res) {
+                layer.msg(res.msg);
+                if (res.code == 1) {
+                    location.href = '/modify_address.html?mode=2';
+                }
+            }
+        })
+    }
+
+
+    function getGiveUp() {
+        window.location.reload();
+    }
+
+
+</script>
+{/block}

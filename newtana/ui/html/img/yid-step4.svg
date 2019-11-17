@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="375" height="30" viewBox="0 0 375 30">
+  <g id="组_302" data-name="组 302" transform="translate(0 -48)">
+    <g id="组_269" data-name="组 269" transform="translate(67)">
+      <g id="减去_4" data-name="减去 4" transform="translate(5101 3333)" fill="#f4f5f5">
+        <path d="M -4793.50048828125 -3255.499755859375 L -4879.24560546875 -3255.499755859375 L -4864.9482421875 -3269.797119140625 L -4864.5947265625 -3270.150634765625 L -4864.9482421875 -3270.504150390625 L -4878.94287109375 -3284.499267578125 L -4793.50048828125 -3284.499267578125 L -4793.50048828125 -3255.499755859375 Z" stroke="none"/>
+        <path d="M -4794.00048828125 -3255.999755859375 L -4794.00048828125 -3283.999267578125 L -4877.73583984375 -3283.999267578125 L -4864.5947265625 -3270.857666015625 L -4863.8876953125 -3270.150634765625 L -4864.5947265625 -3269.443603515625 L -4878.03857421875 -3255.999755859375 L -4794.00048828125 -3255.999755859375 M -4793.00048828125 -3254.999755859375 L -4880.00048828125 -3254.999755859375 L -4880.00048828125 -3255.451904296875 L -4865.3017578125 -3270.150634765625 L -4880.00048828125 -3284.849609375 L -4880.00048828125 -3284.999267578125 L -4793.00048828125 -3284.999267578125 L -4793.00048828125 -3255.000732421875 L -4793.00048828125 -3254.999755859375 Z" stroke="none" fill="#d9d9d9"/>
+      </g>
+      <text id="_5" data-name="5" transform="translate(264 68)" fill="#3b3b3b" font-size="14" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">5</tspan></text>
+    </g>
+    <g id="组_296" data-name="组 296">
+      <g id="组_273" data-name="组 273" transform="translate(1)">
+        <path id="联合_2" data-name="联合 2" d="M-4896-3255v-30h58v.151l.151-.151L-4823-3270.15l-14.849,14.849-.151-.151v.452Z" transform="translate(4895 3333)" fill="#1f1f1f"/>
+        <text id="_1" data-name="1" transform="translate(28 68)" fill="#fff" font-size="14" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">1</tspan></text>
+      </g>
+      <g id="组_272" data-name="组 272" transform="translate(27.302)">
+        <path id="减去_1" data-name="减去 1" d="M-4817-3255h-70v-.454l14.7-14.7-14.7-14.7V-3285h70v.151l14.7,14.7-14.7,14.7v.453Z" transform="translate(4923 3333)" fill="#1f1f1f"/>
+        <text id="_2" data-name="2" transform="translate(74 68)" fill="#fff" font-size="14" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">2</tspan></text>
+      </g>
+      <g id="组_274" data-name="组 274" transform="translate(102)">
+        <path id="减去_1-2" data-name="减去 1" d="M-4817-3255h-70v-.454l14.7-14.7-14.7-14.7V-3285h70v.151l14.7,14.7-14.7,14.7v.453Z" transform="translate(4923 3333)" fill="#1f1f1f"/>
+        <text id="_3" data-name="3" transform="translate(74 68)" fill="#fff" font-size="14" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">3</tspan></text>
+      </g>
+      <g id="组_275" data-name="组 275" transform="translate(177)">
+        <path id="减去_1-3" data-name="减去 1" d="M-4817-3255h-70v-.454l14.7-14.7-14.7-14.7V-3285h70v.151l14.7,14.7-14.7,14.7v.453Z" transform="translate(4923 3333)" fill="#1f1f1f"/>
+        <text id="_4" data-name="4" transform="translate(74 68)" fill="#fff" font-size="14" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">4</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

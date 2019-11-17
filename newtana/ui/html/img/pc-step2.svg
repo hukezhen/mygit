@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="459" viewBox="0 0 42 459">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="42" height="36" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="组_264" data-name="组 264" transform="translate(-149 -145)">
+    <g id="组_263" data-name="组 263">
+      <g id="组件_15_3" data-name="组件 15 – 3" transform="translate(149 355)" opacity="0.3" clip-path="url(#clip-path)">
+        <g id="多边形_1" data-name="多边形 1" transform="translate(42 36) rotate(180)" fill="rgba(255,255,255,0)">
+          <path d="M 40.25896072387695 35 L 1.741037487983704 35 L 21 1.984635710716248 L 40.25896072387695 35 Z" stroke="none"/>
+          <path d="M 21 3.969272613525391 L 3.482074737548828 34 L 38.51792526245117 34 L 21 3.969272613525391 M 21 0 L 42 36 L 0 36 L 21 0 Z" stroke="none" fill="#3b3b3b"/>
+        </g>
+        <text id="_3" data-name="3" transform="translate(15 19)" fill="#3b3b3b" font-size="20" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">3</tspan></text>
+      </g>
+      <g id="组件_15_4" data-name="组件 15 – 4" transform="translate(149 460)" opacity="0.3" clip-path="url(#clip-path)">
+        <g id="多边形_1-2" data-name="多边形 1" transform="translate(42 36) rotate(180)" fill="rgba(255,255,255,0)">
+          <path d="M 40.25896072387695 35 L 1.741037487983704 35 L 21 1.984635710716248 L 40.25896072387695 35 Z" stroke="none"/>
+          <path d="M 21 3.969272613525391 L 3.482074737548828 34 L 38.51792526245117 34 L 21 3.969272613525391 M 21 0 L 42 36 L 0 36 L 21 0 Z" stroke="none" fill="#3b3b3b"/>
+        </g>
+        <text id="_4" data-name="4" transform="translate(15 19)" fill="#3b3b3b" font-size="20" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">4</tspan></text>
+      </g>
+      <g id="组件_15_5" data-name="组件 15 – 5" transform="translate(149 568)" opacity="0.3" clip-path="url(#clip-path)">
+        <g id="多边形_1-3" data-name="多边形 1" transform="translate(42 36) rotate(180)" fill="rgba(255,255,255,0)">
+          <path d="M 40.25896072387695 35 L 1.741037487983704 35 L 21 1.984635710716248 L 40.25896072387695 35 Z" stroke="none"/>
+          <path d="M 21 3.969272613525391 L 3.482074737548828 34 L 38.51792526245117 34 L 21 3.969272613525391 M 21 0 L 42 36 L 0 36 L 21 0 Z" stroke="none" fill="#3b3b3b"/>
+        </g>
+        <text id="_5" data-name="5" transform="translate(15 19)" fill="#3b3b3b" font-size="20" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">5</tspan></text>
+      </g>
+      <g id="组_259" data-name="组 259">
+        <g id="组件_15_1" data-name="组件 15 – 1" transform="translate(149 145)" clip-path="url(#clip-path)">
+          <g id="多边形_1-4" data-name="多边形 1" transform="translate(42 36) rotate(180)" fill="rgba(255,255,255,0)">
+            <path d="M 40.25896072387695 35 L 1.741037487983704 35 L 21 1.984635710716248 L 40.25896072387695 35 Z" stroke="none"/>
+            <path d="M 21 3.969272613525391 L 3.482074737548828 34 L 38.51792526245117 34 L 21 3.969272613525391 M 21 0 L 42 36 L 0 36 L 21 0 Z" stroke="none" fill="#3b3b3b"/>
+          </g>
+          <text id="_1" data-name="1" transform="translate(15 20)" fill="#3b3b3b" font-size="20" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">1</tspan></text>
+        </g>
+        <g id="组件_15_2" data-name="组件 15 – 2" transform="translate(149 250)" clip-path="url(#clip-path)">
+          <g id="多边形_1-5" data-name="多边形 1" transform="translate(42 36) rotate(180)" fill="rgba(255,255,255,0)">
+            <path d="M 40.25896072387695 35 L 1.741037487983704 35 L 21 1.984635710716248 L 40.25896072387695 35 Z" stroke="none"/>
+            <path d="M 21 3.969272613525391 L 3.482074737548828 34 L 38.51792526245117 34 L 21 3.969272613525391 M 21 0 L 42 36 L 0 36 L 21 0 Z" stroke="none" fill="#3b3b3b"/>
+          </g>
+          <text id="_2" data-name="2" transform="translate(15 19)" fill="#3b3b3b" font-size="20" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="0" y="0">2</tspan></text>
+        </g>
+        <line id="直线_47" data-name="直线 47" y2="56" transform="translate(170 187.5)" fill="none" stroke="#3b3b3b" stroke-width="2"/>
+      </g>
+      <line id="直线_48" data-name="直线 48" y2="56" transform="translate(170 292.5)" fill="none" stroke="#3b3b3b" stroke-width="2" opacity="0.3"/>
+      <line id="直线_49" data-name="直线 49" y2="56" transform="translate(170 397.5)" fill="none" stroke="#3b3b3b" stroke-width="2" opacity="0.3"/>
+      <line id="直线_50" data-name="直线 50" y2="56" transform="translate(170 505.5)" fill="none" stroke="#3b3b3b" stroke-width="2" opacity="0.3"/>
+    </g>
+  </g>
+</svg>

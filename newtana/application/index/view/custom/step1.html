@@ -1,0 +1,242 @@
+{extend name="layout" /}
+{block name="title"}个性定制 第一步 共五步{/block}
+{block name="css"}
+{/block}
+{block name="body"}
+<link href="__HOME_CSS__/swiper.min.css" rel="stylesheet">
+<link href="__HOME_CSS__/animate.css" rel="stylesheet">
+<link href="__HOME_CSS__/sweiperstyle.css" rel="stylesheet">
+<!-- pc端定制step1开始 -->
+<div class="customized-step1-box">
+    <div class="customized-content step1-rgba-bg">
+        <div class="closexxxx"><img src="__HOME_IMG__/close-xxx.svg"></div>
+        <div class="left-and-right">
+            <div class="left-step active1">
+                <ul class="step-list">
+                    <li>选择定制工艺和颜色<br>输入车辆信息</li>
+                    <li>注册/登录<br>阅读流程</li>
+                    <li>确认定制数量、金额<br>确认定制细节</li>
+                    <li>支付全款<br>设计师对接开始定制</li>
+                    <li>在订单中心跟踪订单</li>
+                </ul>
+                <div class="step-unmber-box"></div>
+                <p class="statement-box"><span>*</span>使用定制服务即表示：<br>
+                    您已阅读并认可<a href="javascript:;">《戴特® TANA 免责声明》</a></p>
+            </div>
+
+            <div class="right-sweiper-box w900">
+                <div class="step1-sweiper-box">
+                    <img class="product_img" src="{$model.cover|get_file_path}">
+                    <div class="pc-product-jianjie">
+                        <div class="product-bg">
+                            <h2>本图展示效果</h2>
+                            <p>表面状态&nbsp;&nbsp;&nbsp;<span class="product_state">{$model.state}</span></p>
+                            <p>基础总价&nbsp;&nbsp;&nbsp;<span class="product_price">{$model.price}</span>元</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表面工艺及颜色 开始 -->
+        <div class="biaom-gongyi-box">
+            <div class="biaom-gongyi-itmes gongyi-ji-yangse">
+                <span>表面工艺及颜色</span>
+                <select class="custom">
+                    <option value="{$model.id}">{$model.title}</option>
+                    {foreach $list as $key => $val}
+                    <option value="{$val.id}">{$val.title}</option>
+                    {/foreach}
+                </select>
+            </div>
+            <div class="biaom-gongyi-itmes">
+                <span>车辆品牌</span>
+                <select class="banner">
+                    {foreach $banner as $key => $val}
+                    <option value="{$val.id}">{$val.title}</option>
+                    {/foreach}
+                </select>
+            </div>
+            <div class="biaom-gongyi-itmes">
+                <span>车辆型号</span>
+                <select class="marking">
+                    {foreach $mode as $key => $val}
+                    <option value="{$val.id}">{$val.title}</option>
+                    {/foreach}
+                </select>
+            </div>
+            <a class="xiayibu-btn" href="javascript:;" onclick="getStep1()"><img src="__HOME_IMG__/xiayibu-btn.svg"></a>
+        </div>
+        <!-- 表面工艺及颜色 结束 -->
+    </div>
+    <div class="customized-step-footer">
+        <span><img src="__HOME_IMG__/warning-icon.svg">
+            特别说明：基础总价中含5000元设计费（在支付后生产前如若退单，在基础总价上扣除设计费后原路退换）
+        </span>
+    </div>
+</div>
+<!-- pc端定制step1结束 -->
+
+<!-- 移动端定制step1开始 -->
+<div class="yid-step1-box">
+    <div class="yi-step01"><img src="__HOME_IMG__/yid-step1.svg"></div>
+    <div class="yid-step-box">
+
+        <!-- 产品轮播开始 -->
+        <div class="sweiperbox">  
+            <img class="product_img" src="{$model.cover|get_file_path}">
+            <div class="product-jianjie">
+                <h2 class="product_title">{$model.title}</h2>
+                <p>基础总价：<span class="product_price">{$model.price}</span>元/套(4只)</p>
+                <p>表面状态：<span class="product_state">{$model.state}</span></p>
+            </div>
+        </div>
+        <!-- 产品轮播结束 -->
+
+        <div class="step-main-box">
+            <h3>请您选择</h3>
+            <ul class="please-choice">
+                <li>
+                    <div class="yid-biaomian-gonyi">
+                        <span>表面工艺及颜色</span>
+                        <select class="custom web_custom">
+                            <option value="{$model.id}">{$model.title}</option>
+                            {foreach $list as $key => $val}
+                            <option value="{$val.id}">{$val.title}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                    <div class="yid-biaomian-gonyi">
+                        <span>车辆品牌</span>
+                        <select class="banner web_banner">
+                            {foreach $banner as $key => $val}
+                            <option value="{$val.id}">{$val.title}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <div class="yid-biaomian-gonyi">
+                        <span>车辆型号</span>
+                        <select class="marking web_marking">
+                            {foreach $mode as $key => $val}
+                            <option value="{$val.id}">{$val.title}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </li>
+            </ul>
+            <a class="next-step" href="javascript:;" onclick="postStep1()"><img src="__HOME_IMG__/xiayibu-btn.svg"></a>
+            <p class="agreement-explain"><em>*</em>使用定制服务即表示：<br>
+                您已阅读并认可<a href="javascript:;">《戴特® TANA 免责声明》</a></p>
+        </div>
+    </div>
+
+    <div class="yid-customized-footer step-footer">
+        <img src="__HOME_IMG__/warning-icon.svg">
+        <span>特别说明：基础总价中含5000元设计费（在支付后生产前
+如若退单，在基础总价上扣除设计费后原路退换）</span>
+    </div>
+</div>
+<!-- 移动端定制step1结束 -->
+{/block}
+{block name="js"}
+<script src="__HOME_JS__/step-all.js"></script>
+<script>
+
+    $(".custom").change(function () {
+        var id = $(this).val();
+        if(id == "" || id == null){
+            layer.msg("参数传递错误");
+            return false;
+        }
+        // window.location.href=id+".html";
+        $.ajax({
+            type: "get",
+            data: {id: id},
+            url: "{:url('/custom/tech')}",
+            success:function(res){
+                // console.log(res);
+                // return false;
+                if(res.code == 1){
+                    $(".product_img").attr('src','/'+res.data.path);
+                    $(".product_title").html(res.data.title);
+                    $(".product_price").html(res.data.price);
+                    $(".product_state").html(res.data.state);
+                }else{
+                    layer.msg("参数传递错误");
+                    return false;
+                }
+
+            },error:function(){
+                layer.msg("网络错误");
+                return false;
+            }
+        })
+    })
+
+
+    function getStep1() {
+        var custom = $(".custom").val(),
+            banner = $(".banner").val(),
+            marking = $(".marking").val();
+        window.location.href = "/custom/step2/id/"+custom+'.html?banner='+banner+'&marking='+marking;
+    }
+
+
+    function postStep1() {
+        var custom = $(".web_custom").val(),
+            banner = $(".web_banner").val(),
+            marking = $(".web_marking").val();
+        window.location.href = "/custom/step2/id/"+custom+'.html?banner='+banner+'&marking='+marking;
+    }
+</script>
+<script type="javascript">
+    $("#expandContent").click(function () {
+        document.getElementById('neirong').style.height = 'auto';
+        $('#read-more').hide();
+    })
+</script>
+<script type="text/javascript">(function (win) {
+    var doc = win.document, html = doc.documentElement, option = html.getAttribute("data-use-rem");
+    if (option === null) {
+        return
+    }
+    var baseWidth = parseInt(option).toString() === "NaN" ? 640 : parseInt(option);
+    var grids = baseWidth / 100;
+    var clientWidth = html.clientWidth || 320;
+    html.style.fontSize = clientWidth / grids + "px";
+    var testDom = document.createElement("div");
+    var testDomWidth = 0;
+    var adjustRatio = 0;
+    testDom.style.cssText = "height:0;width:1rem;";
+    doc.body.appendChild(testDom);
+    var calcTestDom = function () {
+        testDomWidth = testDom.offsetWidth;
+        if (testDomWidth !== Math.round(clientWidth / grids)) {
+            adjustRatio = clientWidth / grids / testDomWidth;
+            var reCalcRem = clientWidth * adjustRatio / grids;
+            html.style.fontSize = reCalcRem + "px"
+        } else {
+            doc.body.removeChild(testDom)
+        }
+    };
+    setTimeout(calcTestDom, 20);
+    var reCalc = function () {
+        var newCW = html.clientWidth;
+        if (newCW === clientWidth) {
+            return
+        }
+        clientWidth = newCW;
+        html.style.fontSize = newCW * (adjustRatio ? adjustRatio : 1) / grids + "px"
+    };
+    if (!doc.addEventListener) {
+        return
+    }
+    var resizeEvt = "orientationchange" in win ? "orientationchange" : "resize";
+    win.addEventListener(resizeEvt, reCalc, false);
+    doc.addEventListener("DOMContentLoaded", reCalc, false)
+})(window);
+</script>
+
+{/block}

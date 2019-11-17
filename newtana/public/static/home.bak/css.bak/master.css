@@ -1,0 +1,97 @@
+
+body{
+    margin:0 auto;
+    text-align:center;
+}
+
+@media screen and (max-width: 2500px) {
+    .hav dl img {
+        position: relative;
+        width:70%;
+        height:350px;
+        top:0px;
+        right:-100px;
+        margin-bottom:20px;
+    
+    }
+    .hav dl dd  {
+        position:absolute;
+        top:240px;
+        right:570px;
+        color:#fff;
+        width:200px;
+        line-height:60px;
+        height:60px;
+    background:black;
+    opacity:0.4;
+    filter:alpha(opacity=100);
+    }
+}
+.hav dl img {
+    position: relative;
+    width:50%;
+    height:350px;
+    margin-top:-320px;
+    right:-100px;
+    margin-bottom:20px;
+
+}
+.hav .hav-list img{
+    position: relative;
+    width:50%;
+    height:350px;
+    margin-top:0px;
+    right:-100px;
+    margin-bottom:20px;
+}
+.hav dl dd  {
+    position:absolute;
+    top:240px;
+    right:570px;
+    color:#fff;
+    width:200px;
+    line-height:60px;
+    height:60px;
+background:black;
+opacity:0.4;
+filter:alpha(opacity=100);
+}
+.hav dl .hav-h  {
+    position:absolute;
+    top:600px;
+    right:570px;
+    color:#fff;
+    width:200px;
+    line-height:60px;
+    height:60px;
+background:black;
+opacity:0.4;
+filter:alpha(opacity=100);
+}
+.hav dl .hav-a  {
+    position:absolute;
+    top:1000px;
+    right:570px;
+    color:#fff;
+    width:200px;
+    line-height:60px;
+    height:60px;
+background:black;
+opacity:0.4;
+filter:alpha(opacity=100);
+}
+.hav dl .hav-v  {
+    position:absolute;
+    top:1360px;
+    right:570px;
+    color:#fff;
+    width:200px;
+    line-height:60px;
+    height:60px;
+background:black;
+opacity:0.4;
+filter:alpha(opacity=100);
+}
+.hav a{
+    color:#Fff;
+}

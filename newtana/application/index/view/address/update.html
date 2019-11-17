@@ -1,0 +1,150 @@
+{extend name="layout" /}
+{block name="title"}修改地址{/block}
+{block name='body_css'}orderlist-box{/block}
+{block name="body"}
+
+<!-- 购物车开始 -->
+<div class="shop-car-box modify-address-box add-address-box">
+    <div class="shop-car-tips">
+        <div class="crumbs-box2"><a href="javascript:;">个人资料</a><em>></em><span>地址管理</span></div>
+        <span>修改地址</span>
+    </div>
+    <ul class="add-address-list">
+        <li>
+            <span class="news-text">联系人</span>
+            <input type="text" placeholder="联系人姓名" value="{$model.name}" class="name" name="name">
+        </li>
+        <li>
+            <span class="news-text">联系电话</span>
+            <input type="text" placeholder="13888888888" value="{$model.postal_code}" class="postal_code" name="postal_code">
+        </li>
+        <li>
+            <span class="news-text">所在地区</span>
+            <div class="shen-shi-xian">
+                <div class="select-box">
+                    <span class="address">{$model.region}</span>
+                    <span class="dizhi-jiantou">
+                            <img src="/static/home/img/dizhi-jiantou.svg">
+                        </span>
+                </div>
+                <div class="option-box" style="display: none;width: 240px !important;">
+                    <div class="shen-shi-xian-nav">
+                        <a href="javascript:;" data-type="2" class="province">省</a>
+                        <a href="javascript:;" data-type="3" class="city">市</a>
+                        <a href="javascript:;" data-type="1" class="active area">区/县</a>
+                    </div>
+                    <ul class="shen-shi-xian-list">
+                        <li>东城区</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <span class="news-text">收货地址</span>
+            <textarea class="receiving-address info_address" name="address" value="dfdf">{$model.address}</textarea>
+        </li>
+    </ul>
+
+    <div class="save-address">
+        <a href="/modify_address" class="abandon-add">放弃修改</a>
+        <a href="javascript:;" onclick="postAddressUpdate()" class="identify-add">确定修改</a>
+    </div>
+</div>
+<!-- 购物车结束 -->
+<!-- 移动端地址管理结束 -->
+{/block}
+{block name="js"}
+<script>
+    function postAddressUpdate() {
+        var name = $.trim($(".name").val()),
+            address = $(".info_address").val(),
+            postal_code = $(".postal_code").val(),
+            region = $(".address").html();
+
+        if (name == "" || name == null) {
+            layer.msg("联系人不能为空");
+            return false;
+        }
+        if (address == "" || address == null) {
+            layer.msg("详细地址不能为空");
+            return false;
+        }
+        if (postal_code == "" || postal_code == null) {
+            layer.msg("联系电话不能为空");
+            return false;
+        }
+        if (region == "" || region == null) {
+            layer.msg("地区不能为空");
+            return false;
+        }
+        $.ajax({
+            type: 'post',
+            data: {name: name, address: address, postal_code: postal_code,region:region},
+            url: window.location.href,
+            success: function (res) {
+                layer.msg(res.msg);
+                if (res.code == 1) {
+                    window.location.href = "{:url('/modify_address')}";
+                }
+            }
+        })
+    }
+
+    $(".select-box").click(function(){
+        $(".shen-shi-xian-nav a").siblings().removeClass('active');
+        $(".province").addClass('active');
+        $.ajax({
+            type: 'get',
+            url: "{:url('region')}",
+            success: function (res) {
+                var content = "";
+                $.each(res.data, function (i, n) {
+                    content += '<li data-type="' + n.level + '" data-toggle="' + n.pid + '" data-id="' + n.id + '">' + n.name + '</li>';
+                })
+                $(".shen-shi-xian-list").html(content);
+            }
+        })
+        $(".option-box").toggle();
+    })
+
+    $("body").on("click", ".shen-shi-xian-list li", function () {
+        var id = $(this).data('id'),
+            name = $(this).html(),
+            toggle = $(this).data('toggle'),
+            level = $(this).data('type');
+
+        if (level == 1) {
+            $(".address").empty();
+            $(".province").removeClass('active');
+            $(".city").addClass('active');
+            $(".province").attr('data-to', toggle);
+        }
+
+        if (level == 2) {
+            $(".city").removeClass('active');
+            $(".area").addClass('active');
+            $(".city").attr('data-to', toggle);
+        }
+
+        if (level == 3) {
+            $(".option-box").hide();
+            $(".area").attr('data-to', toggle);
+        }
+
+        $.ajax({
+            type: 'get',
+            data: {pid: id},
+            url: "{:url('region')}",
+            success: function (res) {
+                var content = "";
+                $.each(res.data, function (i, n) {
+                    content += '<li data-type="' + n.level + '" data-toggle="' + n.pid + '" data-id="' + n.id + '">' + n.name + '</li>';
+                })
+                $(".shen-shi-xian-list").html(content);
+            }
+        })
+        $(".address").append(name + " ");
+    })
+
+</script>
+{/block}

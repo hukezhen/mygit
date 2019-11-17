@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="750">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/lungustyle.css">
+    <link rel="stylesheet" href="css/lungustyle2.css">
+    <title>个人资料</title>
+</head>
+<body>
+<script type="javascript">
+    $("#expandContent").click(function(){
+        document.getElementById('neirong').style.height='auto';
+        $('#read-more').hide();})
+</script>
+<script type="text/javascript">(function(win){var doc=win.document,html=doc.documentElement,option=html.getAttribute("data-use-rem");if(option===null){return}var baseWidth=parseInt(option).toString()==="NaN"?640:parseInt(option);var grids=baseWidth/100;var clientWidth=html.clientWidth||320;html.style.fontSize=clientWidth/grids+"px";var testDom=document.createElement("div");var testDomWidth=0;var adjustRatio=0;testDom.style.cssText="height:0;width:1rem;";doc.body.appendChild(testDom);var calcTestDom=function(){testDomWidth=testDom.offsetWidth;if(testDomWidth!==Math.round(clientWidth/grids)){adjustRatio=clientWidth/grids/testDomWidth;var reCalcRem=clientWidth*adjustRatio/grids;html.style.fontSize=reCalcRem+"px"}else{doc.body.removeChild(testDom)}};setTimeout(calcTestDom,20);var reCalc=function(){var newCW=html.clientWidth;if(newCW===clientWidth){return}clientWidth=newCW;html.style.fontSize=newCW*(adjustRatio?adjustRatio:1)/grids+"px"};if(!doc.addEventListener){return}var resizeEvt="orientationchange" in win?"orientationchange":"resize";win.addEventListener(resizeEvt,reCalc,false);doc.addEventListener("DOMContentLoaded",reCalc,false)})(window);</script>
+
+
+
+<div class="yidongbox">
+<!-- pc头部 -->
+<div id="header">
+    <div class="w1200">
+        <img src="images/heiselogo.png">
+        <ul class="shou">
+            <li><a href="" class="active">首页</a></li>
+            <li><a href="">全系轮毂</a></li>
+            <li><a href="/index/index/product_list.html">潮流画廊</a></li>
+            <li><a href="">大师工艺</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+        <a class="tiaomao" target="_blank" href="https://www.tmall.com/?spm=a21bo.2017.201859.1.5af911d94KTXS7">
+            <img src="img/tianmao.svg">
+        </a>
+        <ul class="deng">
+            <!-- 登录前 -->
+            <!-- <li><a href="javascript:;" id="loginele">登录</a><a id="regidter" href="javascript:;">注册</a></li> -->
+
+            <!-- 登录后 -->
+            <li>
+                <p href="#" class="usernamebx">
+                    <span>TanaCustomer 001</span>  
+                    <a href="javascript:;" class="bugcar-box">             
+                        <img src="img/icon-bugcar.svg">
+                        <em class="order-number">2</em>
+                    </a>    
+                    <a href="javascript:;" class="order-link">              
+                        <img src="images/dingdan2.png">
+                        <em class="order-number">22</em>
+                    </a>
+                </p>
+                <a href="">提出</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 移动端头部开始 -->
+<div class="yid-header">
+    <div class="left-logo"><img src="images/heiselogo.png"></div>
+    <p href="#" class="usernamebx">
+        <a class="tiaomao" target="_blank" href="https://www.tmall.com/?spm=a21bo.2017.201859.1.5af911d94KTXS7">
+            <img src="img/tianmao.svg">
+        </a>
+
+        <a href="javascript:;" class="bugcar-box">             
+            <img src="img/icon-bugcar.svg">
+            <em class="order-number">2</em>
+        </a>    
+        <a href="javascript:;" class="order-link">              
+            <img src="images/dingdan2.png">
+            <em class="order-number">22</em>
+        </a>         
+    </p>
+    <a href="#" class="dy-more"><img src="images/yd-more.png"></a>
+</div>
+<div class="nav-pop">
+    <div class="yid-header">
+        <div class="left-logo"><img src="images/heiselogo.png"></div>
+        <a href="#" class="close-btn"><img src="images/closebut.png"></a>
+    </div>
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">全系轮毂</a></li>
+        <li><a href="#">潮流画廊</a></li>
+        <li><a href="#">大师工艺</a></li>
+        <li><a href="#">联系我们</a></li>
+    </ul>
+    <a href="#" class="yd-login">
+        登录
+    </a>
+    <a href="javascript:;" class="register-link">没有账号？立刻注册一个>></a>
+</div>
+<!-- 移动端头部结束 -->
+
+<!-- 个人资料开始 -->
+<div class="personal-data-box">
+    <h2>个人资料</h2>
+    <div class="personal-data-main">
+        <div class="personal-data-box2">
+            <ul class="personal-data-list">
+                <li><span>账号名称</span>TanaCustomer 001</li>
+                <li><span>公司名称</span>梅赛德斯奔驰-北京分公司</li>
+                <li><span>联系电话</span>010-86788888</li>
+                <li><span>手机号码</span>13690301958</li>
+                <li><span>电子邮箱</span><a href="mailto:CMO@mercedes-benz.com.cn">CMO@mercedes-benz.com.cn</a></li>
+                <li><span>联系地址</span>北京市朝阳区北三环中路1号 A座 1606 室</li>
+            </ul>
+            <div class="right-head">
+                <img src="img/tepy-logo.png">
+                <div class="file-btn">
+                    <a href="javascript:;">更换头像</a>
+                    <input type="file" name="">                
+                </div>
+            </div>
+        </div>
+        <div class="modify-data">
+            <a href="javascript:;">修改资料</a>
+            <a href="javascript:;">地址管理</a>
+        </div>
+    </div>
+</div>
+<!-- 个人资料结束 -->
+</body>
+</html>
+
+
+
+
+
+
+

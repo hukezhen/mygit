@@ -1,0 +1,162 @@
+{extend name="layout" /}
+{block name="title"}首页{/block}
+{block name='body_css'}orderlist-box{/block}
+{block name="body"}
+<!-- 个人资料开始 -->
+<style>
+    .layui-btn {
+        background-color: #3B3B3B !important;
+        padding: 3px 5px !important;
+        height: unset !important;
+        line-height: unset !important;
+    }
+</style>
+<div class="personal-data-box">
+    <h2>个人资料</h2>
+    <div class="personal-data-main">
+        <div class="personal-data-box2">
+            <ul class="personal-data-list modify-box">
+                <li>
+                    <span>登录账号</span>
+                    {$users.username}
+                </li>
+                <li>
+                    <span>{$users.type == 0 ? '个人' : '企业'}名称</span>
+                    <input type="text" name="nickname" placeholder="{$users.nickname}" value="{$users.nickname}"
+                           id="nickname">
+                </li>
+                <li>
+                    <span>联系电话</span>
+                    <input type="text" placeholder="{$users.phone}" value="{$users.phone}" name="" id="phone">
+                </li>
+                <li>
+                    <span>手机号码</span>
+                    <input type="texr" placeholder="{$users.telephone}" value="{$users.telephone}" name=""
+                           id="telephone"></li>
+                <li>
+                    <span>电子邮箱</span>
+                    <input type="text" placeholder="{$users.email}" value="{$users.email}" name="" id="email">
+                </li>
+                <li>
+                    <span class="contact-address">联系地址</span>
+                    <textarea class="lianxi-dizhi" id="address">{$users.address}</textarea>
+                </li>
+            </ul>
+            <div class="right-head">
+                <div class="layui-upload-list">
+                    {if $users['face']}
+                    <img class="layui-upload-img demo1" src="/{$users.face}">
+                    {else /}
+                    <img class="layui-upload-img demo1" src="__HOME_IMG__/logo-login.png">
+                    {/if}
+                    <p id="demoText"></p>
+                </div>
+                <button type="button" class="layui-btn" id="test1">上传图片</button>
+            </div>
+        </div>
+        <div class="modify-data">
+            <a href="javascript:;" onclick="getData()" class="modify-data-btn">保存修改</a>
+            <a href="{:url('/personal_data')}">放弃修改</a>
+        </div>
+    </div>
+</div>
+<!-- 个人资料结束 -->
+{/block}
+{block name="js"}
+<script type="text/javascript">
+    layui.use('upload', function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
+
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1'
+            , url: '/personal_data.html'
+            , accept: 'file'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('.demo1').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                if (res.code == 1) {
+                    layer.msg('上传成功');
+                }
+                if (res.code == 0) {
+                    layer.msg("上传失败");
+                }
+            }
+            , error: function () {
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+    })
+
+
+    function getData() {
+        var nickname = $.trim($("#nickname").val()),
+            phone = $.trim($("#phone").val()),
+            telephone = $.trim($("#telephone").val()),
+            email = $.trim($("#email").val()),
+            address = $.trim($("#address").val());
+
+        if (nickname == "" || nickname == null) {
+            layer.msg("名称不能为空");
+            return false;
+        }
+        if (telephone == "" || telephone == null) {
+            layer.msg("手机号码不能为空");
+            return false;
+        }
+        if (email == "" || email == null) {
+            layer.msg("电子邮箱不能为空");
+            return false;
+        }
+        if (address == "" || address == null) {
+            layer.msg("联系地址不能为空");
+            return false;
+        }
+
+        $.ajax({
+            url: "{:url('/personal_data_update')}",
+            data: {nickname: nickname, phone: phone, telephone: telephone, email: email, address: address},
+            type: 'post',
+            success: function (res) {
+                layer.msg(res.msg);
+                if (res.code == 1) {
+                    window.location.href = "/personal_data.html";
+                }
+            }
+        })
+    }
+
+
+    // $(document).on('change', '.right-head input', function (e) {
+    //     var url = window.URL.createObjectURL(e.target.files[0]);
+    //     $(".right-head img").attr('src', url);
+    // })
+    //
+    // function checkForm() {
+    //     var file = $(".uploadImg").val();
+    //     if(file == "" || file == null){
+    //         layer.msg("请点击头像上传新头像");
+    //         return false;
+    //     }
+    //     return true;
+    // }
+
+
+</script>
+{/block}
+
+
+
+
+
+
+

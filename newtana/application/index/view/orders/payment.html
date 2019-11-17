@@ -1,0 +1,490 @@
+{extend name="layout" /}
+{block name="title"}订单结算{/block}
+{block name='body_css'}orderlist-box{/block}
+{block name="body"}
+<div class="paymentbox w1200 paymentpc">
+    <div class="crumbs-box">
+        <a href="#">订单列表</a><img src="__HOME_IMG__/jiantou.png"><a href="#">付款</a>
+    </div>
+
+    <div class="payment-content">
+        <div class="left-payment-box">
+            <div class="estimated-shipment">
+                <div class="left-payment">
+                    <h1><span>预计发货</span> <em></em></h1>
+                    <h2>三个工作日内</h2>
+                    <div class="special-description">
+                        <span>特别说明</span>
+                        <p>当您购买的产品库存充足的时候，发货日将安排在三个工作日内。
+                            当您购买的产品库存不足，需要我司安排生产的情况下，发货将安排在支付后八周到十周之内。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-method">
+                <div class="left-payment">
+                    <h1><span>支付方式</span> <em></em></h1>
+                </div>
+                <ul class="payment-list">
+                    <li><input type="radio" name="pay_type" value="1"><img src="__HOME_IMG__/zhifubao@2x.png">支付宝</li>
+                    <li><input type="radio" name="pay_type" value="2"><img src="__HOME_IMG__/weixinzhifu-@2x.png">微信支付
+                    </li>
+                    <li><input type="radio" name="pay_type" value="3"><img src="__HOME_IMG__/yinglianicon.png">银联支付（个人）
+                    </li>
+                    <li><input type="radio" name="pay_type" value="4"><img src="__HOME_IMG__/yinglianicon.png">银联支付（B2B）
+                    </li>
+                </ul>
+                <div class="payment-list-money">支付金额:<span>{$order.moneys}<em>元</em></span></div>
+
+                <div class="payment-btn" onclick="pay({$order.moneys})">
+                    确认支付
+                </div>
+                <p class="zhifutips">目前微信和支付宝最大额度是5万。银联最大额度2000</p>
+            </div>
+
+        </div>
+
+        <div class="right-payment-box">
+            <div class="odernumber">
+                <h3><span>订单号  TANA{$order.id}</span><em></em></h3>
+                <div class="product-list-box">
+                    {volist name="order.detail" id="v"}
+                    <div class="detailimgbox">
+                        <img src="{$v.cover|get_file_path}">
+                        <div class="detail-txt-right">
+                            <h3>{$v.part_number}</h3>
+                            <p>x {$v.number}</p>
+                        </div>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
+
+            <div class="odernumber odernumber2">
+                <h3><span>收货地址</span> <em></em></h3>
+                <div class="orderdetail2" style="padding: 15px 0">
+                    <!--                    <input id="address" value="{$address.name}"/>-->
+                    {$address.name}&nbsp;&nbsp;&nbsp;{$address.postal_code}<br>
+                    {$address.region} {$address.address}
+                    <a href="{:url('/modify_address')}" class="modify-address-btn dingwei-address-btn">修改地址</a>
+                </div>
+            </div>
+
+            <div class="odernumber odernumber2">
+                <h3><span>发票信息</span> <em></em></h3>
+
+                <div class="orderdetail2">
+                    <div class="fapiao-list-box">
+                        {php}
+                        $invoiceRadio = $invoice['invoice'] ?? 0;
+                        {/php}
+                        <div class="fapiao-items"><input type="radio" name="invoice_pc" data-mode="1"
+                                                         class="input-invoice" value="0" {$invoiceRadio== 0 ? 'checked'
+                            : ''}>不开发票
+                        </div>
+                        <div class="fapiao-items"><input type="radio" name="invoice_pc" data-mode="1"
+                                                         class="input-invoice" value="1" {$invoiceRadio== 1 ? 'checked'
+                            : ''}>增值税普通发票
+                        </div>
+                        <div class="fapiao-items"><input type="radio" name="invoice_pc" data-mode="1"
+                                                         class="input-invoice" value="2" {$invoiceRadio== 2 ? 'checked'
+                            : ''}>增值税专用发票
+                        </div>
+                    </div>
+                    <div class="zengzhi-sui-pc" style="display:none;">
+                        <div class="zengzhi-mingc">
+                            <span>公司名称</span>
+                            <input type="text" name="invoice_company_pc" value="{$invoice.invoice_company|default=''}"
+                                   placeholder="请填写公司名称">
+                        </div>
+                        <div class="zengzhi-mingc">
+                            <span>税号</span>
+                            <input type="text" name="invoice_tax_pc" value="{$invoice.invoice_tax|default=''}"
+                                   placeholder="请填写税号">
+                        </div>
+                        <div class="zengzhi-mingc">
+                            <span>开户行</span>
+                            <input type="text" name="invoice_bank_pc" value="{$invoice.invoice_bank|default=''}"
+                                   placeholder="请填写开户行">
+                        </div>
+                        <div class="zengzhi-mingc">
+                            <span>账号</span>
+                            <input type="text" name="invoice_card_pc" value="{$invoice.invoice_card|default=''}"
+                                   placeholder="请填账号">
+                        </div>
+                    </div>
+                    <div class="baoc-fapiao-btn">
+                        <a href="javascript:;" class="modify-address-btn invoice-btn" data-mode="1">保存</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="odernumber odernumber3">
+                <h3><span>备注</span> <em></em></h3>
+                <div class="orderdetail2">
+                    <textarea class="beizhu-box" placeholder="请填写备注" name="txt-pc"></textarea>
+                </div>
+                <div class="baoc-fapiao-btn">
+                    <a href="javascript:;" class="modify-address-btn txt-btn" data-mode="1">保存</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- 以下是移动端结构 -->
+<div class="paymentbox w1200 paymentyidong">
+    <div class="crumbs-box">
+        <a href="#">订单列表</a><img src="__HOME_IMG__/jiantou.png"><a href="#">付款</a>
+    </div>
+
+
+    <div class="estimated-shipment">
+        <div class="left-payment">
+            <h1><span>预计发货</span> <em></em></h1>
+            <h2>三个工作日内</h2>
+            <div class="special-description">
+                <span>特别说明</span>
+                <p>当您购买的产品库存充足的时候，发货日将安排在三个工作日内。
+                    当您购买的产品库存不足，需要我司安排生产的情况下，发货将安排在支付后八周到十周之内。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="payment-content">
+        <div class="right-payment-box">
+            <div class="odernumber">
+                <h3><span>订单号  TANA{$order.id}</span><em></em></h3>
+
+                {volist name="order.detail" id="v"}
+                <div class="detailimgbox">
+                    <img src="{$v.cover|get_file_path}">
+                    <div class="detail-txt-right">
+                        <h3>{$v.part_number}</h3>
+                        <p>x {$v.number}</p>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+
+            <div class="odernumber odernumber2">
+                <h3><span>收货地址</span> <em></em></h3>
+                <div class="orderdetail2">
+                    <input type="hidden" id="address" value="{:json_encode($address)}">
+                    {$address.name}&nbsp;&nbsp;&nbsp;{$address.postal_code}<br>
+                    {$address.address}
+                    <a href="{:url('/modify_address')}" class="modify-address-btn dingwei-address-btn">修改地址</a>
+                </div>
+            </div>
+
+            <!--  <div class="odernumber odernumber2">
+                 <h3><span>发票信息</span> <em></em></h3>
+                 <div class="orderdetail2">
+                     不开发票
+                 </div>
+             </div>
+
+             <div class="odernumber odernumber3">
+                 <h3><span>备注</span> <em></em></h3>
+
+                 <div class="orderdetail2">
+                     <textarea class="beizhu-box" placeholder="请填写备注"></textarea>
+                 </div>
+             </div> -->
+            <!-- 发票开始 -->
+            <div class="odernumber odernumber2">
+                <h3><span>发票信息</span> <em></em></h3>
+
+                <div class="orderdetail2">
+                    <div class="fapiao-list-box">
+                        {php}
+                        $invoiceRadio = $invoice['invoice'] ?? 0;
+                        {/php}
+                        <div class="fapiao-items"><input type="radio" name="invoice" class="input-invoice" value="0"
+                                                         {$invoiceRadio== 0 ? 'checked' : ''}>不开发票
+                        </div>
+                        <div class="fapiao-items"><input type="radio" name="invoice" class="input-invoice" value="1"
+                                                         {$invoiceRadio== 1 ? 'checked' : ''}>增值税普通发票
+                        </div>
+                        <div class="fapiao-items"><input type="radio" name="invoice" class="input-invoice" value="2"
+                                                         {$invoiceRadio== 2 ? 'checked' : ''}>增值税专用发票
+                        </div>
+                    </div>
+                    <div class="zengzhi-sui" style="display:none;">
+                        <div class="zengzhi-mingc">
+                            <span>公司名称</span>
+                            <input type="text" name="invoice_company" value="{$invoice.invoice_company|default=''}"
+                                   placeholder="请填写公司名称"/>
+                        </div>
+                        <div class="zengzhi-mingc">
+                            <span>税号</span>
+                            <input type="text" name="invoice_tax" value="{$invoice.invoice_tax|default=''}"
+                                   placeholder="请填写税号">
+                        </div>
+                        <div class="zengzhi-mingc">
+                            <span>开户行</span>
+                            <input type="text" name="invoice_bank" value="{$invoice.invoice_bank|default=''}"
+                                   placeholder="请填写开户行">
+                        </div>
+                        <div class="zengzhi-mingc">
+                            <span>账号</span>
+                            <input type="text" name="invoice_card" value="{$invoice.invoice_card|default=''}"
+                                   placeholder="请填账号">
+                        </div>
+                    </div>
+                    <div class="baoc-fapiao-btn">
+                        <a href="javascript:;" class="modify-address-btn invoice-btn">保存</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="odernumber odernumber3">
+                <h3><span>备注</span> <em></em></h3>
+                <div class="orderdetail2">
+                    <textarea class="beizhu-box" placeholder="请填写备注" name="txt"></textarea>
+                </div>
+                <div class="baoc-fapiao-btn">
+                    <a href="javascript:;" class="modify-address-btn txt-btn" >保存</a>
+                </div>
+            </div>
+
+        </div>
+        <!-- 发票结束 -->
+
+    </div>
+    <div class="left-payment-box">
+        <div class="payment-method">
+            <div class="left-payment">
+                <h1><span>支付方式</span> <em></em></h1>
+            </div>
+            <ul class="payment-list">
+                <li id="alipay"><input type="radio" name="pay_type" value="1"><img
+                        src="__HOME_IMG__/zhifubao@2x.png">支付宝
+                </li>
+                <li><input type="radio" name="pay_type" value="2"><img src="__HOME_IMG__/weixinzhifu-@2x.png">微信支付
+                </li>
+                <li id="union"><input type="radio" name="pay_type" value="3"><img
+                        src="__HOME_IMG__/yinglianicon.png">银联支付(个人)
+                </li>
+                <li id="unionB2b"><input type="radio" name="pay_type" value="4"><img
+                        src="__HOME_IMG__/yinglianicon.png">银联支付(B2B)
+                </li>
+            </ul>
+            <div class="payment-list-money"><p>支付金额:</p><span>{$order.moneys}<em>元</em></span></div>
+
+            <div class="payment-btn" onclick="pay({$order.moneys})">
+                确认支付
+            </div>
+            <p class="zhifutips">目前微信和支付宝最大额度是5万。银联最大额度2000</p>
+        </div>
+
+    </div>
+
+</div>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="__LIBS__/layer/layer.js"></script>
+<script type="text/javascript">
+    var ua = window.navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        $('#alipay').hide();
+        $('#union').hide();
+        $('#unionB2b').hide();
+    }
+
+    $('.txt-btn').click(function () {
+        var txt;
+        if (parseInt($(this).attr('data-mode')) === 1) {
+            txt = $('textarea[name="txt-pc"]').val()
+        } else {
+            txt = $('textarea[name="txt"]').val()
+        }
+            if (txt == '') {
+                layer.msg('备注不能为空');
+                return false;
+            }
+            var loading = layer.load(1, {
+                shade: [0.5, '#fff']
+            });
+            $.ajax({
+                url: '/index/orders/txt?id={$order.id}',
+                type: 'post',
+                data: {
+                    txt: txt
+                },
+                success: function (res) {
+                    layer.close(loading);
+                    if (res.code !== 1) {
+                        layer.msg(res.msg);
+                    }
+                },
+                error: function () {
+                    layer.close(loading);
+                    layer.msg('网络异常');
+                }
+            });
+        layer.msg('保存成功！');
+        return false;
+    });
+
+    $('.invoice-btn').click(function () {
+        if (parseInt($(this).attr('data-mode')) === 1) {
+            var invoice = parseInt($('input[name="invoice_pc"]:checked').val())
+                , invoice_company = $('input[name="invoice_company_pc"]').val()
+                , invoice_tax = $('input[name="invoice_tax_pc"]').val()
+                , invoice_bank = $('input[name="invoice_bank_pc"]').val()
+                , invoice_card = $('input[name="invoice_card_pc"]').val();
+        } else {
+            var invoice = parseInt($('input[name="invoice"]:checked').val())
+                , invoice_company = $('input[name="invoice_company"]').val()
+                , invoice_tax = $('input[name="invoice_tax"]').val()
+                , invoice_bank = $('input[name="invoice_bank"]').val()
+                , invoice_card = $('input[name="invoice_card"]').val();
+        }
+
+
+        if (invoice === 1 || invoice === 2) {
+            if (invoice_company == '') {
+                layer.msg('公司名称不能为空');
+                return false;
+            }
+            if (invoice_tax == '') {
+                layer.msg('税号不能为空');
+                return false;
+            }
+            if (invoice === 2 && invoice_bank == '') {
+                layer.msg('开户行不能为空');
+                return false;
+            }
+            if (invoice === 2 && invoice_card == '') {
+                layer.msg('银行账号不能为空');
+                return false;
+            }
+            var loading = layer.load(1, {
+                shade: [0.5, '#fff']
+            });
+            $.ajax({
+                url: '/index/orders/invoice?id={$order.id}',
+                type: 'post',
+                data: {
+                    invoice: invoice,
+                    invoice_company: invoice_company,
+                    invoice_tax: invoice_tax,
+                    invoice_bank: invoice_bank,
+                    invoice_card: invoice_card
+                },
+                success: function (res) {
+                    layer.close(loading);
+                    if (res.code !== 1) {
+                        layer.msg(res.msg);
+                    }
+                },
+                error: function () {
+                    layer.close(loading);
+                    layer.msg('网络异常');
+                }
+            });
+        }
+        layer.msg('保存成功！');
+        return false;
+    });
+
+
+    //PC发票切换
+    $('.input-invoice').click(function () {
+        var invoice = parseInt($(this).val())
+            , showDiv;
+        if (parseInt($(this).attr('data-mode')) === 1) {
+            showDiv = $('.zengzhi-sui-pc');
+        } else {
+            showDiv = $('.zengzhi-sui');
+        }
+        if (invoice === 1) {
+            showDiv.show();
+            showDiv.find('div').eq(2).hide();
+            showDiv.find('div').eq(3).hide();
+        } else if (invoice === 2) {
+            showDiv.show();
+            showDiv.find('div').show();
+        } else {
+            showDiv.hide();
+        }
+    });
+
+
+    function pay(money) {
+        var address = $("#address").val();
+        if (address.length < 1) {
+            layer.msg("收货地址不能为空");
+            return false;
+        }
+
+        if (money < 0.01) {
+            layer.msg('0元不能支付，请联系管理员');
+            return false;
+        }
+        var type = $('input[name="pay_type"]:checked').val();
+        if (type === '' || type === undefined) {
+            layer.msg('请选择支付方式！');
+            return false;
+        }
+
+        var mode = '{$mode}';
+        if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            mode = 1;
+        }
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            mode = 2;
+        }
+
+
+        var url = "/index/payment/index/id/{$id}/type/" + type + '/mode/' + mode + '.html';
+        if (type === '2' && mode === '0') {
+            var loading = layer.load(1, {
+                shade: [0.5, '#fff']
+            });
+            $.ajax({
+                url: url,
+                type: 'get',
+                success: function (res) {
+                    layer.close(loading);
+                    if (res.code === 1) {
+                        layer.open({
+                            type: 1,
+                            title: "请使用微信扫一扫进行支付",
+                            area: ['420px', '420px'], //宽高
+                            content: '<img src="' + res.data.img + '" alt="" style="width: 300px;margin: 10px 54px;">' +
+                                '<div class="zhifuanniubox">' +
+                                '<a href="javascript:;" onclick="shaohouzhifu()" class="shaohouzhifu">稍后支付</a>' +
+                                '<a href="javascript:;" onclick="zhifuchenggong()" class="zhifuchenggong">已支付成功</a>' +
+                                '</div>'
+                        });
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                },
+                error: function () {
+                    layer.close(loading);
+                    layer.msg('网络异常');
+                }
+            });
+            return false;
+        }
+
+
+        location.href = url;
+    }
+
+
+    function shaohouzhifu() {
+        window.location.reload();
+    }
+
+    function zhifuchenggong() {
+        window.history.go(-1);
+    }
+</script>
+{/block}

@@ -1,0 +1,22 @@
+dist: trusty
+sudo: false
+language: php
+
+php:
+  - '7.1'
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_install:
+  - composer self-update
+
+install: travis_retry composer install
+
+script:
+  - composer phpunit
+  - composer phpstan
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

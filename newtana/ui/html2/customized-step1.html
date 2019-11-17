@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="750">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/lungustyle.css">
+    <link rel="stylesheet" href="css/lungustyle2.css">
+
+    <!-- sweiper -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/sweiperstyle.css">
+    <title>轮毂</title>
+</head>
+<body>
+<script type="javascript">
+    $("#expandContent").click(function(){
+        document.getElementById('neirong').style.height='auto';
+        $('#read-more').hide();})
+</script>
+<script type="text/javascript">(function(win){var doc=win.document,html=doc.documentElement,option=html.getAttribute("data-use-rem");if(option===null){return}var baseWidth=parseInt(option).toString()==="NaN"?640:parseInt(option);var grids=baseWidth/100;var clientWidth=html.clientWidth||320;html.style.fontSize=clientWidth/grids+"px";var testDom=document.createElement("div");var testDomWidth=0;var adjustRatio=0;testDom.style.cssText="height:0;width:1rem;";doc.body.appendChild(testDom);var calcTestDom=function(){testDomWidth=testDom.offsetWidth;if(testDomWidth!==Math.round(clientWidth/grids)){adjustRatio=clientWidth/grids/testDomWidth;var reCalcRem=clientWidth*adjustRatio/grids;html.style.fontSize=reCalcRem+"px"}else{doc.body.removeChild(testDom)}};setTimeout(calcTestDom,20);var reCalc=function(){var newCW=html.clientWidth;if(newCW===clientWidth){return}clientWidth=newCW;html.style.fontSize=newCW*(adjustRatio?adjustRatio:1)/grids+"px"};if(!doc.addEventListener){return}var resizeEvt="orientationchange" in win?"orientationchange":"resize";win.addEventListener(resizeEvt,reCalc,false);doc.addEventListener("DOMContentLoaded",reCalc,false)})(window);
+</script>
+
+
+
+<!-- pc头部 -->
+<div id="header">
+    <div class="w1200">
+        <img src="images/heiselogo.png">
+        <ul class="shou">
+            <li><a href="" class="active">首页</a></li>
+            <li><a href="">全系轮毂</a></li>
+            <li><a href="/index/index/product_list.html">潮流画廊</a></li>
+            <li><a href="">大师工艺</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+        <a class="tiaomao" target="_blank" href="https://www.tmall.com/?spm=a21bo.2017.201859.1.5af911d94KTXS7">
+            <img src="img/tianmao.svg">
+        </a>
+        <ul class="deng">
+            <!-- 登录前 -->
+            <!-- <li><a href="javascript:;" id="loginele">登录</a><a id="regidter" href="javascript:;">注册</a></li> -->
+
+            <!-- 登录后 -->
+            <li>
+                <p href="#" class="usernamebx">
+                    <span>TanaCustomer 001</span>  
+                    <a href="javascript:;" class="bugcar-box">             
+                        <img src="img/icon-bugcar.svg">
+                        <em class="order-number">2</em>
+                    </a>    
+                    <a href="javascript:;" class="order-link">              
+                        <img src="images/dingdan2.png">
+                        <em class="order-number">22</em>
+                    </a>
+                </p>
+                <a href="">提出</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 移动端头部开始 -->
+<div class="yid-header">
+    <div class="left-logo"><img src="images/heiselogo.png"></div>
+    <p href="#" class="usernamebx">
+        <a class="tiaomao" target="_blank" href="https://www.tmall.com/?spm=a21bo.2017.201859.1.5af911d94KTXS7">
+            <img src="img/tianmao.svg">
+        </a>
+
+        <a href="javascript:;" class="bugcar-box">             
+            <img src="img/icon-bugcar.svg">
+            <em class="order-number">2</em>
+        </a>    
+        <a href="javascript:;" class="order-link">              
+            <img src="images/dingdan2.png">
+            <em class="order-number">22</em>
+        </a>         
+    </p>
+    <a href="#" class="dy-more"><img src="images/yd-more.png"></a>
+</div>
+<div class="nav-pop">
+    <div class="yid-header">
+        <div class="left-logo"><img src="images/heiselogo.png"></div>
+        <a href="#" class="close-btn"><img src="images/closebut.png"></a>
+    </div>
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">全系轮毂</a></li>
+        <li><a href="#">潮流画廊</a></li>
+        <li><a href="#">大师工艺</a></li>
+        <li><a href="#">联系我们</a></li>
+    </ul>
+    <a href="#" class="yd-login">
+        登录
+    </a>
+    <a href="javascript:;" class="register-link">没有账号？立刻注册一个>></a>
+</div>
+<!-- 移动端头部结束 -->
+
+<!-- pc端定制step1开始 -->
+<div class="customized-step1-box">
+    <div class="customized-content">
+        <div class="closexxxx"><img src="img/close-xxx.svg"></div>
+        <div class="left-and-right">
+            <div class="left-step active1">
+                <ul class="step-list">
+                    <li>选择定制工艺和颜色<br>输入车辆信息</li>
+                    <li>注册/登录<br>阅读流程</li>
+                    <li>确认定制数量、金额<br>确认定制细节</li>
+                    <li>支付全款<br>设计师对接开始定制</li>
+                    <li>在订单中心跟踪订单</li>
+                </ul>
+                <div class="step-unmber-box"></div>
+                <p class="statement-box"><span>*</span>使用定制服务即表示：<br>
+    您已阅读并认可<a href="javascript:;">《戴特® TANA 免责声明》</a></p>
+            </div>
+
+            <div class="right-sweiper-box w900">
+                <div class="step1-sweiper-box">
+                    <div class="swiper-container newseiperbox">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">                
+                                <a href="https://www.baidu.com/"></a>
+                                <img src="img/che3.jpg" alt="">
+                                <div class="desc_b_l animated"></div>
+                                <div class="desc_b_t animated"></div>
+                                <div class="desc_b_r animated"></div>
+                                <div class="desc_b_b animated"></div>
+                                <div class="desc">
+                                    <p class="p1">本图展示效果</p>
+                                    <p class="p2">表面状态  哑光黑</p>
+                                    <p class="p1">基础总价  ¥28800</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:;"></a>
+                                <img src="img/che2.jpg" alt="">
+                                <div class="desc_b_l animated"></div>
+                                <div class="desc_b_t animated"></div>
+                                <div class="desc_b_r animated"></div>
+                                <div class="desc_b_b animated"></div>
+                                <div class="desc">
+                                    <p class="p1">本图展示效果</p>
+                                    <p class="p2">表面状态  哑光黑</p>
+                                    <p class="p1">基础总价  ¥28800</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">                
+                                <a href="javascript:;"></a>
+                                <img src="img/che3.jpg" alt="">
+                                <div class="desc_b_l animated"></div>
+                                <div class="desc_b_t animated"></div>
+                                <div class="desc_b_r animated"></div>
+                                <div class="desc_b_b animated"></div>
+                                <div class="desc">
+                                    <p class="p1">本图展示效果</p>
+                                    <p class="p2">表面状态  哑光黑</p>
+                                    <p class="p1">基础总价  ¥28800</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- 如果需要导航按钮 -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 表面工艺及颜色 开始 -->
+        <div class="biaom-gongyi-box">
+            <div class="biaom-gongyi-itmes gongyi-ji-yangse">
+                <span>表面工艺及颜色</span>
+                <select>
+                    <option>哑光黑</option>
+                    <option>哑光黑</option>
+                    <option>哑光黑</option>
+                    <option>哑光黑</option>
+                </select>
+            </div>
+            <div class="biaom-gongyi-itmes">
+                <span>车辆品牌</span>
+                <select>
+                    <option>您的车辆品牌</option>
+                    <option>您的车辆品牌</option>
+                    <option>您的车辆品牌</option>
+                </select>
+            </div>
+            <div class="biaom-gongyi-itmes">
+                <span>车辆型号</span>
+                <select>
+                    <option>您的车辆型号</option>
+                    <option>您的车辆型号</option>
+                    <option>您的车辆型号</option>
+                    <option>您的车辆型号</option>
+                </select>
+            </div>
+            <a href="javascript:;" class="xiayibu-btn"><img src="img/xiayibu-btn.svg"></a>
+        </div>
+        <!-- 表面工艺及颜色 结束 -->
+    </div>
+    <div class="customized-step-footer">
+        <span><img src="img/warning-icon.svg">
+            特别说明：基础总价中含5000元设计费（在支付后生产前如若退单，在基础总价上扣除设计费后原路退换）
+        </span>
+    </div>
+</div>
+<!-- pc端定制step1结束 -->
+
+<!-- 移动端定制step1开始 -->
+<div class="yid-step1-box">
+    <div class="yi-step01"><img src="img/yid-step1.svg"></div>
+    <div class="yid-step-box">
+        <div class="sweiperbox">sweiperbox</div>
+        <div class="step-main-box">
+            <h3>请您选择</h3>
+            <ul class="please-choice">
+                <li>
+                    <div class="yid-biaomian-gonyi">
+                        <span>车辆品牌</span>
+                        <select>
+                            <option>您的车辆品牌</option>
+                            <option>您的车辆品牌</option>
+                            <option>您的车辆品牌</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <div class="yid-biaomian-gonyi">
+                        <span>车辆型号</span>
+                        <select>
+                            <option>您的车辆型号</option>
+                            <option>您的车辆型号</option>
+                            <option>您的车辆型号</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+            <a href="javascript:;" class="next-step"><img src="img/xiayibu-btn.svg"></a>
+            <p class="agreement-explain"><em>*</em>使用定制服务即表示：<br>
+您已阅读并认可<a href="javascript:;">《戴特® TANA 免责声明》</a></p>
+        </div>
+    </div>
+
+    <div class="yid-customized-footer step-footer">
+        <img src="img/warning-icon.svg">
+        <span>特别说明：基础总价中含5000元设计费（在支付后生产前
+如若退单，在基础总价上扣除设计费后原路退换）</span>
+    </div>
+</div>
+<!-- 移动端定制step1结束 -->
+</body>
+</html>
+<script src="js/jquery-3.2.1.min.js"></script>
+
+<!-- sweiper -->
+<!-- <script src="js/jquery.min.js"></script> -->
+<script src="js/step-all.js"></script>
+<script src="js/swiper.min.js"></script>
+
+
+
+
+
+

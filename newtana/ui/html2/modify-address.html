@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="750">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/lungustyle.css">
+    <link rel="stylesheet" href="css/lungustyle2.css">
+    <title>购物车</title>
+</head>
+<body>
+<script type="javascript">
+    $("#expandContent").click(function(){
+        document.getElementById('neirong').style.height='auto';
+        $('#read-more').hide();})
+</script>
+<script type="text/javascript">(function(win){var doc=win.document,html=doc.documentElement,option=html.getAttribute("data-use-rem");if(option===null){return}var baseWidth=parseInt(option).toString()==="NaN"?640:parseInt(option);var grids=baseWidth/100;var clientWidth=html.clientWidth||320;html.style.fontSize=clientWidth/grids+"px";var testDom=document.createElement("div");var testDomWidth=0;var adjustRatio=0;testDom.style.cssText="height:0;width:1rem;";doc.body.appendChild(testDom);var calcTestDom=function(){testDomWidth=testDom.offsetWidth;if(testDomWidth!==Math.round(clientWidth/grids)){adjustRatio=clientWidth/grids/testDomWidth;var reCalcRem=clientWidth*adjustRatio/grids;html.style.fontSize=reCalcRem+"px"}else{doc.body.removeChild(testDom)}};setTimeout(calcTestDom,20);var reCalc=function(){var newCW=html.clientWidth;if(newCW===clientWidth){return}clientWidth=newCW;html.style.fontSize=newCW*(adjustRatio?adjustRatio:1)/grids+"px"};if(!doc.addEventListener){return}var resizeEvt="orientationchange" in win?"orientationchange":"resize";win.addEventListener(resizeEvt,reCalc,false);doc.addEventListener("DOMContentLoaded",reCalc,false)})(window);</script>
+
+
+
+<div class="yidongbox">
+<!-- pc头部 -->
+<div id="header">
+    <div class="w1200">
+        <img src="images/heiselogo.png">
+        <ul class="shou">
+            <li><a href="" class="active">首页</a></li>
+            <li><a href="">全系轮毂</a></li>
+            <li><a href="/index/index/product_list.html">潮流画廊</a></li>
+            <li><a href="">大师工艺</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+        <a class="tiaomao" target="_blank" href="https://www.tmall.com/?spm=a21bo.2017.201859.1.5af911d94KTXS7">
+            <img src="img/tianmao.svg">
+        </a>
+        <ul class="deng">
+            <!-- 登录前 -->
+            <!-- <li><a href="javascript:;" id="loginele">登录</a><a id="regidter" href="javascript:;">注册</a></li> -->
+
+            <!-- 登录后 -->
+            <li>
+                <p href="#" class="usernamebx">
+                    <span>TanaCustomer 001</span>  
+                    <a href="javascript:;" class="bugcar-box">             
+                        <img src="img/icon-bugcar.svg">
+                        <em class="order-number">2</em>
+                    </a>    
+                    <a href="javascript:;" class="order-link">              
+                        <img src="images/dingdan2.png">
+                        <em class="order-number">22</em>
+                    </a>
+                </p>
+                <a href="">提出</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 移动端头部开始 -->
+<div class="yid-header">
+    <div class="left-logo"><img src="images/heiselogo.png"></div>
+    <p href="#" class="usernamebx">
+        <a class="tiaomao" target="_blank" href="https://www.tmall.com/?spm=a21bo.2017.201859.1.5af911d94KTXS7">
+            <img src="img/tianmao.svg">
+        </a>
+
+        <a href="javascript:;" class="bugcar-box">             
+            <img src="img/icon-bugcar.svg">
+            <em class="order-number">2</em>
+        </a>    
+        <a href="javascript:;" class="order-link">              
+            <img src="images/dingdan2.png">
+            <em class="order-number">22</em>
+        </a>         
+    </p>
+    <a href="#" class="dy-more"><img src="images/yd-more.png"></a>
+</div>
+<div class="nav-pop">
+    <div class="yid-header">
+        <div class="left-logo"><img src="images/heiselogo.png"></div>
+        <a href="#" class="close-btn"><img src="images/closebut.png"></a>
+    </div>
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">全系轮毂</a></li>
+        <li><a href="#">潮流画廊</a></li>
+        <li><a href="#">大师工艺</a></li>
+        <li><a href="#">联系我们</a></li>
+    </ul>
+    <a href="#" class="yd-login">
+        登录
+    </a>
+    <a href="javascript:;" class="register-link">没有账号？立刻注册一个>></a>
+</div>
+<!-- 移动端头部结束 -->
+
+<!-- pc端地址管理开始 -->
+<div class="shop-car-box address-management">
+    <div class="shop-car-tips">
+        <div class="crumbs-box2"><a href="javascript:;">个人资料</a><em>></em><span>地址管理</span></div>
+        <span>地址管理</span>
+    </div>
+    <div class="shopcar-list">
+        <table cellspacing="0">
+            <tr>
+                <th class="th1">收货人名称</th>
+                <th class="th2">所在地区（省/市/区）</th>
+                <th class="th3">详细地址</th>
+                <th class="th4">邮政编码</th>
+                <th class="th5">操作</th>
+                <th class="th6">是否默认</th>
+            </tr>
+        </table>
+        <div class="shop-buy-car-list">
+            <table cellspacing="0"> 
+                <tr>
+                    <td class="th1">阿卓</td>
+                    <td class="th2">北京 北京市 昌平区</td>
+                    <td class="th3">北京市昌平区回龙观地区发展路8号院1单元1102号房间</td>
+                    <td class="th4">102200</td>
+                    <td class="th5">
+                        <a href="javascript:;" class="modify-btn">修改</a>
+                        <span class="line">|</span>
+                        <a href="javascript:;" class="delete-btn">删除</a>
+                    </td>
+                    <td class="th6">
+                        <span class="default-address">默认地址</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="th1">阿卓</td>
+                    <td class="th2">北京 北京市 昌平区</td>
+                    <td class="th3">北京市昌平区回龙观地区发展路8号院1单元1102号房间</td>
+                    <td class="th4">102200</td>
+                    <td class="th5">
+                        <a href="javascript:;" class="modify-btn">修改</a>
+                        <span class="line">|</span>
+                        <a href="javascript:;" class="delete-btn">删除</a>
+                    </td>
+                    <td class="th6">默认地址</td>
+                </tr>
+                <tr>
+                    <td class="th1"><input type="text" name="" placeholder="阿卓"></td>
+                    <td class="th2">
+                        <div class="shen-shi-xian">
+                            <div class="select-box">北京 北京市 昌平区<span class="dizhi-jiantou"><img src="img/dizhi-jiantou.svg"></span></div>
+                            <div class="option-box">
+                                <div class="shen-shi-xian-nav">
+                                    <a href="javascript:;">省</a>
+                                    <a href="javascript:;">市</a>
+                                    <a href="javascript:;" class="active">县</a>
+                                </div>
+                                <ul class="shen-shi-xian-list">
+                                    <li>东城区</li>
+                                    <li>西城区</li>
+                                    <li>朝阳区</li>
+                                    <li>丰台区</li>
+                                    <li>石景山区</li>
+                                    <li>海淀区</li>   
+                                    <li>石景山区</li>
+                                    <li>海淀区</li>    
+                                    <li>东城区</li>
+                                    <li>西城区</li>
+                                    <li>朝阳区</li>
+                                    <li>丰台区</li>
+                                    <li>石景山区</li>
+                                    <li>海淀区</li>   
+                                    <li>石景山区</li>
+                                    <li>海淀区</li>    
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="th3"><input type="text" placeholder="北京市昌平区回龙观地区发展路8号院1单元1102号房间" name=""></td>
+                    <td class="th4"><input type="text" placeholder="102200" name=""></td>
+                    <td class="th5">
+                        <div class="xiugai-dizhi">
+                            <a href="javascript:;" class="modify-btn">保存</a>
+                            <span class="line">|</span>
+                            <a href="javascript:;" class="delete-btn">放弃</a>
+                        </div>
+                    </td>
+                    <td class="th6">默认地址</td>
+                </tr>
+            </table>
+
+            <div class="add-address">
+                新增地址
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- pc端地址管理结束 -->
+
+<!-- 移动端地址管理开始 -->
+<div class="shop-car-box modify-address-box">
+    <div class="shop-car-tips">
+        <div class="crumbs-box2"><a href="javascript:;">个人资料</a><em>></em><span>地址管理</span></div>
+        <span>地址管理</span>
+    </div>
+    <div class="shopcar-list">
+        <ul class="yd-buy-car-list">
+            <li>
+                <a href="javascript:;">
+                    <div class="addressbox">
+                        <div class="name-and-address">
+                            <p><span>陆先生</span><span>13690301958</span></p>
+                            <p>北京市朝阳区北三环中路1号 A座 1606 室</p>
+                        </div>
+                        <div class="edit-icon">
+                            <img src="img/bianji.svg">
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="addressbox">
+                        <div class="name-and-address">
+                            <p><span>陆先生</span><span>13690301958</span></p>
+                            <p>北京市朝阳区北三环中路1号 A座 1606 室</p>
+                        </div>
+                        <div class="edit-icon">
+                            <img src="img/bianji.svg">
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="addressbox">
+                        <div class="name-and-address">
+                            <p><span>陆先生</span><span>13690301958</span></p>
+                            <p>北京市朝阳区北三环中路1号 A座 1606 室</p>
+                        </div>
+                        <div class="edit-icon">
+                            <img src="img/bianji.svg">
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="addressbox">
+                        <div class="name-and-address">
+                            <p><span>陆先生</span><span>13690301958</span></p>
+                            <p>北京市朝阳区北三环中路1号 A座 1606 室</p>
+                        </div>
+                        <div class="edit-icon">
+                            <img src="img/bianji.svg">
+                        </div>
+                    </div>
+                </a>
+            </li>   
+            <li class="deletebtnbox">
+                <a href="javascript:;">
+                    <div class="addressbox">
+                        <div class="name-and-address">
+                            <p><span>陆先生</span><span>13690301958</span></p>
+                            <p>北京市朝阳区北三环中路1号 A座 1606 室</p>
+                        </div>
+                        <div class="edit-icon">
+                            <img src="img/bianji.svg">
+                        </div>
+                    </div>
+                    <div class="deletebtnbtn">
+                        <!-- <img src="img/shanchu.svg"> -->
+                        <p class="delete-address">删除地址</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="addressbox">
+                        <div class="name-and-address">
+                            <p><span>陆先生</span><span>13690301958</span></p>
+                            <p>北京市朝阳区北三环中路1号 A座 1606 室</p>
+                        </div>
+                        <div class="edit-icon">
+                            <img src="img/bianji.svg">
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="yid-add-address">
+        <a href="javascript:;">添加新地址</a>
+    </div>
+</div>
+<!-- 移动端地址管理结束 -->
+</body>
+</html>
+
+
+
+
+
+
+

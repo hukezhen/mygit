@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="750">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/lungustyle.css">
+    <link rel="stylesheet" href="css/lungustyle2.css">
+    <title>购物车</title>
+</head>
+<body>
+<script type="javascript">
+    $("#expandContent").click(function(){
+        document.getElementById('neirong').style.height='auto';
+        $('#read-more').hide();})
+</script>
+<script type="text/javascript">(function(win){var doc=win.document,html=doc.documentElement,option=html.getAttribute("data-use-rem");if(option===null){return}var baseWidth=parseInt(option).toString()==="NaN"?640:parseInt(option);var grids=baseWidth/100;var clientWidth=html.clientWidth||320;html.style.fontSize=clientWidth/grids+"px";var testDom=document.createElement("div");var testDomWidth=0;var adjustRatio=0;testDom.style.cssText="height:0;width:1rem;";doc.body.appendChild(testDom);var calcTestDom=function(){testDomWidth=testDom.offsetWidth;if(testDomWidth!==Math.round(clientWidth/grids)){adjustRatio=clientWidth/grids/testDomWidth;var reCalcRem=clientWidth*adjustRatio/grids;html.style.fontSize=reCalcRem+"px"}else{doc.body.removeChild(testDom)}};setTimeout(calcTestDom,20);var reCalc=function(){var newCW=html.clientWidth;if(newCW===clientWidth){return}clientWidth=newCW;html.style.fontSize=newCW*(adjustRatio?adjustRatio:1)/grids+"px"};if(!doc.addEventListener){return}var resizeEvt="orientationchange" in win?"orientationchange":"resize";win.addEventListener(resizeEvt,reCalc,false);doc.addEventListener("DOMContentLoaded",reCalc,false)})(window);</script>
+
+
+
+<div class="yidongbox">
+<!-- pc头部 -->
+<div id="header">
+    <div class="w1200">
+        <img src="images/heiselogo.png">
+        <ul class="shou">
+            <li><a href="" class="active">首页</a></li>
+            <li><a href="">全系轮毂</a></li>
+            <li><a href="/index/index/product_list.html">潮流画廊</a></li>
+            <li><a href="">大师工艺</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+        <a class="tiaomao" target="_blank" href="https://www.tmall.com/?spm=a21bo.2017.201859.1.5af911d94KTXS7">
+            <img src="img/tianmao.svg">
+        </a>
+        <ul class="deng">
+            <!-- 登录前 -->
+            <!-- <li><a href="javascript:;" id="loginele">登录</a><a id="regidter" href="javascript:;">注册</a></li> -->
+
+            <!-- 登录后 -->
+            <li>
+                <p href="#" class="usernamebx">
+                    <span>TanaCustomer 001</span>  
+                    <a href="javascript:;" class="bugcar-box">             
+                        <img src="img/icon-bugcar.svg">
+                        <em class="order-number">2</em>
+                    </a>    
+                    <a href="javascript:;" class="order-link">              
+                        <img src="images/dingdan2.png">
+                        <em class="order-number">22</em>
+                    </a>
+                </p>
+                <a href="">提出</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 移动端头部开始 -->
+<div class="yid-header">
+    <div class="left-logo"><img src="images/heiselogo.png"></div>
+    <p href="#" class="usernamebx">
+        <a class="tiaomao" target="_blank" href="https://www.tmall.com/?spm=a21bo.2017.201859.1.5af911d94KTXS7">
+            <img src="img/tianmao.svg">
+        </a>
+
+        <a href="javascript:;" class="bugcar-box">             
+            <img src="img/icon-bugcar.svg">
+            <em class="order-number">2</em>
+        </a>    
+        <a href="javascript:;" class="order-link">              
+            <img src="images/dingdan2.png">
+            <em class="order-number">22</em>
+        </a>         
+    </p>
+    <a href="#" class="dy-more"><img src="images/yd-more.png"></a>
+</div>
+<div class="nav-pop">
+    <div class="yid-header">
+        <div class="left-logo"><img src="images/heiselogo.png"></div>
+        <a href="#" class="close-btn"><img src="images/closebut.png"></a>
+    </div>
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">全系轮毂</a></li>
+        <li><a href="#">潮流画廊</a></li>
+        <li><a href="#">大师工艺</a></li>
+        <li><a href="#">联系我们</a></li>
+    </ul>
+    <a href="#" class="yd-login">
+        登录
+    </a>
+    <a href="javascript:;" class="register-link">没有账号？立刻注册一个>></a>
+</div>
+<!-- 移动端头部结束 -->
+
+<!-- pc端购物车开始 -->
+<div class="shop-car-box pc-gouwuche">
+    <div class="shop-car-tips"><span>购物车</span>当您购买的产品库存量不足时，我们将安排增产补量，因此发货时间将推迟至四周以后。敬请谅解。</div>
+    <div class="shopcar-list">
+        <table cellspacing="0">
+            <tr>
+                <th class="checkbox-td"><input class="checkbox-btn-all" type="checkbox" name="">全选</th>
+                <th class="goods-type">商品型号</th>
+                <th>产品单价（元）</th>
+                <th class="buy-number">购买数量（个）</th>
+                <th>小计（元）</th>
+                <th>操作</th>
+            </tr>
+        </table>
+        <div class="shop-buy-car-list">
+            <table cellspacing="0"> 
+                <tr>
+                    <td class="checkbox-td">
+                        <input class="checkbox-btn" type="checkbox" name="">
+                        <img class="goumai-car-img" src="img/sell-well1.jpg">
+                    </td>
+                    <td class="goods-type"><p class="pin-pai-name">PD0950</p></td>
+                    <td><p class="price">2,350.00</p></td>
+                    <td class="buy-number">
+                        <div class="jia-jian-btn">
+                            <button class="jian-btn">—</button>
+                            <input type="text" name="" placeholder="1,000">
+                            <button class="jia-btn">+</button>
+                        </div>
+                    </td>
+                    <td><p class="price">2,820,000.00</p></td>
+                    <td><p class="delete-btn"></p>删除</td>
+                </tr>
+                <tr>
+                    <td class="checkbox-td">
+                        <input class="checkbox-btn" type="checkbox" name="">
+                        <img class="goumai-car-img" src="img/sell-well1.jpg">
+                    </td>
+                    <td class="goods-type"><p class="pin-pai-name">PD0950</p></td>
+                    <td><p class="price">2,350.00</p></td>
+                    <td class="buy-number">
+                        <div class="jia-jian-btn">
+                            <button class="jian-btn">—</button>
+                            <input type="text" name="" placeholder="1,000">
+                            <button class="jia-btn">+</button>
+                        </div>
+                    </td>
+                    <td><p class="price">2,820,000.00</p></td>
+                    <td><p class="delete-btn"></p>删除</td>
+                </tr>
+                <tr>
+                    <td class="checkbox-td">
+                        <input class="checkbox-btn" type="checkbox" name="">
+                        <img class="goumai-car-img" src="img/sell-well1.jpg">
+                    </td>
+                    <td class="goods-type"><p class="pin-pai-name">PD0950</p></td>
+                    <td><p class="price">2,350.00</p></td>
+                    <td class="buy-number">
+                        <div class="jia-jian-btn">
+                            <button class="jian-btn">—</button>
+                            <input type="text" name="" placeholder="1,000">
+                            <button class="jia-btn">+</button>
+                        </div>
+                    </td>
+                    <td><p class="price">2,820,000.00</p></td>
+                    <td><p class="delete-btn"></p>删除</td>
+                </tr>
+                <tr>
+                    <td class="checkbox-td">
+                        <input class="checkbox-btn" type="checkbox" name="">
+                        <img class="goumai-car-img" src="img/sell-well1.jpg">
+                    </td>
+                    <td class="goods-type"><p class="pin-pai-name">PD0950</p></td>
+                    <td><p class="price">2,350.00</p></td>
+                    <td class="buy-number">
+                        <div class="jia-jian-btn">
+                            <button class="jian-btn">—</button>
+                            <input type="text" name="" placeholder="1,000">
+                            <button class="jia-btn">+</button>
+                        </div>
+                    </td>
+                    <td><p class="price">2,820,000.00</p></td>
+                    <td><p class="delete-btn"></p>删除</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="checkbox-btn" type="checkbox" name="">
+                        <img class="goumai-car-img" src="img/sell-well1.jpg">
+                    </td>
+                    <td><p class="pin-pai-name">PD0950</p></td>
+                    <td><p class="price">2,350.00</p></td>
+                    <td>
+                        <div class="jia-jian-btn">
+                            <button class="jian-btn">—</button>
+                            <input type="text" name="" placeholder="1,000">
+                            <button class="jia-btn">+</button>
+                        </div>
+                    </td>
+                    <td><p class="price">2,820,000.00</p></td>
+                    <td><p class="delete-btn"></p>删除</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="checkbox-btn" type="checkbox" name="">
+                        <img class="goumai-car-img" src="img/sell-well1.jpg">
+                    </td>
+                    <td><p class="pin-pai-name">PD0950</p></td>
+                    <td><p class="price">2,350.00</p></td>
+                    <td>
+                        <div class="jia-jian-btn">
+                            <button class="jian-btn">—</button>
+                            <input type="text" name="" placeholder="1,000">
+                            <button class="jia-btn">+</button>
+                        </div>
+                    </td>
+                    <td><p class="price">2,820,000.00</p></td>
+                    <td><p class="delete-btn"></p>删除</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="settlement-bg">
+            <div class="w1200">
+                <p class="pc-delete-selection">删除选中</p>
+                <a href="javascript:;" class="settlement-btn">
+                    结算
+                </a>
+                <p class="product-type">
+                    <span>合计：</span>     
+                    <span class="product-price">564,000.00</span>  
+                    <span>（不含运费）</span>                  
+                </p>
+                <p class="product-type">
+                    <span>已选产品</span>
+                    <span class="product-number">2</span>
+                    <span>个型号</span>                    
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- pc端购物车结束 -->
+
+<!-- 移动端购物车开始 -->
+<div class="shop-car-box yid-gouwuche">
+    <div class="shop-car-tips"><span>购物车</span></div>
+    <div class="shopcar-list">
+        <ul class="yd-buy-car-list">
+            <li>
+                <a href="javascript:;">
+                    <div class="rolling-area">
+                        <div class="left-prudact-img">
+                            <input class="checkbox-btn" type="checkbox" name="">
+                            <img class="goumai-car-img" src="img/sell-well1.jpg">
+                        </div>
+                        <div class="prudact-price">
+                            <div class="jia-jian-btn">
+                                <button class="jian-btn">—</button>
+                                <input type="text" name="" placeholder="1,000">
+                                <button class="jia-btn">+</button>
+                            </div>
+                            <p class="danjia-box">单价 <span>2,350.00 元</span></p>
+                            <p class="subtotal-box">小计 <span>23,500.00 元</span></p>
+                        </div>
+                    </div>
+                    <div class="deletebtnbtn">删除</div>
+                </a>
+            </li>
+            <li class="deletebtnbox">
+                <a href="javascript:;">
+                    <div class="rolling-area">
+                        <div class="left-prudact-img">
+                            <input class="checkbox-btn" type="checkbox" name="">
+                            <img class="goumai-car-img" src="img/sell-well1.jpg">
+                        </div>
+                        <div class="prudact-price">
+                            <div class="jia-jian-btn">
+                                <button class="jian-btn">—</button>
+                                <input type="text" name="" placeholder="1,000">
+                                <button class="jia-btn">+</button>
+                            </div>
+                            <p class="danjia-box">单价 <span>2,350.00 元</span></p>
+                            <p class="subtotal-box">小计 <span>23,500.00 元</span></p>
+                        </div>
+                    </div>
+                    <div class="deletebtnbtn">删除</div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="rolling-area">
+                        <div class="left-prudact-img">
+                            <input class="checkbox-btn" type="checkbox" name="">
+                            <img class="goumai-car-img" src="img/sell-well1.jpg">
+                        </div>
+                        <div class="prudact-price">
+                            <div class="jia-jian-btn">
+                                <button class="jian-btn">—</button>
+                                <input type="text" name="" placeholder="1,000">
+                                <button class="jia-btn">+</button>
+                            </div>
+                            <p class="danjia-box">单价 <span>2,350.00 元</span></p>
+                            <p class="subtotal-box">小计 <span>23,500.00 元</span></p>
+                        </div>
+                    </div>
+                    <div class="deletebtnbtn">删除</div>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="rolling-area">
+                        <div class="left-prudact-img">
+                            <input class="checkbox-btn" type="checkbox" name="">
+                            <img class="goumai-car-img" src="img/sell-well1.jpg">
+                        </div>
+                        <div class="prudact-price">
+                            <div class="jia-jian-btn">
+                                <button class="jian-btn">—</button>
+                                <input type="text" name="" placeholder="1,000">
+                                <button class="jia-btn">+</button>
+                            </div>
+                            <p class="danjia-box">单价 <span>2,350.00 元</span></p>
+                            <p class="subtotal-box">小计 <span>23,500.00 元</span></p>
+                        </div>
+                    </div>
+                    <div class="deletebtnbtn">删除</div>
+                </a>
+            </li>
+        </ul>
+
+        <div class="yid-settlement-bg"></div>
+
+        <div class="w1200 yid-settlement-text">
+            <div class="all-election">
+                <input class="checkbox-btn" type="checkbox" name="">全选
+            </div>
+            <div class="delete-selection">删除选中</div>
+            <div class="product-box">
+                <p class="product-type">
+                    <span>已选产品</span>
+                    <span class="product-number">2</span>
+                    <span>个型号</span>                    
+                </p>
+                <p class="product-type">
+                    <span>合计：</span>     
+                    <span class="product-price">564,000.00</span>        
+                </p>
+            </div>
+            <a href="javascript:;" class="settlement-btn">
+                结算
+            </a>
+        </div>
+
+
+    </div>
+</div>
+<!-- 移动端购物车结束 -->
+</body>
+</html>
+
+
+
+
+
+
+

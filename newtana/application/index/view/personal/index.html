@@ -1,0 +1,122 @@
+{extend name="layout" /}
+{block name="title"}首页{/block}
+{block name='body_css'}orderlist-box{/block}
+{block name="body"}
+<!-- 个人资料开始 -->
+<style>
+    .layui-btn {
+        background-color: #3B3B3B !important;
+        padding: 3px 5px !important;
+        height: unset !important;
+        line-height: unset !important;
+    }
+</style>
+<div class="personal-data-box">
+    <h2>个人资料</h2>
+    <div class="personal-data-main">
+        <div class="personal-data-box2">
+            <ul class="personal-data-list">
+                <li><span>登录账号</span>{$users.username}</li>
+                <li><span>{$users.type == 0 ? '个人' : '企业'}名称</span>{$users.nickname ?? '未填写'}</li>
+                <li><span>联系电话</span>{if $users['phone']}{$users.phone}{else /}未填写{/if}</li>
+                <li><span>手机号码</span>{if $users['telephone']}{$users.telephone}{else /}未填写{/if}</li>
+                <li><span>电子邮箱</span>{if $users['email']}{$users.email}{else /}未填写{/if}</li>
+                <li><span>联系地址</span>{if $users['address']}{$users.address}{else /}未填写{/if}</li>
+            </ul>
+            <div class="right-head">
+                <!--                {if $users['face']}-->
+                <!--                <img src="/{$users.face}">-->
+                <!--                {else /}-->
+                <!--                <img src="__HOME_IMG__/logo-login.png">-->
+                <!--                {/if}-->
+                <!--                <div class="file-btn">-->
+                <!--                    <a href="javascript:;" id="test1">更换头像</a>-->
+                <!--                    <input type="file" name="">-->
+                <!--                </div>-->
+                <div class="layui-upload">
+                    <div class="layui-upload-list">
+                        {if $users['face']}
+                        <img class="layui-upload-img demo1" src="/{$users.face}">
+                        {else /}
+                        <img class="layui-upload-img demo1" src="__HOME_IMG__/logo-login.png">
+                        {/if}
+                        <p id="demoText"></p>
+                    </div>
+                    <button type="button" class="layui-btn" id="test1">上传图片</button>
+                </div>
+            </div>
+        </div>
+        <div class="modify-data">
+            <a href="{:url('/personal_data_update')}">修改资料</a>
+            <a href="/modify_address.html?mode=1">地址管理</a>
+        </div>
+    </div>
+</div>
+<!-- 个人资料结束 -->
+{/block}
+{block name="js"}
+<script type="text/javascript">
+    layui.use('upload', function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
+
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1'
+            , url: window.location.href
+            , accept: 'file'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('.demo1').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                // console.log(res);
+                // return false;
+                //如果上传失败
+                if (res.code == 1) {
+                    layer.msg('上传成功');
+                }
+                if (res.code == 0) {
+                    layer.msg("上传失败");
+                }
+
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+    })
+
+
+    $(document).on('change', '.right-head input', function (e) {
+        var url = window.URL.createObjectURL(e.target.files[0]);
+        $(".right-head img").attr('src', url);
+    })
+
+    function checkForm() {
+        var file = $(".uploadImg").val();
+        if (file == "" || file == null) {
+            layer.msg("请点击头像上传新头像");
+            return false;
+        }
+        return true;
+    }
+
+
+</script>
+{/block}
+
+
+
+
+
+
+

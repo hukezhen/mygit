@@ -1,0 +1,59 @@
+{extend name="layout" /}
+{block name="title"}个性定制{/block}
+{block name="css"}
+{/block}
+{block name="body"}
+<!-- pc端定制首页开始 -->
+<div class="customized-box">
+    <div class="customized-banner">
+        <div class="banner-relative">
+            {foreach $model as $key => $val}
+            <a class="lungu00{$key+1}" href="{:url('/custom/step1',['id' => $val['id']])}">
+                <div class="all-lungun-box">
+                    <div class="pircebox001">
+                        <h3>{$val.title}</h3>
+                        <p>基础总价：<span>{$val.price}</span>元</p>
+                    </div>
+                    <div class="pircebox002">
+                        <p>表面状态&nbsp;&nbsp;{$val.state}</p>
+                        <p class="yingwen">Painting Tech<span>Matte Black + BLABLABLA</span>元</p>
+                    </div>
+                </div>
+            </a>
+            {/foreach}
+        </div>
+    </div>
+
+    <div class="customized-footer">
+        <span>上图中的轮毂仅展示您可挑选的颜色和表面工艺，请在其中选择一款最接近您预期效果的一个点击查看详情，并按照引导进入下一环节。</span>
+    </div>
+</div>
+<!-- pc端定制首页结束 -->
+
+<!-- 移动端定制首页开始 -->
+<div class="yid-customized-box">
+    <ul class="yid-customized-list">
+        {foreach $model as $key => $val}
+        <li>
+            <div class="product-img"><img src="{$val.cover|get_file_path}"></div>
+            <div class="biaomian-gongyi">
+                <h3>{$val.title}</h3>
+                <p>基础总价：<span>{$val.price}</span>元</p>
+                <p>表面状态&nbsp;&nbsp;&nbsp;{$val.state}</p>
+            </div>
+            <a href="{:url('/custom/step1',['id' => $val['id']])}" class="select-btn">选定该基础款</a>
+        </li>
+        {/foreach}
+    </ul>
+    <div class="yid-customized-footer">
+        <span>上图中的轮毂仅展示您可挑选的颜色和表面工艺，请在其中选择一款
+最接近您预期效果的一个点击查看详情，并按照引导进入下一环节。</span>
+    </div>
+</div>
+<!-- 移动端定制首页结束 -->
+{/block}
+{block name="js"}
+<script type="text/javascript">
+
+</script>
+{/block}

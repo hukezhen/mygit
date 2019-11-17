@@ -1,0 +1,336 @@
+{extend name="layout" /}
+{block name="title"}个性定制 第四步 共五步{/block}
+{block name="css"}
+{/block}
+{block name="body"}
+
+<!-- 发票弹窗 -->
+<div class="fapiao-pop" style="display: none">
+    <div class="odernumber odernumber2">
+        <h3><span>发票信息</span>  <a class="invoice-close-btn" href="javascript:;"><img src="/static/home/img/clostxxx.png"></a></h3>
+
+        <div class="orderdetail2">
+            <div class="fapiao-list-box">
+                {php}
+                $invoiceRadio = $invoice['invoice'] ?? 0;
+                {/php}
+                <div class="fapiao-items"><input type="radio" name="invoice" value="0" {$invoiceRadio== 0 ? 'checked' : ''}>不开发票</div>
+                <div class="fapiao-items"><input type="radio" name="invoice" value="1" {$invoiceRadio== 1 ? 'checked' : ''}>增值税普通发票</div>
+                <div class="fapiao-items"><input type="radio" name="invoice" value="2" {$invoiceRadio== 2 ? 'checked' : ''}>增值税专用发票</div>
+            </div>
+            <div class="zengzhi-sui" style="display:none;">
+                <div class="zengzhi-mingc">
+                    <span>公司名称</span>
+                    <input type="text" name="invoice_company" value="{$invoice.invoice_company|default=''}" placeholder="请填写公司名称">
+                </div>
+                <div class="zengzhi-mingc">
+                    <span>税号</span>
+                    <input type="text" name="invoice_tax" value="{$invoice.invoice_tax|default=''}"placeholder="请填写税号">
+                </div>
+                <div class="zengzhi-mingc">
+                    <span>开户行</span>
+                    <input type="text" name="invoice_bank" value="{$invoice.invoice_bank|default=''}" placeholder="请填写开户行">
+                </div>
+                <div class="zengzhi-mingc">
+                    <span>账号</span>
+                    <input type="text" name="invoice_card" value="{$invoice.invoice_card|default=''}" placeholder="请填账号">
+                </div>
+            </div>
+            <div class="baoc-fapiao-btn">
+                <a href="javascript:;" class="modify-address-btn invoice-btn">保存</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- pc端定制step4开始 -->
+<div class="customized-step1-box">
+    <div class="customized-content">
+        <div class="closexxxx"><img src="__HOME_IMG__/close-xxx.svg"></div>
+        <div class="left-and-right">
+            <div class="left-step active4">
+                <ul class="step-list">
+                    <li>选择定制工艺和颜色<br>输入车辆信息</li>
+                    <li>注册/登录<br>阅读流程</li>
+                    <li>确认定制数量、金额<br>确认定制细节</li>
+                    <li>支付全款<br>设计师对接开始定制</li>
+                    <li>在订单中心跟踪订单</li>
+                </ul>
+                <div class="step-unmber-box"></div>
+                <p class="statement-box"><span>*</span>使用定制服务即表示：<br>
+                    您已阅读并认可<a href="javascript:;">《戴特® TANA 免责声明》</a></p>
+            </div>
+            <!-- step4右侧 -->
+            <div class="right-sweiper-box">
+                <div class="left-payment-box">
+                    <div class="left-payment">
+                        <h1><span>支付方式</span> <em></em></h1>
+                    </div>
+                    <ul class="payment-list">
+                        <li><input type="radio" name="pc_type" value="1"><img src="__HOME_IMG__/zhifubao@2x.png">支付宝</li>
+                        <li><input type="radio" name="pc_type" value="2"><img src="__HOME_IMG__/weixinzhifu-@2x.png">微信支付</li>
+                        <li><input type="radio" name="pc_type" value="3"><img src="__HOME_IMG__/yinglianicon.png">银联支付（个人）</li>
+                        <li><input type="radio" name="pc_type" value="4"><img src="__HOME_IMG__/yinglianicon.png">银联支付（B2B）</li>
+                    </ul>
+
+                    <div class="left-payment shouhuo-dizhi-box">
+                        <h1><span>收货地址</span> <em></em></h1>
+                        <p class="shouhuo-dizhi">{$address.name}     {$address.postal_code}<br>
+                            {$address.region} {$address.address}
+                            <a href="javascript:;" class="kai-fa-piao">去开发票</a>
+                        </p>
+                    </div>
+
+                    <div class="btn-and-price">
+                        <div class="payment-btn" onclick="pc_pay({$model.moneys})">确认支付</div>
+                        <div class="payment-list-money">支付金额:<span>{$model.moneys}<em>元</em></span></div>
+                    </div>
+
+                    <p class="zhifutips"><em>*</em>温馨提示：如若退定，将扣除设计费</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表面工艺及颜色 开始 -->
+        <div class="biaom-gongyi-box step4-footer-btn">
+            <a href="javascript:history.go(-1)" class="shang-yibu-btn"><img src="__HOME_IMG__/last-step-btn.svg"></a>
+            <p>完成支付后，请等待设计师主动与您取得联系并进行对接，我们联系您的时间为：工作日：上午10：00至下午17:00之间。<br>如遇到问题，请随时联系我们的客服，客服邮箱：service@tana-wheels.com，客服电话：13911681730</p>
+        </div>
+        <!-- 表面工艺及颜色 结束 -->
+    </div>
+    <div class="customized-step-footer">
+        <span><img src="__HOME_IMG__/warning-icon.svg">
+            特别说明：基础总价中含5000元设计费（在支付后生产前如若退单，在基础总价上扣除设计费后原路退换）
+        </span>
+    </div>
+</div>
+<!-- pc端定制step4结束 -->
+
+<!-- 移动端定制step4开始 -->
+<div class="yid-step4-box">
+    <div class="yi-step01"><img src="__HOME_IMG__/yid-step4.svg"></div>
+
+    <div class="step4-payment-method">
+        <div class="left-payment">
+            <h1>支付方式</h1>
+        </div>
+        <ul class="payment-list">
+            <li id="alipay"><input type="radio" name="wap_type" value="1"><img src="__HOME_IMG__/zhifubao@2x.png">支付宝</li>
+            <li><input type="radio" name="wap_type" value="2" checked=""><img src="__HOME_IMG__/weixinzhifu-@2x.png">微信支付</li>
+            <li id="union"><input type="radio" name="wap_type" value="3"><img src="__HOME_IMG__/yinglianicon.png">银联支付（个人）</li>
+            <li id="unionB2b"><input type="radio" name="wap_type" value="4"><img src="__HOME_IMG__/yinglianicon.png">银联支付（B2B）</li>
+        </ul>
+
+        <div class="statementbox"><input class="checkbox" type="checkbox" name="" checked>我已阅读并同意<a href="javascript:;">《戴特® TANA 免责声明》</a></div>
+
+        <!--  <div class="be-careful">
+             <span>注意：</span>
+             <p>为保障您的权益和安全，单笔支付金额超过十万，请分多笔支付，谢谢您的合作</p>
+         </div> -->
+    </div>
+
+    <div class="step4-payment-method">
+        <div class="left-payment">
+            <h1>收货信息</h1>
+            <a href="javascript:;" class="kai-fa-piao">去开发票</a>
+        </div>
+        <p class="receiving-information">
+            {$address.name}     {$address.postal_code}<br>
+            {$address.region}{$address.address}
+        </p>
+    </div>
+
+    <div class="step4-payment-method">
+        <div class="payment-amount">支付金额<span>{$model.moneys}</span><em>元</em></div>
+        <div class="be-careful" style="margin-top: .3rem;">
+            <span>提示：</span>
+            <p>完成支付后，请等待设计师主动与您取得联系并进行对接，我们联系您的时间为：工作日：上午10：00至下午17:00之间。如遇到问题，请随时联系我们的客服，客服邮箱：service@tana-wheels.com，客服电话：13911681730</p>
+        </div>
+
+        <div class="footer-btn-box">
+            <a href="javascript:history.go(-1)"><img src="__HOME_IMG__/last-step-btn.svg"></a>
+            <a href="javascript:;" onclick="web_pay({$model.moneys})"><img src="__HOME_IMG__/confirmation-payment.svg"></a>
+        </div>
+
+    </div>
+
+
+
+    <div class="yid-customized-footer step-footer">
+        <img src="__HOME_IMG__/warning-icon.svg">
+        <span>特别说明：基础总价中含5000元设计费（在支付后生产前
+如若退单，在基础总价上扣除设计费后原路退换）</span>
+    </div>
+</div>
+<!-- 移动端定制step4结束 -->
+{/block}
+{block name="js"}
+<script src="__HOME_JS__/step-all.js"></script>
+<script type="text/javascript">
+    var ua = window.navigator.userAgent.toLowerCase()
+        ,invoiceLayer;
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        $('#alipay').hide();
+        $('#union').hide();
+        $('#unionB2b').hide();
+    }
+
+    $('.invoice-btn').click(function () {
+        var invoice = parseInt($('input[name="invoice"]:checked').val())
+            , invoice_company = $('input[name="invoice_company"]').val()
+            , invoice_tax = $('input[name="invoice_tax"]').val()
+            , invoice_bank = $('input[name="invoice_bank"]').val()
+            , invoice_card = $('input[name="invoice_card"]').val();
+        if (invoice === 1 || invoice === 2) {
+            if (invoice_company == '') {
+                layer.msg('公司名称不能为空');
+                return false;
+            }
+            if (invoice_tax == '') {
+                layer.msg('税号不能为空');
+                return false;
+            }
+            if (invoice === 2 && invoice_bank == '') {
+                layer.msg('开户行不能为空');
+                return false;
+            }
+            if (invoice === 2 && invoice_card == '') {
+                layer.msg('银行账号不能为空');
+                return false;
+            }
+            var loading = layer.load(1, {
+                shade: [0.5, '#fff']
+            });
+            $.ajax({
+                url: '/index/orders/invoice?id={$id}',
+                type: 'post',
+                data: {invoice:invoice,invoice_company: invoice_company,invoice_tax:invoice_tax,invoice_bank:invoice_bank,invoice_card:invoice_card},
+                success: function (res) {
+                    layer.close(loading);
+                    if (res.code !== 1) {
+                        layer.msg(res.msg);
+                    }
+                },
+                error: function () {
+                    layer.close(loading);
+                    layer.msg('网络异常');
+                }
+            });
+        }
+        layer.msg('保存成功！');
+        layer.close(invoiceLayer);
+        return false;
+    });
+
+
+    //发票
+    $('.kai-fa-piao').click(function () {
+        layer.closeAll();
+        invoiceLayer = layer.open({
+            type: 1,
+            shade: 0.7,
+            title: false,
+            offset: '140px',
+            closeBtn: 0,
+            content: $('.fapiao-pop'),
+            success: function () {
+                $(':focus').blur();
+            }
+        });
+    });
+    //关闭
+    $('.invoice-close-btn').click(function () {
+        layer.close(invoiceLayer);
+    });
+    //PC发票切换
+    $('input[name="invoice"]').click(function () {
+        var invoice = parseInt($(this).val())
+            , showDiv = $('.zengzhi-sui');
+        if (invoice === 1) {
+            showDiv.show();
+            showDiv.find('div').eq(2).hide();
+            showDiv.find('div').eq(3).hide();
+        } else if (invoice === 2) {
+            showDiv.show();
+            showDiv.find('div').show();
+        } else {
+            showDiv.hide();
+        }
+    });
+
+
+
+    function pc_pay(money) {
+        if (money < 0.01) {
+            layer.msg('0元不能支付，请联系管理员');
+            return false;
+        }
+        var type = $('input[name="pc_type"]:checked').val();
+        // console.log(type);
+        // return false;
+        if (type === '' || type === undefined) {
+            layer.msg('请选择支付方式！');
+            return false;
+        }
+        var mode = '{$mode}';
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            mode = 2;
+        }
+
+        var url = "/index/payment/index/id/{$id}/type/" + type + '/mode/' + mode + '.html';
+        if (type === '2' && mode === '0') {
+            var loading = layer.load(1, {
+                shade: [0.5, '#fff']
+            });
+            $.ajax({
+                url: url,
+                type: 'get',
+                success: function (res) {
+                    layer.close(loading);
+                    if (res.code === 1) {
+                        layer.open({
+                            type: 1,
+                            title: "请使用微信扫一扫进行支付",
+                            area: ['420px', '420px'], //宽高
+                            content: '<img src="' + res.data.img + '" alt="" style="width: 300px;margin: 10px 54px;">' +
+                                '<div class="zhifuanniubox">' +
+                                '<a href="javascript:;" onclick="shaohouzhifu()" class="shaohouzhifu">稍后支付</a>' +
+                                '<a href="javascript:;" onclick="zhifuchenggong()" class="zhifuchenggong">已支付成功</a>' +
+                                '</div>'
+                        });
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                },
+                error: function () {
+                    layer.close(loading);
+                    layer.msg('网络异常');
+                }
+            });
+            return false;
+        }
+        location.href = url;
+    }
+
+    function web_pay(money) {
+        if (money < 0.01) {
+            layer.msg('0元不能支付，请联系管理员');
+            return false;
+        }
+        var type = $('input[name="wap_type"]:checked').val();
+        // console.log(type);
+        // return false;
+        if (type === '' || type === undefined) {
+            layer.msg('请选择支付方式！');
+            return false;
+        }
+        var mode = 1;
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            mode = 2;
+        }
+        var url = "/index/payment/index/id/{$id}/type/" + type + '/mode/' + mode + '.html';
+        location.href = url;
+    }
+</script>
+{/block}

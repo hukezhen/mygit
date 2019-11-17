@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="168" height="80" viewBox="0 0 168 80">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="168" height="80" fill="none"/>
+    </clipPath>
+    <filter id="矩形_657" x="0" y="0" width="168" height="80" filterUnits="userSpaceOnUse">
+      <feOffset dy="8" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="组件_21_12" data-name="组件 21 – 12" clip-path="url(#clip-path)">
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#矩形_657)">
+      <rect id="矩形_657-2" data-name="矩形 657" width="120" height="32" rx="4" transform="translate(24 16)" fill="#fff"/>
+    </g>
+    <text id="上一步" transform="translate(84 38)" fill="#3b3b3b" font-size="16" font-family="YuGothicUI-Bold, Yu Gothic UI" font-weight="700"><tspan x="-24" y="0">上一步</tspan></text>
+  </g>
+</svg>

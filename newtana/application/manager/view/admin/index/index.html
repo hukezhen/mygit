@@ -1,0 +1,171 @@
+{extend name="$_admin_base_layout" /}
+
+{block name="content"}
+<div class="row">
+    <div class="col-xs-6 col-lg-3">
+        <a class="block block-link-hover1" href="javascript:void(0)">
+            <div class="block-content block-content-full clearfix">
+                <div class="pull-right push-15-t push-15">
+                    <i class="fa fa-users fa-2x text-primary"></i>
+                </div>
+                <div class="h2 text-primary" data-toggle="countTo" data-to="{$userCount}">{$userCount}</div>
+                <div class="text-uppercase font-w600 font-s12 text-muted">用户总数</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-6 col-lg-3">
+        <a class="block block-link-hover1" href="javascript:void(0)">
+            <div class="block-content block-content-full clearfix">
+                <div class="pull-right push-15-t push-15">
+                    <i class="fa fa-briefcase fa-2x text-smooth"></i>
+                </div>
+                <div class="h2 text-smooth" data-toggle="countTo" data-to="{$todayUsersCount}">{$todayUsersCount}</div>
+                <div class="text-uppercase font-w600 font-s12 text-muted">今日新增用户</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-6 col-lg-3">
+        <a class="block block-link-hover1" href="javascript:void(0)">
+            <div class="block-content block-content-full clearfix">
+                <div class="pull-right push-15-t push-15">
+                    <i class="fa fa-line-chart fa-2x text-success"></i>
+                </div>
+                <div class="h2 text-success" data-toggle="countTo" data-to="{$browseCount}">{$browseCount}
+                </div>
+                <div class="text-uppercase font-w600 font-s12 text-muted">总浏览量</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-6 col-lg-3">
+        <a class="block block-link-hover1" href="javascript:void(0)">
+            <div class="block-content block-content-full clearfix">
+                <div class="pull-right push-15-t push-15">
+                    <i class="fa fa-bar-chart-o fa-2x text-amethyst"></i>
+                </div>
+                <div class="h2 text-amethyst" data-toggle="countTo" data-to="{$todayBrowseCount}">{$todayBrowseCount}
+                </div>
+                <div class="text-uppercase font-w600 font-s12 text-muted">今日浏览量</div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="block block-rounded block-opt-refresh-icon8">
+            <div class="block-header bg-gray-lighter">
+                <ul class="block-options">
+                    <li>
+                        <button type="button" data-toggle="block-option" data-action="refresh_toggle"
+                                data-action-mode="demo"><i class="si si-refresh"></i></button>
+                    </li>
+                </ul>
+                <h3 class="block-title">本周用户注册数据</h3>
+            </div>
+            <div class="block-content block-content-full text-center">
+                <canvas class="js-chartjs2-bars"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="block block-rounded block-opt-refresh-icon8">
+            <div class="block-header bg-gray-lighter">
+                <ul class="block-options">
+                    <li>
+                        <button type="button" data-toggle="block-option" data-action="refresh_toggle"
+                                data-action-mode="demo"><i class="si si-refresh"></i></button>
+                    </li>
+                </ul>
+                <h3 class="block-title">本周浏览数据</h3>
+            </div>
+            <div class="block-content block-content-full text-center">
+                <canvas class="js-chartjs2-lines"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="script"}
+<script type="text/javascript" src="__LIBS__/chartjsv2/Chart.min.js"></script>
+<script src="__ADMIN_JS__/core/jquery.countTo.min.js"></script>
+<script type="text/javascript">
+
+    /*
+ *  Document   : base_comp_chartjs_v2.js
+ *  Author     : pixelcave
+ *  Description: Custom JS code used in Chart.js v2 Page
+ */
+
+    var BaseCompChartJSv2 = function () {
+        // Chart.js v2 Charts, for more examples you can check out http://www.chartjs.org/docs
+        var initChartsChartJSv2 = function () {
+            // Set Global Chart.js configuration
+            Chart.defaults.global.defaultFontColor = '#999';
+            Chart.defaults.global.defaultFontFamily = 'Open Sans';
+            Chart.defaults.global.defaultFontStyle = '600';
+            Chart.defaults.scale.gridLines.color = "rgba(0,0,0,.05)";
+            Chart.defaults.scale.gridLines.zeroLineColor = "rgba(0,0,0,.1)";
+            Chart.defaults.global.elements.line.borderWidth = 2;
+            Chart.defaults.global.elements.point.radius = 4;
+            Chart.defaults.global.elements.point.hoverRadius = 6;
+            Chart.defaults.global.tooltips.titleFontFamily = 'Source Sans Pro';
+            Chart.defaults.global.tooltips.bodyFontFamily = 'Open Sans';
+            Chart.defaults.global.tooltips.cornerRadius = 3;
+            Chart.defaults.global.legend.labels.boxWidth = 15;
+
+            // Get Chart Containers
+            var $chart2LinesCon = jQuery('.js-chartjs2-lines');
+            var $chart2BarsCon = jQuery('.js-chartjs2-bars');
+
+            // Set Chart and Chart Data variables
+            var $chart2Lines, chart2Bars;
+
+            // Lines/Bar/Radar Chart Data
+            var $chart2LinesBarsRadarData = {
+                labels: {$week|raw},
+                datasets: [
+                    {
+                        fill: false,
+                        backgroundColor: 'rgba(220,220,220,.3)',
+                        borderColor: 'rgba(220,220,220,1)',
+                        pointBackgroundColor: 'rgba(220,220,220,1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(220,220,220,1)',
+                        data:{$userNumber|raw}
+                    },
+                ],
+            };
+            var $chart2BarsBarsRadarData = {
+                labels: {$week|raw},
+                datasets: [
+                    {
+                        fill: false,
+                        backgroundColor: 'rgba(250,219,125,.3)',
+                        borderColor: 'rgba(250,219,125,1)',
+                        pointBackgroundColor: 'rgba(250,219,125,1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(250,219,125,1)',
+                        data: {$browseNumber|raw}
+                    },
+                ]
+            };
+            $chart2Lines = new Chart($chart2LinesCon, {type: 'line', data: $chart2LinesBarsRadarData,options: {legend: false}});
+            $chart2Bars = new Chart($chart2BarsCon, {type: 'bar', data: $chart2BarsBarsRadarData,options: {legend: false}});
+        };
+
+        return {
+            init: function () {
+                // Init charts
+                initChartsChartJSv2();
+            }
+        };
+    }();
+    jQuery(function () {
+        App.initHelpers(['appear-countTo']);
+        BaseCompChartJSv2.init();
+    });
+
+</script>
+{/block}

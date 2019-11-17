@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="750">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/lungustyle.css">
+    <link rel="stylesheet" href="css/lungustyle2.css">
+
+    <!-- new banner start -->
+    <!-- <link href="css/skitter.styles.css" type="text/css" media="all" rel="stylesheet" /> -->
+    
+    <!-- Skitter JS -->
+    <script type="text/javascript" language="javascript" src="js/jquery-1.6.3.min.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.skitter.min.js"></script>
+    
+    <!-- Init Skitter -->
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function(){
+            $('.box_skitter_large').skitter({fullscreen:true});
+        });
+    </script>
+    
+    <!-- new banner end -->
+
+
+    <title>轮毂</title>
+    <style type="text/css">
+        h2 {
+             margin-bottom: 40px;
+             margin-top: 40px;
+          }
+          .vmc-centered{ padding: 10px 0; }
+          .vmc-centered img { transition: all 0.3s ease; }
+          .vmc-centered .vmc_active img { transform: scale(1.2); }
+    </style>
+</head>
+<body>
+<script type="javascript">
+    $("#expandContent").click(function(){
+        document.getElementById('neirong').style.height='auto';
+        $('#read-more').hide();})
+</script>
+<script type="text/javascript">(function(win){var doc=win.document,html=doc.documentElement,option=html.getAttribute("data-use-rem");if(option===null){return}var baseWidth=parseInt(option).toString()==="NaN"?640:parseInt(option);var grids=baseWidth/100;var clientWidth=html.clientWidth||320;html.style.fontSize=clientWidth/grids+"px";var testDom=document.createElement("div");var testDomWidth=0;var adjustRatio=0;testDom.style.cssText="height:0;width:1rem;";doc.body.appendChild(testDom);var calcTestDom=function(){testDomWidth=testDom.offsetWidth;if(testDomWidth!==Math.round(clientWidth/grids)){adjustRatio=clientWidth/grids/testDomWidth;var reCalcRem=clientWidth*adjustRatio/grids;html.style.fontSize=reCalcRem+"px"}else{doc.body.removeChild(testDom)}};setTimeout(calcTestDom,20);var reCalc=function(){var newCW=html.clientWidth;if(newCW===clientWidth){return}clientWidth=newCW;html.style.fontSize=newCW*(adjustRatio?adjustRatio:1)/grids+"px"};if(!doc.addEventListener){return}var resizeEvt="orientationchange" in win?"orientationchange":"resize";win.addEventListener(resizeEvt,reCalc,false);doc.addEventListener("DOMContentLoaded",reCalc,false)})(window);</script>
+
+
+<!-- 轮播开始 -->
+
+<!-- <div class="box_skitter box_skitter_large">
+    <ul>
+        <li>
+            <a href="#cube"><img src="images/detailbigtu.jpg" class="cube" /></a>
+        </li>
+        <li>
+            <a href="#cubeRandom"><img src="images/002.jpg" class="cubeRandom" /></a>
+        </li>
+        <li>
+            <a href="#block"><img src="images/detailbigtu.jpg" class="block" /></a>
+        </li>
+        <li>
+            <a href="#block"><img src="images/003.jpg" class="block" /></a>
+        </li>
+        <li>
+            <a href="#block"><img src="images/003.jpg" class="block" /></a>
+        </li>
+    </ul>
+</div>
+ -->
+<!-- 轮播结束 -->
+
+
+<!-- 登录开始 -->
+<div class="mask-box"></div>
+<div class="loginbox logins">
+    <span class="clostxxx"><img src="images/closexxx.svg"></span>
+    <h4>TANA轮毂</h4>
+    <p>欢迎登录海TANA轮毂网站</p>
+
+    <ul class="login-contner">
+        <li>
+            <input type="type" name="" placeholder="用户">
+        </li>
+        <li>
+            <input type="password" name="" placeholder="密码">
+        </li>
+    </ul>
+    <p class="errortxt">用户名错误</p>
+
+    <div class="remember-me">
+        <p><input type="checkbox" name="">记住我</p>
+        <p class="forget-password">忘记密码</p>
+    </div>
+
+    <a href="#" class="login-btn">登录</a>
+</div>
+<!-- 登录结束 -->
+
+<!-- 注册开始 二期 -->
+<div class="loginbox regidter">
+    <div class="title-box">
+        <div class="heiselogobox"><img src="img/heiselogo.png"></div>
+        <span class="clostxxx"><img src="img/clostxxx.png"></span>
+        <h4>新用户注册</h4>
+    </div>
+
+    <div class="regidter-content">
+        <h3 class="yidong-title">新用户注册</h3>
+        <div class="regidterbox regidter-left">
+            <p>当您在注册时遇到任何问题<br>
+    请及时联系客服解决<br>
+    客服联系方式如下：<br></p>
+            <p class="email-box"><span>客服邮箱</span> <a href="mailto:service@tana-wheels.com">service@tana-wheels.com</a></p>
+            <p><span>客服电话</span> 13911681730</p>
+        </div>
+
+        <div class="regidter-right">
+            <ul>
+                <li>
+                    <span class="lianxi-ren-box">联系人姓名</span>
+                    <input type="text" name="" placeholder="请输入联系人姓名">
+                </li>
+                <li>
+                    <span class="lianxi-ren-box">用户类型</span>
+                    <div class="customer-type">
+                        <div class="qiye-yonghu">
+                            <input class="radio" type="radio" name="1"><span class="yonghu-txt">个体用户：</span><input class="input-box" type="text" name="" placeholder="请输入昵称">
+                        </div>
+                        <div class="qiye-yonghu">
+                            <input class="radio" type="radio" name="1"><span class="yonghu-txt">企业用户：</span><input class="input-box" type="text" name="" placeholder="请输入公司名称">
+                        </div>    
+                    </div>          
+                </li>
+                <li>
+                    <span class="lianxi-ren-box">手机</span>
+                    <input type="text" name="" placeholder="请输入手机号">
+                    <p class="error">请输入正确的手机号</p>  
+                </li>
+                <li class="tuxing-ma">
+                    <span class="lianxi-ren-box">图形码</span>
+                    <input type="text" name="" placeholder="请输入右侧图形码">
+                    <img src="img/yanzhenma.png">
+                </li>
+                <li class="tuxing-ma">
+                    <span class="lianxi-ren-box">短信验证码</span>
+                    <input type="text" name="" placeholder="请输入短信验证码">
+                    <button class="verification-code">发送验证码</button>
+                </li>
+                <li>
+                    <span class="lianxi-ren-box">电子邮箱</span>
+                    <input type="text" name="" placeholder="请输入您的电子邮箱">
+                </li>
+            </ul>
+            <p class="agreement-box">注册即同意<a href="javascript:;">《隐私政策》</a></p>
+        </div>
+    </div>
+       
+    <div class="submission-box"><a href="#" class="login-btn regidter-queding">提交</a></div>
+    <a href="javascript:;" class="go-login">已有账号？立刻登录>></a>
+</div>
+<!-- 注册结束 二期-->
+
+
+<div class="yidongbox">
+<!-- pc头部 -->
+<div id="header">
+    <div class="w1200">
+        <img src="images/heiselogo.png">
+        <ul class="shou">
+            <li><a href="" class="active">首页</a></li>
+            <li><a href="">全系轮毂</a></li>
+            <li><a href="/index/index/product_list.html">潮流画廊</a></li>
+            <li><a href="">大师工艺</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+        <a class="tiaomao" target="_blank" href="https://www.tmall.com/?spm=a21bo.2017.201859.1.5af911d94KTXS7">
+            <img src="img/tianmao.svg">
+        </a>
+        <ul class="deng">
+            <!-- 登录前 -->
+            <!-- <li><a href="javascript:;" id="loginele">登录</a><a id="regidter" href="javascript:;">注册</a></li> -->
+
+            <!-- 登录后 -->
+            <li>
+                <p href="#" class="usernamebx">
+                    <span>TanaCustomer 001</span>  
+                    <a href="javascript:;" class="bugcar-box">             
+                        <img src="img/icon-bugcar.svg">
+                        <em class="order-number">2</em>
+                    </a>    
+                    <a href="javascript:;" class="order-link">              
+                        <img src="images/dingdan2.png">
+                        <em class="order-number">22</em>
+                    </a>
+                </p>
+                <a href="">提出</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 移动端头部开始 -->
+<div class="yid-header">
+    <div class="left-logo"><img src="images/heiselogo.png"></div>
+    <p href="#" class="usernamebx">
+        <a class="tiaomao" target="_blank" href="https://www.tmall.com/?spm=a21bo.2017.201859.1.5af911d94KTXS7">
+            <img src="img/tianmao.svg">
+        </a>
+
+        <a href="javascript:;" class="bugcar-box">             
+            <img src="img/icon-bugcar.svg">
+            <em class="order-number">2</em>
+        </a>    
+        <a href="javascript:;" class="order-link">              
+            <img src="images/dingdan2.png">
+            <em class="order-number">22</em>
+        </a>         
+    </p>
+    <a href="#" class="dy-more"><img src="images/yd-more.png"></a>
+</div>
+<div class="nav-pop">
+    <div class="yid-header">
+        <div class="left-logo"><img src="images/heiselogo.png"></div>
+        <a href="#" class="close-btn"><img src="images/closebut.png"></a>
+    </div>
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">全系轮毂</a></li>
+        <li><a href="#">潮流画廊</a></li>
+        <li><a href="#">大师工艺</a></li>
+        <li><a href="#">联系我们</a></li>
+    </ul>
+    <a href="#" class="yd-login">
+        登录
+    </a>
+    <a href="javascript:;" class="register-link">没有账号？立刻注册一个>></a>
+</div>
+<!-- 移动端头部结束 -->
+
+<!-- pc端banner 开始 -->
+<div class="left-sweiper">
+    <div class="swiper-container" id="index-wrapper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="javascript:;"></a>
+                <img src="images/baner1.jpg">
+            </div>
+            <div class="swiper-slide">
+                <a href="javascript:;"></a>
+                <img src="images/baner2.jpg">
+            </div>
+            <div class="swiper-slide">
+                <a href="javascript:;"></a>
+                <img src="images/baner3.jpg">
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.baidu.com/"></a>
+                <img src="images/baner4.jpg">
+            </div>
+       </div>
+
+        <!-- <div class="swiper-pagination"></div> -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+<!-- pc端banner结束 -->
+
+<!-- 移动端banner 开始 -->
+<!-- <div class="left-sweiper">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="https://www.baidu.com/"></a>
+                <img src="images/a53d4513d7ec8cd6df2da6ccb6c04327.jpg">
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.baidu.com/"></a>
+                <img src="images/f22afd3f77cc786b46b0681733f449a1.jpg">
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.baidu.com/"></a>
+                <img src="images/395b9c22f07ac145282d9cd79691b2d1.jpg">
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.baidu.com/"></a>
+                <img src="images/sell-well2.jpg">
+            </div>
+       </div>
+
+       
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div> -->
+<!-- 移动端banner结束 -->
+
+
+<div class="w1200">
+    <!-- 视频 -->
+    <div id="video">
+        <dl class="hiddenvieo">
+            <dt class="pin">精品视频</dt>
+            <dt class="ji">New Presents</dt>
+            <dd class="vidoe-box">
+                <img src="images/vidoe00.jpg">
+               <!--  <video autoplay="" loop="loop" muted="" style="width: 100%;height:100%;" id="video">
+                    <source src="images/03.mp4" type="video/mp4">
+                </video> -->
+
+                <!-- <video width="100%" autoplay="autoplay" controls="controls">
+                    <source src="images/03.mp4" type="images/03.mp4" />
+                </video>
+                 -->
+                <div class="cidoe-mask"></div>
+                <a href="javascript:;"  class="play-but"><img src="images/play-but.png"></a>
+                <div class="videoname-box">
+                    <div class="video-name">
+                        <p>视频名称视频名称</p>
+                        <p>2019.04.03</p>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+
+
+        <div class="newproduct">
+            <h5 class="pin">新品展示</h5>
+            <p  class="ji">New Presents</p>
+            <div class="newproduct-list">
+                <div class="xin">
+                    <a href="#">
+                        <img src="images/xinpin01.jpg">
+                        <div class="hover00"></div>
+                        <div class="modeldd">0L019D03</div>
+                    </a>
+                </div>
+                <div class="pinpaiming">
+                    <a href="">
+                        <img src="images/xinpin05.jpg">
+                        <div class="hover00"></div>
+                        <div class="modeldd">0L019D03</div>
+                    </a>
+                </div>
+                <div class="zhanimg">
+                    <a href="">
+                        <img src="images/xinpin03.jpg">
+                        <div class="hover00"></div>
+                        <div class="modeldd">0L019D05</div>
+                    </a>
+                    <a href="">
+                        <img src="images/xinpin04.jpg">
+                        <div class="hover00"></div>
+                        <div class="modeldd">0L019D05</div>
+                    </a>
+                    <a href="">
+                        <img src="images/xinpin05.jpg">
+                        <div class="hover00"></div>
+                        <div class="modeldd">PD0950</div>
+                    </a>
+                    <a href="">
+                        <img src="images/xinpin06.jpg">
+                        <div class="hover00"></div>
+                        <div class="modeldd">PD0950</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="newproduct">
+            <h5 class="pin">热销爆款</h5>
+            <p  class="ji">Blockbuster Wheels</p>
+            <div class="sell-well">
+                <div class="left-but">
+                    <a href="#"><img src="images/left-but.png"></a>
+                </div>
+                <ul class="sell-wel-list">
+                    <li>
+                        <a href="#"><img src="images/sell-well1.jpg"></a>
+                        <div class="hover00"></div>
+                        <div class="modeldd">PD0950</div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/sell-well2.jpg"></a>
+                        <div class="hover00"></div>
+                        <div class="modeldd">PD0950</div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/sell-well2.jpg"></a>
+                        <div class="hover00"></div>
+                        <div class="modeldd">PD0950</div>                        
+                    </li>
+                </ul>
+                <div class="right-but">
+                    <a href="#"><img src="images/right-but.png"></a>
+                </div>
+            </div>
+
+            <!-- <ul class="vmcarousel-centered-infitine vmc-centered">
+              <li><img src="images/sell-well1.jpg" alt="" width="200"></li>
+              <li><img src="images/sell-well2.jpg" alt="" width="200"></li>
+              <li><img src="images/sell-well3.jpg" alt="" width="200"></li>
+              <li><img src="images/sell-well1.jpg" alt="" width="200"></li>
+              <li><img src="images/sell-well2.jpg" alt="" width="200"></li>
+              <li><img src="images/sell-well3.jpg" alt="" width="200"></li>
+           </ul> -->
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<div id="footer">
+    <div id="hub">
+        <div class="w1200">
+            <span>订阅更新</span><input name="name" size="100" placeholder="E-MAIL"><a href="#" class="pcsubmit">提交</a><a href="#" class="yidongsubmit">订阅更新</a>
+        </div>
+    </div>
+    <div class="w1200 p150">
+        <div class="footer-icon">
+            <img src="images/telegram.png">
+            <img src="images/weibo.png">
+            <img src="images/twetter.png">
+            <img src="images/wechat.png">
+            <img src="images/telegram.png">
+            <img src="images/douyin.png">
+        </div>
+        <dl>
+            <!-- <div class="shangwuhezuo">
+                <img src="images/shangwuhezuo.svg">
+            </div> -->
+            <br><br> <dt><a href="">商务合作</a></dt><br>
+            <dd><a href=""><img src="images/dizhi.png">&nbsp;&nbsp;北京市朝阳区朝阳北路225号京龙大厦12层</a></dd><br>
+            <!-- <dd><a href=""><img src="images/dianhua.png">&nbsp;&nbsp;+400 456 4903&nbsp;&nbsp;(商务）</a> &nbsp;&nbsp;<a href="">&nbsp;<img src="images/dianhua.png">&nbsp;&nbsp;+400 456 4903&nbsp;&nbsp;(招聘）</a></dd><br> -->
+            <dd>
+                <a href="mailto:service@tana-wheels.com">
+                    <img src="images/email.png">&nbsp;&nbsp;service@tana-wheels.com
+                </a> &nbsp;&nbsp;
+                <!-- <a href=""><img src="images/email.png">&nbsp;&nbsp;info@mail.com（招聘)</a> -->
+            </dd>
+        </dl>
+        <dl class="guan">
+            <dt><a href="">关注我们</a></dt><br>
+            <dd><a href=""></a><img src="images/telegram.png">&nbsp;&nbsp;Facebook&nbsp;&nbsp;&nbsp;&nbsp; <a href=""><img src="images/weibo.png">&nbsp;&nbsp;Eeibo</a></dd> <br>
+            <dd><a href=""><img src="images/twetter.png">&nbsp;&nbsp;Twitter</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="">&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/wechat.png">&nbsp;&nbsp;Wecha</a></dd><br>
+            <dd><a href=""><img src="images/telegram.png">&nbsp;&nbsp;Telegram</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">&nbsp;<img src="images/douyin.png">&nbsp;&nbsp;抖音</a></dd><br>
+        </dl>
+        <ul class="icp">
+            <li>浙ICP备 19016232 号 </li><li>宁波戴特贸易有限公司 版权所有</li><li>&#169;&nbsp; 2019-2021 TANA-Wheels. All rights reserved.</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+
+</body>
+</html>
+
+
+<!-- Swiper JS -->
+<script src="js/swiper.min.js"></script>
+<script src="js/swiper.animate.min.js"></script>
+<!-- <script src="js/jquery-3.2.1.min.js"></script> -->
+
+<!-- 
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.vm-carousel.js"></script> -->
+<!-- Initialize Swiper -->
+<script>
+// $(document).ready(function(){
+//     $('.box_skitter_large').skitter({fullscreen:true});
+// });
+// var clentwidth = $(window).width()
+// alert(clentwidth)
+// $(".box_skitter .box_clone img").css("width",clentwidth+"px")
+
+jQuery(function($){
+      $('.vmcarousel-centered').vmcarousel({
+         centered: true,
+         start_item: 2,
+         autoplay: false,
+         infinite: false
+      });
+
+      $('.vmcarousel-centered-infitine').vmcarousel({
+         centered: true,
+         start_item: 1,
+         autoplay: false,
+         infinite: true
+      });
+
+      $('.vmcarousel-normal').vmcarousel({
+         centered: false,
+         start_item: 0,
+         autoplay: false,
+         infinite: false
+      });
+   });
+// 设置轮播图高度
+var clenitheight = $(window).height() - 100
+// $(".left-sweiper #index-wrapper img").css("height",clenitheight+"px")
+// if ($(window).width()<768) {
+//     $("#index-wrapper .swiper-slide").css("height",clenitheight/100-1+"rem")
+// } else{
+//     $("#index-wrapper .swiper-slide").css("height",clenitheight+"px")    
+// }
+// 设置视频高度
+$(".vidoe-box").css("height",clenitheight)
+
+// 登录
+$("#loginele").click(function(){
+    $(".mask-box").show();
+    $(".logins").show();
+})
+$(".mask-box,.clostxxx").click(function(){
+    $(".mask-box").hide();
+    $(".logins").hide();
+})
+// 忘记密码
+$(".forget-password").click(function(){   
+    $(".regidter").show();
+    $(".logins").hide();
+})
+
+// 注册
+$("#regidter").click(function(){
+    $(".mask-box").show();
+    $(".regidter").show();
+})
+$(".mask-box,.clostxxx,.regidter-queding").click(function(){
+    $(".mask-box").hide();
+    $(".regidter").hide();
+})
+
+//移动导航
+$(".dy-more").click(function(){
+    $(".nav-pop").show();
+})
+$(".close-btn").click(function(){
+    $(".nav-pop").hide();
+})
+// 移动登录
+$(".yd-login").click(function(){
+    $(".mask-box").show();
+    $(".logins").show();    
+})
+
+
+
+
+var mySwiper = new Swiper('.swiper-container',{
+pagination: '.swiper-pagination', paginationClickable: true, effect : 'fade',
+autoplay:true,
+speed:1000,
+pagination: {
+    el: '.swiper-pagination',
+},
+navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+},
+on:{
+  init: function(){
+    swiperAnimateCache(this); //隐藏动画元素 
+    this.emit('slideChangeTransitionEnd');//在初始化时触发一次slideChangeTransitionEnd事件
+  }, 
+  slideChangeTransitionEnd: function(){ 
+    swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+    this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
+  }
+}
+});
+
+</script>
+
+
+
+
+
+
+
+

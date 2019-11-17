@@ -1,0 +1,225 @@
+{extend name="layout" /}
+{block name="title"}{$product.part_number} - 轮毂详情{/block}
+{block name="body"}
+<div class="w1200">
+    <div class="prodact-detail">
+        <div class="quanxi-left-list">
+            <!-- pc端大师工艺开始 -->
+            <div class="title-bg">
+                <a class="back-arrow" href="javascript:window.history.go(-1)"><img
+                        src="__HOME_IMG__/fanhuibaise.png"></a> {$product.part_number} <span
+                    class="all-chexing rute180"></span>
+            </div>
+
+            <div class="order-list-right">
+                <div class="order-detail">
+
+                    <div class="order-detail-img">
+                        <img src="{$product.cover|get_file_path}">
+                    </div>
+
+                    <h3 class="xiangxicanshu">详细参数</h3>
+                    <div class="right-order-detail">
+                        <table class="table-list">
+                            <tbody>
+                            <tr>
+                                <td style="width: 50%">
+                                    <p>轮毂型号</p>
+                                    <span>{$product.part_number}</span>
+                                </td>
+                                <td style="width: 50%">
+                                    <p>所属系列</p>
+                                    <span>{$product.series_text}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>品牌</p>
+                                    <span>{$product.brand_text}</span>
+                                </td>
+                                <td>
+                                    <p>车型</p>
+                                    <span>{$product.motorcycle_type_text}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>ET</p>
+                                    <span>{$product.et}</span>
+                                </td>
+                                <td>
+                                    <p>螺栓孔数</p>
+                                    <span>{$product.olt_hole}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>PCD</p>
+                                    <span>{$product.pcd}</span>
+                                </td>
+                                <td>
+                                    <p>中心孔直径</p>
+                                    <span>{$product.center_hole}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>车辆类型</p>
+                                    <span>{$product.vehicle_type_text}</span>
+                                </td>
+                                <td>
+                                    <p>尺寸</p>
+                                    <span>{$product.diameter} x {$product.width}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>推荐轮胎</p>
+                                    <span>{$product.tire_width}</span>
+                                </td>
+                                <td>
+                                    <p>最大载荷</p>
+                                    <span>{$product.load}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                {if !empty($product.weight)}
+                                <td>
+                                    <p>重量</p>
+                                    <span>{$product.weight}KG</span>
+                                </td>
+                                {/if}
+                                <td>
+                                    <p>表面状态</p>
+                                    <span>{$product.surface_state_text}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>成型工艺</p>
+                                    <span>{$product.molding_process_text}</span>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- 产品详情图开始 -->
+        <div class="detail-img-box">
+            <h3 class="xiangxicanshu">详细参数</h3>
+            <h2 class="chanp-xiangq">产品详情介绍</h2>
+            <div>{$product.details|raw}</div>
+        </div>
+        <!-- 产品详情图结束 -->
+
+        <!-- 悬浮按钮 -->
+        {if !empty($Think.session.users)}
+
+        <div class="bugcar-btn-bg"></div>
+        <div class="w1200 bugcarbox">
+
+<!--            <div class="my-order-box my-order-boxnumb2" onclick="location.href='/orders.html'">-->
+<!--                {if $orderNumber > 0}<span class="order-number">{$orderNumber}</span>{/if}-->
+<!--                <img src="__HOME_IMG__/order_b.png">我的订单-->
+<!--            </div>-->
+
+            <div class="add-order">
+                <span class="jianhao"><img src="__HOME_IMG__/jianhao.png"></span><input name="number" type="type"
+                                                                                        value="4" readonly><span
+                    class="jiahao"><img src="__HOME_IMG__/jiahao.png"></span>
+                <!--  <button class="add-shop-car-btn" onclick="postShopCar({$product.id})">加入购物车</button> -->
+                <button class="add-order-btn" onclick="postShopCar({$product.id})">加入购物车</button>
+            </div>
+            <p class="pricebox">总计：<span class="total">{$product.price*4}</span>&nbsp;&nbsp;RMB</p>
+            <p class="pricebox">售价：<span>{$product.price}</span>&nbsp;&nbsp;RMB/ 只</p>
+        </div>
+        {/if}
+    </div>
+</div>
+{/block}
+
+
+{block name="js"}
+<script type="text/javascript">
+
+    $('.jiahao').click(function () {
+        var number = $('input[name="number"]'),
+            numberVal = number.val();
+
+        number.val(parseInt(numberVal) + 4);
+        $('.total').html((((parseInt(numberVal) + 4) * parseInt({$product.price} * 100)) / 100).toFixed(2));
+
+    });
+    $('.jianhao').click(function () {
+        var number = $('input[name="number"]'),
+            numberVal = number.val();
+        if (number.val() <= 4) {
+            layer.msg("数量不能小于4");
+            return false;
+        }
+        if (parseInt(numberVal) > 0) {
+            number.val(parseInt(numberVal) - 4);
+            $('.total').html((((parseInt(numberVal) - 4) * parseInt({$product.price} * 100)) / 100).toFixed(2));
+        }
+    });
+    $('input[name="number"]').keyup(function () {
+        var numberVal = $(this).val();
+        if (parseInt(numberVal) > 0) {
+            $('.total').html(((parseInt(numberVal) * parseInt({$product.price} * 100)) / 100).toFixed(2));
+        }
+    });
+
+
+    // $('.add-order-btn').click(function () {
+    //     var numberVal = $('input[name="number"]').val();
+    //     $.ajax({
+    //         url: window.location.href,
+    //         data: {
+    //             number: numberVal
+    //         },
+    //         type: 'post',
+    //         success: function (res) {
+    //             if (res.code === 1) {
+    //                 location.href = '/orders/id/' + res.data.id + '.html'
+    //             } else {
+    //                 layer.msg(res.msg)
+    //             }
+    //         },
+    //         error: function () {
+    //             layer.msg('网络异常');
+    //         }
+    //     })
+    // })
+
+    function postShopCar(id) {
+        var numberVal = $('input[name="number"]').val()
+            ,cartNumber = $('.cart-number');
+        $.ajax({
+            url: "{:url('/index/cart/save')}",
+            data: {id: id, number: numberVal},
+            type: 'post',
+            success: function (res) {
+                cartNumber.show();
+                cartNumber.html(res.data.number);
+                layer.msg(res.msg, {
+                    time: 2000
+                });
+            },
+            error: function () {
+                layer.msg('网络异常');
+            }
+        })
+    }
+
+</script>
+{/block}
+
+
+

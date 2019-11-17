@@ -1,0 +1,69 @@
+{extend name="layout" /}
+{block name="title"}品牌优势{/block}
+{block name='body_css'}dashigongyi-box{/block}
+{block name="body"}
+<div class="w1200">
+
+
+    <div class="quanxi-left-list">
+
+        <div class="title-bg">
+            品牌优势  <span class="all-chexing rute180 craft-type" >全部工艺 </span>
+        </div>
+        <ul class="quanxi-canshu-list quanxi-yidong">
+            <li onclick="location.href='{:url(\'/craft\',[\'id\'=>0])}'" {if $id == 0} class="active" {/if}>
+            <p>全部工艺</p>
+            <p> All Technologies</p>
+            </li>
+            {volist name="craftType" id="vo"}
+            <li onclick="location.href='{:url(\'/craft\',[\'id\'=>$vo.id])}'" {if $id == $vo.id} class="active" {/if}>
+            <p>{$vo.title}</p>
+            <p>{$vo.title_en}</p>
+            </li>
+            {/volist}
+			<li></li>
+        </ul>
+        <ul class="quanxi-canshu-list quanxi-pc">
+            <li onclick="location.href='{:url(\'/craft\',[\'id\'=>0])}'" {if $id == 0} class="active" {/if}>
+            <p>全部工艺</p>
+            <p> All Technologies</p>
+            </li>
+            {volist name="craftType" id="vo"}
+            <li onclick="location.href='{:url(\'/craft\',[\'id\'=>$vo.id])}'" {if $id == $vo.id} class="active" {/if}>
+            <p>{$vo.title}</p>
+            <p>{$vo.title_en}</p>
+            </li>
+
+            {/volist}
+        </ul>
+    </div>
+    <div class="dashigyi-list-box">
+        <ul>
+            {volist name="craft" id="vo"}
+            <li>
+                <a href="{:url('/craft_detail',['id'=>$vo.id])}">
+                    <img src="{$vo.cover|get_file_path}">
+                    <span class="dsgy-mask"></span>
+                    <span class="dsgy-mask-txt">{$vo.title}</span>
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+{/block}
+
+{block name="js"}
+<script type="text/javascript">
+    $( '.all-chexing' ).on( 'click', function( e ) {
+        $( '.quanxi-yidong li p,.quanxi-yidong li,.quanxi-yidong li.active' ).toggle();
+    } );
+    $( '.quanxi-yidong li p,.quanxi-yidong li,.quanxi-yidong li.active' ).toggle(false);
+
+    $('.craft-type').html($('.active').find('p').html() + ' <img src="__HOME_IMG__/shangjiantou.png">');
+
+
+</script>
+{/block}
+
+

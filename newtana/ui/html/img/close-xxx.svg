@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="96" viewBox="0 0 96 96">
+  <defs>
+    <filter id="椭圆_12" x="0" y="0" width="96" height="96" filterUnits="userSpaceOnUse">
+      <feOffset dy="8" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="组_229" data-name="组 229" transform="translate(-1238 -106)">
+    <g transform="matrix(1, 0, 0, 1, 1238, 106)" filter="url(#椭圆_12)">
+      <circle id="椭圆_12-2" data-name="椭圆 12" cx="24" cy="24" r="24" transform="translate(24 16)" fill="#fff"/>
+    </g>
+    <g id="组_228" data-name="组 228" transform="translate(-1.5 -2.5)">
+      <line id="直线_51" data-name="直线 51" x2="20" y2="20" transform="translate(1277.5 138.5)" fill="none" stroke="#3b3b3b" stroke-width="1"/>
+      <line id="直线_52" data-name="直线 52" y1="20" x2="20" transform="translate(1277.5 138.5)" fill="none" stroke="#3b3b3b" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

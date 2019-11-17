@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="750">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="__HOME_CSS__/reset.css">
+    <link rel="stylesheet" href="__HOME_CSS__/swiper.min.css">
+    <link rel="stylesheet" href="__HOME_CSS__/lungustyle.css">
+    <!-- <link rel="stylesheet" href="__HOME_CSS__/index.css"> -->
+
+    <title>登录</title>
+
+</head>
+<body>
+<script type="javascript">
+    $("#expandContent").click(function(){
+        document.getElementById('neirong').style.height='auto';
+        $('#read-more').hide();})
+</script>
+<script type="text/javascript">(function(win){var doc=win.document,html=doc.documentElement,option=html.getAttribute("data-use-rem");if(option===null){return}var baseWidth=parseInt(option).toString()==="NaN"?640:parseInt(option);var grids=baseWidth/100;var clientWidth=html.clientWidth||320;html.style.fontSize=clientWidth/grids+"px";var testDom=document.createElement("div");var testDomWidth=0;var adjustRatio=0;testDom.style.cssText="height:0;width:1rem;";doc.body.appendChild(testDom);var calcTestDom=function(){testDomWidth=testDom.offsetWidth;if(testDomWidth!==Math.round(clientWidth/grids)){adjustRatio=clientWidth/grids/testDomWidth;var reCalcRem=clientWidth*adjustRatio/grids;html.style.fontSize=reCalcRem+"px"}else{doc.body.removeChild(testDom)}};setTimeout(calcTestDom,20);var reCalc=function(){var newCW=html.clientWidth;if(newCW===clientWidth){return}clientWidth=newCW;html.style.fontSize=newCW*(adjustRatio?adjustRatio:1)/grids+"px"};if(!doc.addEventListener){return}var resizeEvt="orientationchange" in win?"orientationchange":"resize";win.addEventListener(resizeEvt,reCalc,false);doc.addEventListener("DOMContentLoaded",reCalc,false)})(window);</script>
+<div class="loginbox">
+    <span class="clostxxx"><a href="/"><img src="__HOME_IMG__/clear@2x.png"></a></span>
+    <h4>TANA轮毂</h4>
+    <p>欢迎登录TANA轮毂网站</p>
+
+    <ul class="login-contner">
+        <li>
+            <input type="text" name="username" placeholder="账户/手机号">
+        </li>
+        <li>
+            <input type="password" name="password" placeholder="密码">
+        </li>
+    </ul>
+    <p class="errortxt"></p>
+
+    <div class="remember-me">
+        <p><input type="checkbox" name="" checked>记住我</p>
+        <p><a href="{:url('/retrieve')}">忘记密码</a>/<a href="{:url('/register')}">注册</a></p>
+    </div>
+
+    <a href="#" class="login-btn">登录</a>
+</div>
+
+
+
+<!-- Swiper JS -->
+<script src="__HOME_JS__/swiper.min.js"></script>
+<script src="__HOME_JS__/swiper.animate.min.js"></script>
+<script src="__HOME_JS__/jquery-3.2.1.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+    var mySwiper = new Swiper('.swiper-container',{
+        autoplay:true,
+        pagination: {
+            el: '.swiper-pagination',
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        on:{
+            init: function(){
+                swiperAnimateCache(this); //隐藏动画元素
+                this.emit('slideChangeTransitionEnd');//在初始化时触发一次slideChangeTransitionEnd事件
+            },
+            slideChangeTransitionEnd: function(){
+                swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+                this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
+            }
+        }
+    });
+
+    $('.login-btn').click(function () {
+        var errorTxt = $('.errortxt'),
+            username = $('input[name="username"]').val(),
+            password = $('input[name="password"]').val()
+
+        if (username.length < 3){
+            errorTxt.html('用户名不能少于三位！');
+            return false;
+        }
+        if (password.length < 6){
+            errorTxt.html('密码不能少于6位！');
+            return false;
+        }
+        $.ajax({
+            url: window.location.href,
+            data: {
+                username: username,
+                password: password
+            },
+            type: 'post',
+            success: function (res) {
+                if (res.code === 1) {
+                        location.href = '/index.php'
+                } else {
+                    errorTxt.html(res.msg)
+                }
+            },
+            error: function () {
+                errorTxt.html('网络异常');
+            }
+        })
+    });
+</script>
+</body>
+</html>

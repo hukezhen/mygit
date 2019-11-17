@@ -1,0 +1,167 @@
+*{
+    padding:0;
+    margin:0;
+}
+body{
+    text-align:center;
+}
+.navbar-brand img{
+    margin-top:-15px;
+}
+.nav button{
+    margin-top:15px;
+}
+.navbar-brand img{
+    margin-top:-6px;
+    width:150px;
+    height:35px;
+    margin-left:0;
+    }
+.w1200{
+    width: 1200px;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width:100%;
+}
+ .w1200 span{
+background:black;
+color:#fff;
+padding:10px 2px;
+}
+.w1200 select  strong{
+    font-weight:bold;
+}
+.w1200 select{
+    width:auto;
+    padding: 0 25%;
+margin: 0;
+}
+.w1200 select option{
+    max-width:100%;
+}
+.top-secelact select {
+    width: 79%;
+    height:3rem;
+
+}
+.product-list{
+    margin:0 auto;
+    text-align:center;
+}
+.product-list figure{
+    height:250px;
+    width: 50%;
+float:left;
+}
+
+.product-list figure img{
+display:block;
+margin:0 auto;
+}
+.product-list  h5{
+    border:1px solid black;
+    
+    line-height:1.5rem;
+    display:inline-block;
+    padding:0.4rem 3rem;
+    text-align:center;
+}
+.product-list  h5 a{
+    color:black;
+}
+.product-list  h5 a:hover{
+    font-weight:bold;
+    text-decoration:none;
+}
+.product-list  h6{
+    background-color:#f1f1f1;
+    line-height:1.5rem;
+    display:inline-block;
+    padding:0.4rem 3rem;
+    text-align:center;
+    margin-top:-1rem;
+}
+.product-list p{
+color:#f1f1f1;
+}
+
+.footer{
+    margin-top:3.0rem;
+    text-align:center;
+    background:	#3b3b3b;
+    height:4.0rem;
+    line-height:4.0rem;
+    width:100%;
+    opacity:0.8;
+    margin-top:1.5rem;
+    clear:both;
+
+}
+.footer  input{
+    margin-top:2px;
+height:30px;
+border:1px solid #fff;
+background:	#808080;
+color:white;
+}
+.footer a{
+color:black;
+padding:0.6rem;
+text-decoration:none;
+font-weight:bold;
+background:#fff;
+}
+.tu{
+    background:#3b3b3b;
+    height:25rem;
+    margin-top:-0.9rem;
+    color:#FFF;
+    width:100%;
+        }
+        .tu ul{
+            margin:0 auto;
+        }
+.tu ul li{
+    float:left;
+    margin-right:0.5rem;
+    list-style-type:none;
+    margin-left:1rem;
+}
+.tu ul li a{
+    background:#3b3b3b;
+}
+
+.tu p{
+    text-align:center;
+    margin-left:-22rem;
+    }
+    .tu h5{
+    text-align:center;
+    margin-left:-21rem;
+    font-size:1rem;
+}
+.tu h5 img{
+margin-right:0.5rem;
+
+}
+.tu span{
+text-align:left;
+font-size:12px;
+background:none;
+}
+.tu span img{
+margin-right:0.5rem;
+}
+.tu a{
+background:none;
+color:#fff;
+}
+.tu h4 img{
+width:26rem;
+margin-top:-1rem;
+height:0.1rem;
+}      
+.tu strong{
+font-size:1.2rem;
+}

@@ -1,0 +1,178 @@
+*{
+    padding:0;
+    margin:0;
+}
+body{
+    text-align:center;
+}
+
+   .nav button{
+   margin-top:1rem;
+    }
+  .navbar-header img{
+    margin-left:25%;
+    margin-top:15px;
+    }
+    .navbar-header span{
+        color:#fff;
+        background:red;
+       padding:2px  4px; 
+        line-height:5px;
+        border-radius:20px;
+        margin-left:-5px;
+    }
+  .navbar-brand img{
+   margin-top:-6px;
+    width:150px;
+     height:40px;
+    margin-left:0;
+   }
+   .btn-group{
+       width:450px;
+       height:30px;
+       line-height:30px;
+       background:#f1f1f1;
+       text-align:left;
+   }
+   .btn-group a{
+       margin-right:10px;
+       margin-left:20px;
+       color:black;
+   }
+   .btn-group button{
+       margin:0 50%;
+       margin-top:-30px;
+   }
+.header{
+    width:100%;
+    height:150px;
+    line-height:30px;
+    border-bottom:1px solid #ccc;
+
+}
+.header a{
+    text-align:left;
+   margin-left:-140px;
+    color:black;
+}
+.header  strong{
+    margin-left:-0px;
+}
+.header  span{
+    color:red;
+}
+.header  .header-r {
+    color:#ccc;
+    font-size:12px;
+    margin-top:-20px;
+}
+.header h5{
+    margin-left:-220px;
+    font-weight:bold;
+}
+.header h6{
+    margin-left:-120px;
+    font-weight:bold;
+}
+.header .btn{
+    margin-top:-6rem;
+}
+.header h7{
+    margin-left:-85px;
+   margin-top:-25px;
+    font-weight:bold;
+}
+
+
+
+
+
+   
+.footer{
+    margin-top:3.0rem;
+    text-align:center;
+    background:	#3b3b3b;
+    height:4.0rem;
+    line-height:4.0rem;
+    width:100%;
+    opacity:0.8;
+    margin-top:1.5rem;
+
+}
+.footer  input{
+        margin-top:2px;
+    height:30px;
+    border:1px solid #fff;
+    background:	#808080;
+    color:white;
+}
+.footer a{
+    color:black;
+    padding:0.6rem;
+    text-decoration:none;
+    font-weight:bold;
+    background:#fff;
+}
+.tu{
+    background:#3b3b3b;
+    height:25rem;
+    margin-top:-0.9rem;
+    color:#FFF;
+    width:100%;
+        }
+.tu ul{
+    display:inline-block;
+    vertical-align: center;
+    margin-left:-15rem;
+        }
+.tu ul li{
+    float:left;
+    margin-right:0.1rem;
+    list-style-type:none;
+    margin-left:1rem;
+    
+}
+.tu ul li a{
+    background:#3b3b3b;
+}
+
+.tu p{
+    text-align:center;
+    margin-left:1rem;
+    font-size:1.6rem;
+    margin-left:-21rem;
+    margin-top:-2.0rem;
+}
+.tu h5{
+    text-align:center;
+    margin-top:-1rem;
+    margin-left:1rem;
+    font-size:1rem;
+    font-size:1.2rem;
+    margin-left:-21rem;
+}
+.tu h5 img{
+    margin-right:0.5rem;
+    
+}
+.tu span{
+    text-align:left;
+    font-size:1.2rem;
+    background:none;
+    font-size:1.2rem;
+}
+.tu span img{
+    margin-right:0.5rem;
+}
+.tu a{
+    background:none;
+    color:#fff;
+}
+.tu h4 img{
+    width:26rem;
+    margin-top:-1rem;
+    height:0.1rem;
+}      
+.tu strong{
+    font-size:1.2rem;
+}

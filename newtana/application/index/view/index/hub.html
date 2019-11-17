@@ -1,0 +1,75 @@
+{extend name="layout" /}
+{block name="title"}全系轮毂{/block}
+{block name='body_css'}all-series-box{/block}
+{block name="body"}
+
+    <div class="w1200">
+        <div class="quanxi-left-list">
+
+            <div class="title-bg">
+                轮毂系列  <span class="all-chexing rute180 craft-type" >全部车型 <img src="__HOME_IMG__/shangjiantou.png"></span>
+            </div>
+            <ul class="quanxi-canshu-list quanxi-yidong">
+                <li onclick="location.href='{:url(\'/hub\',[\'vehicle\'=>0])}'" {if $vehicle == 0} class="active" {/if}>
+                <p>全部车型</p>
+                </li>
+                {volist name="vehicleType" id="vo"}
+                <li onclick="location.href='{:url(\'/hub\',[\'vehicle\'=>$vo.id])}'" {if $vehicle == $vo.id} class="active" {/if}>
+                <p>{$vo.title}</p>
+                </li>
+                {/volist}
+            </ul>
+            <ul class="quanxi-canshu-list quanxi-pc">
+
+                <li onclick="location.href='{:url(\'/hub\',[\'type\'=>0])}'" {if $type == 0} class="active" {/if}>
+                    <p>全部系列</p>
+                    <p>All series</p>
+                </li>
+                {volist name="productType" id="vo"}
+                <li onclick="location.href='{:url(\'/hub\',[\'type\'=>$vo.id])}'" {if $type == $vo.id} class="active" {/if}>
+                    <p>{$vo.title}</p>
+                    <p>{$vo.title_en}</p>
+                </li>
+                {/volist}
+            </ul>
+            <div class="customized-link">
+                <a href="{:url('/custom/index')}">
+                    <img src="__HOME_IMG__/img-gexingdingz.svg">
+                </a>
+            </div>
+        </div>
+        <div class="quanxi-right-list">
+            <ul>
+                {volist name="product" id="vo"}
+                <li>
+                    <a href="{:url('/detail',['id'=>$vo.id])}"><img src="{$vo.cover|get_file_path}"></a>
+                    <div class="gongyi-text">
+                        <p><a href="{:url('/detail',['id'=>$vo.id])}">{$vo.part_number}</a></p>
+                        <p>{$vo.molding_process_text}</p>
+                    </div>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
+{/block}
+
+{block name="js"}
+<script type="text/javascript">
+    $( '.all-chexing' ).on( 'click', function( e ) {
+        $( '.quanxi-yidong li p,.quanxi-yidong li,.quanxi-yidong li.active' ).toggle();
+    } );
+    $( '.quanxi-yidong li p,.quanxi-yidong li,.quanxi-yidong li.active' ).toggle(false);
+    $('.craft-type').html($('.active').find('p').html() + ' <img src="__HOME_IMG__/shangjiantou.png">');
+</script>
+{/block}
+
+
+
+
+
+
+
+
+
+

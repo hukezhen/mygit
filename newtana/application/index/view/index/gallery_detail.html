@@ -1,0 +1,73 @@
+{extend name="layout" /}
+{block name="title"}潮流画廊{/block}
+{block name='body_css'}chaoliuhualang-detail{/block}
+{block name="body"}
+<div class="biaoti-bg">
+    <a href="#"><img src="__HOME_IMG__/fanhui.png"></a>
+    <span>路虎 - 揽胜</span>
+</div>
+
+
+<div class="left-sweiper w1200">
+    <div class="swiper-container" id="gallery">
+        <div class="swiper-wrapper">
+            {php}
+            $galleryCover = explode(',',$gallery['cover']);
+            {/php}
+            {volist name="galleryCover" id="vo"}
+            <div class="swiper-slide">
+                <a href="#"><img src="{$vo|get_file_path}"></a>
+            </div>
+            {/volist}
+        </div>
+
+        <!-- <div class="swiper-pagination"></div> -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+
+<!-- 主体内容 -->
+<div class="w1200 ">
+    {volist name="product" id="vo"}
+    <div class="chanpin-conteler">
+        <div class="hualang-left-img">
+            <img src="{$vo.cover|get_file_path}">
+        </div>
+        <div class="right-text00">
+            <h2>{$vo.part_number}</h2>
+            <p>成型工艺</p>
+            <a href="{:url('/detail',['id'=>$vo.id])}">点击查看轮毂详情 >></a>
+        </div>
+    </div>
+    {/volist}
+</div>
+{/block}
+
+
+{block name="js"}
+<script type="text/javascript">
+    var clenitheight = $(window).height() - 100
+    $(".left-sweiper img").css("height",clenitheight+"px");
+	var mySwiper = new Swiper('#gallery', {
+        autoplay: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        on: {
+            init: function () {
+                swiperAnimateCache(this); //隐藏动画元素
+                this.emit('slideChangeTransitionEnd');//在初始化时触发一次slideChangeTransitionEnd事件
+            },
+            slideChangeTransitionEnd: function () {
+                swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+                this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
+            }
+        }
+    });
+</script>
+{/block}
+
+
+

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="168" height="80" viewBox="0 0 168 80">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="168" height="80" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="组件_21_13" data-name="组件 21 – 13" clip-path="url(#clip-path)">
+    <rect id="矩形_657" data-name="矩形 657" width="120" height="32" rx="4" transform="translate(24 16)" fill="#3b3b3b"/>
+    <text id="确认支付" transform="translate(84 38)" fill="#fff" font-size="16" font-family="YuGothicUI-Bold, Yu Gothic UI" font-weight="700"><tspan x="-32" y="0">确</tspan><tspan y="0" font-family="MicrosoftJhengHeiUIBold, Microsoft JhengHei UI" font-weight="400">认</tspan><tspan y="0">支付</tspan></text>
+  </g>
+</svg>

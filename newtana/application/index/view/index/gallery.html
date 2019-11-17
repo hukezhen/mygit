@@ -1,0 +1,109 @@
+{extend name="layout" /}
+{block name="title"}潮流画廊{/block}
+{block name='body_css'}chaoliuhualangbox{/block}
+{block name="body"}
+<div class="top-secelact top-secelact-yd">
+    <ul class="w1200">
+        <li>
+            <span>车辆品牌</span>
+            <select id="brand">
+                <option value="0" {if $pid== 0} selected {/if}>
+                全部车辆品牌
+                </option>
+                {volist name="galleryType" id="vo"}
+                <option value="{$vo.id}" {if $pid== $vo.id} selected {/if} >
+                {$vo.title}
+                </option>
+                {/volist}
+            </select>
+
+        </li>
+        <li>
+            <span>车辆型号</span>
+            <select id="model">
+                <option value="0">
+                    全部车辆型号
+                </option>
+
+            </select>
+        </li>
+    </ul>
+    </ul>
+</div>
+
+
+<!--移动端头开始-->
+<!-- <div class="top-secelact-yd">
+    <ul>
+        <li>
+            <input type="text" name="" placeholder="奥迪">
+        </li>
+        <li>
+            <input type="text" name="" placeholder="奥迪">
+        </li>
+    </ul>
+    <a href="#" class="filter">
+        <img src="__HOME_IMG__/filter@2x.png">
+    </a> 
+</div> -->
+<!-- 移动端头结束 -->
+
+
+<div class="product-list">
+    <ul>
+        {volist name="gallery" id="vo"}
+        <li>
+            <a href="{:url('/gallery_detail',['id'=>$vo.id])}"><img src="{if !strpos($vo.cover,',')}{:get_file_path($vo.cover)}{else /}{:get_file_path(strstr($vo.cover,',',true))}{/if}" /></a>
+        </li>
+        {/volist}
+    </ul>
+    <p class="bottom-text">scroll down to see more</p>
+    <p class="no-more">
+        没有更多了
+    </p>
+</div>
+{/block}
+
+{block name="js"}
+<script type="text/javascript">
+    var model = $("#model");
+    var brand = $("#brand"),
+        brandVal = brand.val();
+
+    if (brandVal > 0) {
+        getModel(brandVal);
+    }
+
+    brand.change(function () {
+        var brandVal = $(this).val();
+        location.href = '/gallery/id/0/pid/' + brandVal + '.html';
+
+    });
+    model.change(function () {
+        var model = $(this).val();
+        location.href = '/gallery/id/' + model + '/pid/' + brandVal + '.html';
+    });
+
+    function getModel(id, pid = 0) {
+        $.ajax({
+            url: window.location.href,
+            data: {
+                brand: id,
+            },
+            type: 'post',
+            success: function (res) {
+                if (res.code === 1) {
+                    model.empty();
+                    model.append('<option value="0">全部车辆型号</option>');
+                    $.each(res.data, function (i, val) {
+                        model.append('<option value="' + val.id + '" ' + (val.id == {$id} ? 'selected' : '') + '>' + val.title + '</option>');
+                    })
+                }
+            },
+            error: function () {
+
+            }
+        })
+    }
+</script>
+{/block}
