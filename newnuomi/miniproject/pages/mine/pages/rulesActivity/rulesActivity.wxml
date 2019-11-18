@@ -1,0 +1,7 @@
+<view class="rule-activity">
+	<text class="title">活动规则</text>
+
+	<text class="rule-text">1,活动时间：2019.10.01-2019.10.07</text>
+	<text class="rule-text">2,活动规则：10元玩一次</text>
+	<text class="rule-text">3,奖品有效期：2019.10.07</text>
+</view>

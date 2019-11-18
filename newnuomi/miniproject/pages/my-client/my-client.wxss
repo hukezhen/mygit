@@ -1,0 +1,148 @@
+.my-client-nav {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  display: flex;
+  -webkit-display: flex;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 0 100rpx;
+}
+
+.add-client {
+  position: relative;
+  text-align: center;
+  flex: 1;
+  -webkit-flex: 1;
+}
+
+.active {
+  position: relative;
+  color: #fc3230;
+}
+
+.active:before {
+  position: absolute;
+  content: "";
+  width: 60rpx;
+  bottom: 0;
+  height: 2px;
+  background: #fc3230;
+  left: 50%;
+  margin-left: -30rpx;
+}
+
+.search-box {
+  padding: 20rpx 30rpx;
+  display: flex;
+  -webkit-display: flex;
+}
+
+.search-box input {
+  flex: 1;
+  -webkit-flex: 1;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #fff;
+  border-radius: 10rpx 0 0 10rpx;
+  padding-left: 20rpx;
+}
+
+.search-btn {
+  width: 80rpx;
+  height: 60rpx;
+  background: #fff;
+  border-radius: 0 10rpx 10rpx 0;
+  text-align: center;
+}
+
+.search-btn image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}
+
+.my-client-items {
+  display: flex;
+  -webkit-display: flex;
+  align-items: center;
+  -webkit-align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 20rpx 10rpx 20rpx 0;
+}
+
+.my-clent-list {
+  padding-left: 20rpx;
+  background: #fff;
+}
+
+.my-client-items .client-head {
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 20rpx;
+}
+
+.my-client-items .client-head image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.fa-hongbao-box, .order-time {
+  flex: 1;
+  -webkit-flex: 1;
+  display: flex;
+  -webkit-display: flex;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+}
+
+.order-time {
+  color: #999;
+  text-align: center;
+  display: none;
+  font-size: 28rpx;
+}
+
+.img-hongbao {
+  /*flex: 1;
+	-webkit-flex:1;	*/
+  text-align: center;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  background-color: #eee;
+  margin-right: 20rpx;
+  line-height: 120rpx;
+}
+
+.fa-hongbao-box image {
+  width: 50rpx;
+  height: 45rpx;
+}
+
+.link-shuxing {
+  display: flex;
+  -webkit-display: flex;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.add-client-box .fa-hongbao-box {
+  display: none;
+}
+
+.add-client-box .order-time {
+  text-align: right;
+  padding-right: 30rpx;
+}
+
+.fliter {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  /* background-color: #bbb; */
+}
+

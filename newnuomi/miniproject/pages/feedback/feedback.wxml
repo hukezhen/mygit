@@ -1,0 +1,145 @@
+<view class="search-box">
+	<input type="type" name="" placeholder="搜索"></input>
+	<view class="search-btn">
+		<image src="../images/icon-search.svg"></image>
+	</view>
+</view>
+
+<view class="noticelist">
+	<view>
+		<navigator  data-index="{{index}}" wx:for="{{messageTypeList}}" wx:key="id"  class="notice-items" url="../feedbackdetail/feedbackdetail?id={{item.id}}&mode={{item.mode}}&other_uid={{item.other_uid}}&img={{item.img}}&title={{item.typename}}">
+			<view class="notice-icon">
+				<text hidden="{{item.unread_num == 0}}" class="notice-number">{{item.unread_num}}</text>
+				<image src="{{item.img}}"></image>
+			</view>
+			<view class="notice-content">
+				<view class="notice-text">
+					<view>{{item.typename}}</view>
+					<view class="jifen-neirong">{{item.msg_content || ""}}</view>
+				</view>
+				<text class="time">{{item.date || ""}}</text>
+			</view>
+		</navigator>
+	</view>
+
+<!-- 
+	<view>
+		<navigator  class="notice-items" url="../feedbackdetail/pages/feedbackdetail/feedbackdetail">
+			<view class="notice-icon">
+				<text class="notice-number">12</text>
+				<image src="../images/icon-xitong.png"></image>
+			</view>
+			<view class="notice-content">
+				<view class="notice-text">
+					<view>通知<text class="xitong-tongzhi">系统</text></view>
+					<view class="jifen-neirong">积分兑换：【状态更新】最新兑换积分兑换：【状态更新】最新兑换</view>
+				</view>
+				<text class="time">30分钟前</text>
+			</view>
+		</navigator>
+	</view>
+
+
+	<view>
+		<navigator  class="notice-items" url="../feedbackdetail/pages/feedbackdetail/feedbackdetail">
+		<view class="notice-icon">
+			<text class="notice-number">1</text>
+			<image src="../images/icon-hongbao.png"></image>
+		</view>
+		<view class="notice-content">
+			<view class="notice-text">
+				<view>红包变动</view>
+				<view class="jifen-neirong">积分兑换：【状态更新】最新兑换积分兑换：【状态更新】最新兑换</view>
+			</view>
+			<text class="time">30分钟前</text>
+		</view>
+		</navigator>
+	</view>
+
+
+	<view>
+		<navigator  class="notice-items" url="../feedbackdetail/pages/feedbackdetail/feedbackdetail">
+		<view class="notice-icon">
+			<text class="notice-number">120</text>
+			<image src="../images/icon-jifen.png"></image>
+		</view>
+		<view class="notice-content">
+			<view class="notice-text">
+				<view>积分变动</view>
+				<view class="jifen-neirong">积分兑换：【状态更新】最新兑换积分兑换：【状态更新】最新兑换</view>
+			</view>
+			<text class="time">30分钟前</text>
+		</view>
+		</navigator>
+	</view>
+
+
+	<view>
+		<navigator  class="notice-items" url="../feedbackdetail/pages/feedbackdetail/feedbackdetail">
+		<view class="notice-icon">
+			<text class="notice-number">12</text>
+			<image src="../images/icon-xiaofei.png"></image>
+		</view>
+		<view class="notice-content">
+			<view class="notice-text">
+				<view>消费提醒</view>
+				<view class="jifen-neirong">积分兑换：【状态更新】最新兑换积分兑换：【状态更新】最新兑换</view>
+			</view>
+			<text class="time">30分钟前</text>
+		</view>
+		</navigator>
+	</view>
+
+
+	<view>
+		<navigator  class="notice-items" url="../feedbackdetail/pages/feedbackdetail/feedbackdetail">
+		<view class="notice-icon">
+			<text class="notice-number">12</text>
+			<image src="../images/icon-tuomi.png"></image>
+		</view>
+		<view class="notice-content">
+			<view class="notice-text">
+				<view>拓米客服</view>
+				<view class="jifen-neirong">积分兑换：【状态更新】最新兑换积分兑换：【状态更新】最新兑换</view>
+			</view>
+			<text class="time">30分钟前</text>
+		</view>
+		</navigator>
+	</view>
+
+
+	<view>
+		<navigator  class="notice-items" url="../feedbackdetail/pages/feedbackdetail/feedbackdetail">
+		<view class="notice-icon">
+			<text class="notice-number">12</text>
+			<image src="../images/icon-kefu.png"></image>
+		</view>
+		<view class="notice-content">
+			<view class="notice-text">
+				<view>客服评价</view>
+				<view class="jifen-neirong">积分兑换：【状态更新】最新兑换积分兑换：【状态更新】最新兑换</view>
+			</view>
+			<text class="time">30分钟前</text>
+		</view>
+		</navigator>
+	</view>
+
+
+	<view>
+		<navigator  class="notice-items" url="../feedbackdetail/pages/feedbackdetail/feedbackdetail">
+		<view class="notice-icon">
+			<text class="notice-number">12</text>
+			<image src="../images/icon-yonghu.png"></image>
+		</view>
+		<view class="notice-content">
+			<view class="notice-text">
+				<view>京N67798</view>
+				<view class="jifen-neirong">积分兑换：【状态更新】最新兑换积分兑换：【状态更新】最新兑换</view>
+			</view>
+			<text class="time">30分钟前</text>
+		</view>
+		</navigator>
+	</view> -->
+
+	
+</view>

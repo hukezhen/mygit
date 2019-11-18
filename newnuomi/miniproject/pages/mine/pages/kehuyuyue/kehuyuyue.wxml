@@ -1,0 +1,53 @@
+
+<block>
+	<view class="store-infor customer-reservation">
+		<view class="store-infor-items customer-yuyuetixing">
+			<text class="store-name">预约提醒</text>
+			<text class="infor-tips">提前几分钟预约提醒</text>
+		   		<input type="number" bindinput='remindtimeChange' value="{{appointment.remind_time}}" name=""></input>
+				<text>分钟</text>
+		</view>
+		<view class="store-infor-items customer-yuyuetixing weiyue-dingjin">
+			<text class="store-name">违约定金</text>			
+			<text class="infor-tips">线上预约需付定金</text>
+      <!-- <input type="number" bindinput='promiseChange' value="{{appointment.promise}}" name=""></input> -->
+      <view class="xiche-jiage">
+				<button bindtap="minus" class="jianbtn">-</button>	
+		   		<input type="text" bindinput='promiseChange' value="{{appointment.promise}}" name=""></input>
+				<button bindtap="add" class="jiabtn">+</button>	
+				<text>元</text>
+			</view>
+		   	<!-- <picker class='picker' bindchange='locationChange' value='hangzhou'>
+		      	<view class='yuyueselect'>1元</view>
+		    </picker> -->
+		</view>
+		<view class="store-infor-items yuyueshijianduan">
+			<text class="store-name">接受预约时段</text>
+			<text>从</text>
+		   	<picker mode="time" value="{{appointment.start_time?appointment.start_time:'08:00'}}" bindchange="starttimeChange">
+            <view class="yuyueselect">
+              {{appointment.start_time?appointment.start_time:'08:00'}}
+            </view>
+          </picker>
+			<text>到</text>
+		   <picker mode="time" value="{{appointment.end_time?appointment.end_time:'24:00'}}" bindchange="endtimeChange">
+            <view class="yuyueselect">
+              {{appointment.end_time?appointment.end_time:'24:00'}}
+            </view>
+          </picker>
+		</view>
+		<view class="store-infor-items xianzhi-renshu">
+			<text class="store-name">每日接受预约人数</text>	
+		   		<input type="number" bindinput='numberChange' value="{{appointment.number}}" name=""></input>
+				<text>人</text>
+		   	<!-- <picker class='picker' bindchange='locationChange' value='hangzhou'>
+		      	<view class='yuyueselect'>1</view>
+		    </picker> -->
+		</view>
+	</view>
+</block>
+
+<view class="bottom-fiexd">
+	<button bindtap="save" class="btn-confirm">确定</button>	
+	<button bindtap="reset" class="btn-reset">重置</button>	
+</view>

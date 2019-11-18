@@ -1,0 +1,76 @@
+
+<block>
+	<view class="store-infor customer-reservation">
+		<view class="title-box">
+			<view class="upload-box">
+				<text class="title-txt">标题</text>
+				<input bindinput="titlechange" class="title-input" type="text" placeholder="请输入标题" name=""></input>
+				<image bindtap='addimg' src="../../../images/xinagji-icom.png" class="xinagji-icom"></image>
+			</view>
+			<view class="shangchuan-img">
+				<image src="{{imgurl==''?'../../../images/shangchuan-img.png':prefix+imgurl}}" class="shangchuan-img.png"></image>
+			</view>
+		</view>
+    <view class="store-infor-items flex align-center xuanshang-jiangjin">
+			<image bindtap='addimg' src="../../../images/icon-xichejiangjin.svg" class="icon-jianghu-jiuji"></image><text class="store-name">悬赏金额</text>		
+			<text class="yuan">元</text>	
+      		<input type="number" bindinput='priceChange'  placeholder="0" name=""></input>
+		</view>
+    
+    <view class="store-infor-items flex align-center">
+			<image bindtap='addimg' src="../../../images/icon-diianhua.svg"  class="icon-jianghu-jiuji"></image><text class="store-name">联系电话</text>			
+      		<input type="text" bindinput='phoneChange'  placeholder="" name=""></input>
+          
+			<text>  </text>
+		</view>
+		<!-- <view class="store-infor-items customer-yuyuetixing">
+			<text class="store-name">求助内容</text>
+<picker class="picker" bindchange="bindPickerChange" data-pickername="content" value="{{contentindex}}" range="{{contentarr}}" mode="selector"><view class='picker renli-buzhu'>{{contentarr[contentindex]}}</view>
+			    <image class="xia-sanjiao" src="../../../images/xia-sanjiao.png"></image>
+        </picker>
+		</view> -->
+
+		<!-- <view class="store-infor-items fuwu-shijian">
+			<text class="store-name">服务时间</text>
+			<view class="section">
+			  	<picker mode="date" value="{{startdata}}" bindchange="startdataChange" class="time">
+			   		<view class="picker">{{startdata}}</view>
+			  	</picker>			  	
+			  	<picker mode="time" value="{{starttime}}" bindchange="starttimeChange"   class="time">
+			    	<view class="picker">{{starttime}}</view>
+			  	</picker>			 
+			</view>
+			<text>到</text>
+			<view class="section">
+			  	<picker mode="date" value="{{enddata}}" bindchange="enddataChange"  class="time">
+			    	<view class="picker">{{enddata}}</view>
+			  	</picker>			  	
+			  	<picker mode="time" value="{{endtime}}" bindchange="endtimeChange" class="time">
+			    	<view class="picker">{{endtime}}</view>
+			  	</picker>	
+			</view>
+		</view> -->
+		
+		<view class="store-infor-items customer-yuyuetixing flex align-center">
+			<image bindtap='addimg' src="../../../images/icon-shangmenfuw.svg" class="icon-jianghu-jiuji"></image><text class="store-name">上门服务</text>		
+			<view class="shangmen-fuwu">
+				<radio-group class="radio-group" bindchange="radioChange">
+				  	<label class="radio">
+				    	<radio value="1" class="radio"/>是
+				  	</label>
+				  	<label class="radio">
+				    	<radio value="0" class="radio"/>否
+				  	</label>
+				</radio-group>
+			</view>
+		</view>
+
+
+
+	</view>
+</block>
+
+<view class="bottom-fiexd">
+	<button bindtap="save" class="btn-confirm">确定</button>	
+	<button class="btn-reset">重置</button>	
+</view>

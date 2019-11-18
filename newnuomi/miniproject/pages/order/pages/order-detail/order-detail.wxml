@@ -1,0 +1,59 @@
+<view class="wait-pay-box">
+<view class="order-infor">
+	<view class="infor-items">
+		<text>订单状态</text>
+		<text class="order-state">已支付</text>
+	</view>
+</view>
+
+<view class="order-infor order-detail-box">
+	<view class="infor-items">
+		<text>订单号</text>
+		<text>{{order.order_sn}}</text>
+	</view>
+	<view class="infor-items">
+		<text>车牌号</text>
+		<text>{{order.c_number}}</text>
+	</view>
+	<view class="infor-items">
+		<text>服务类别</text>
+		<text>{{order.g_title}}</text>
+	</view>
+	<view class="infor-items">
+		<text>提交员工</text>
+		<text>{{order.user || ""}}</text>
+	</view>
+	<view class="infor-items">
+		<text>下单时间</text>
+		<text>{{order.order_time}}</text>
+	</view>
+	<view class="infor-items">
+		<text>支付时间</text>
+		<text>{{order.pay_time}}</text>
+	</view>
+	<view class="infor-items">
+		<text>支付方式</text>
+		<text>余额支付</text>
+	</view>
+	<view class="infor-items">
+		<text>订单金额</text>
+		<text class="red-price">{{order.price}}元</text>
+	</view>
+	<view class="infor-items" hidden="{{order.deduction_type == 0}}">
+		<text>红包抵扣</text>
+		<text class="red-price">-{{order.deduction_price/100}}元</text>
+	</view>
+	<view class="infor-items all-amount">
+		<text>付款金额</text>
+		<text>{{order.price-(order.deduction_price/100)}}元</text>
+	</view>
+</view>
+
+<view class="tupian-shangchuan">
+	<text class="xiche-title">车辆图片</text>
+	<view class="xiche-tupian">
+		<image wx:for="{{images}}" src="{{item}}"></image>
+	</view>
+</view>
+
+</view>

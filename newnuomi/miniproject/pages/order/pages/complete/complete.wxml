@@ -1,0 +1,99 @@
+<view class="cpmpletebox">
+  <view class="chepaihao0">
+    <text>车牌号</text>
+    <view class="chepai-box {{numberclass}}">
+      <view class="chepai">{{number}}</view>
+    </view>
+  </view>
+
+  <view class="order-infor">
+    <view class="infor-items">
+      <text>订单号</text>
+      <text>{{order.order_sn}}</text>
+    </view>
+    <view class="infor-items">
+      <text>下单日期</text>
+      <text>{{order.order_time}}</text>
+    </view>
+    <view class="infor-items">
+      <text>提交员工</text>
+      <text>{{order.user || ""}}</text>
+    </view>
+  </view>
+
+  <view class="order-infor">
+    <view class="tupian-shangchuan">
+      <text>图片上传</text>
+      <text>最多上传3张</text>
+    </view>
+    <view class="uploadbox">
+      <view class="img001" wx:for="{{imglist}}" wx:key="index">
+        <view catchtap="deleAct" id="{{index}}" class="del cuIcon-roundclosefill"></view>
+        <image catchtap="previewAct" id="{{imglist[index]}}" src='{{imglist[index]}}'></image>
+      </view>
+      <view bindtap="addimg" class="upload-btn">
+        <view>+</view>
+      </view>
+      <!-- <input type="file" name=""></input> -->
+    </view>
+  </view>
+
+  <view class="order-infor xiche-jiage">
+    <view class="infor-items">
+      <text>{{order.g_title}}</text>
+      <text class="xiche-price">{{order.price}}元</text>
+    </view>
+  </view>
+
+  <view class="order-infor">
+    <view class="tupian-shangchuan">
+      <text>选择支付方式</text> </view>
+    <radio-group bindchange="radioChange">
+      <view>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="1" checked/>
+          </view>
+          <image class="zhifuimg" src="../../../images/icon-yuerzhifu.svg"></image>
+          <view class="weui-cell__bd">
+            余额支付
+            <text>({{order.car_info ? order.car_info.moneys : 0}}元)</text>
+          </view>
+        </label>
+
+        <view class="hongbaozhifu">
+          <radio-group bindchange="redradioChange">
+            <label bindtap='selactivityid' data-idx="{{index}}" class="weui-cell weui-check__label" wx:for="{{redpacket}}" wx:key="index">
+              <view class="weui-cell__hd">
+                <radio  value="{{item.id}}" checked="{{item.id==activity_id}}" />
+              </view>
+              <view class="weui-cell__bd">
+                <image class="xuanzhehongb" src="../../../images/icon-xuanzhehongb.svg"></image>红包{{item.moneys}}元
+              </view>
+            </label>
+
+          </radio-group>
+        </view>
+      </view>
+      <label class="weui-cell weui-check__label" wx:if="{{iswash}}">
+        <view class="weui-cell__hd">
+          <radio value="2" />
+        </view>
+        <image class="zhifuimg" src="../../../images/icon-cika.svg"></image>
+        <view class="weui-cell__bd">
+          次卡支付
+          <text>({{order.car_wash == null ? 0 : order.car_wash.number}}次)</text>
+        </view>
+      </label>
+
+    </radio-group>
+  </view>
+
+
+  <view class="bottom-fiexd">
+    <view class="order-amount">订单金额：
+      <text class="xiche-price">{{order.submitprice}}元</text>
+    </view>
+    <view bindtap='pay' class="btn-confirm">结算</view>
+  </view>
+</view>

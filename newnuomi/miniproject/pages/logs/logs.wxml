@@ -1,0 +1,44 @@
+<!--logs.wxml-->
+<!-- <view class="container log-list">
+  <block wx:for="{{logs}}" wx:for-item="log">
+    <text class="log-item">{{index + 1}}. {{log}}</text>
+  </block>
+</view>
+ -->
+
+
+
+<block>
+  <view class="img-log-yun">
+    <image src="../images/img-log-yun.png"></image>
+  </view>
+  <view class="logsbox flex flex-direction justify-center align-center">
+
+    <view class="phone-number">
+      <image src="../images/iphone-icon.svg"></image>
+      <input class="phonenumber1" bindinput="mobileinput" placeholder="请输入手机号" auto-focus/>
+    </view>
+    <!-- <text hidden="{{!showphonetip}}" class="error">请输入正确的手机号</text> -->
+
+    <view class="verification-code">
+      <text class="code">验证码</text>
+      <input class="phonenumber1" bindinput="codeinput" placeholder="请输入验证码" auto-focus/>
+      <button bindtap='getcode' disabled="{{disabled}}" class="get-code">{{btntext}}</button>
+    </view>
+    <!-- <text hidden="{{!showCodetip}}" class="error">请输入正确的验证码</text> -->
+
+    <view class="agreementbox">
+      <label>
+        <checkbox checked disabled='true' class="checkbox1" />我已阅读并同意服务协议</label>
+    </view>
+
+    <view bindtap="login" class="confirmbtn confirm">确定</view>
+    <!-- <navigator style="margin-top: 20rpx;" class="confirmbtn confirm" url="../mine/pages/my-client/my-client">我的客户</navigator> -->
+
+  </view>
+
+  <view class="img-log-che">
+    <image src="../images/img-log-che.png"></image>
+  </view>
+  <view class="copyright">Copyright©2014 拓米汽车服务版权所有</view>
+</block>

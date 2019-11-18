@@ -1,0 +1,70 @@
+.myprize-title {
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-top: 50rpx;
+}
+
+page {
+  background: #fff;
+}
+
+.prize-items {
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+  clear: both;
+  padding: 40rpx 0;
+}
+
+.prize-items image {
+  float: left;
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.right-text-box {
+  float: left;
+  width: 500rpx;
+}
+
+.prize-list-box {
+  background: #fff;
+  overflow: hidden;
+}
+
+.prize-name {
+  display: block;
+  font-size: 30rpx;
+  color: #333;
+  line-height: 40rpx;
+}
+
+.prize-time {
+  display: block;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 40rpx;
+  margin-top: 30rpx;
+}
+
+.no-prize-box {
+  clear: both;
+}
+
+.no-prize {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #999;
+  line-height: 360rpx;
+  font-size: 30rpx;
+}
+
+.liji-choujiang {
+  margin: 0 auto;
+  text-align: center;
+  width: 200rpx;
+}

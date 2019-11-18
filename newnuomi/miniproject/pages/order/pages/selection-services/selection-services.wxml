@@ -1,0 +1,19 @@
+
+<view class="order-list-box">
+	<view class="order-list-box">
+  
+    <text bindtap="seltype" data-index="{{index}}" data-id="{{item.id}}" wx:for="{{typelist}}" wx:key="id" class="tab-items {{currenttype==index?'active':''}}">{{item.title}}</text>
+	</view>
+</view>
+
+<view class="yixuan-fuwu">
+   <view class="fuwu-items selecton-items" wx:for="{{goodslist}}" wx:key="id">
+		<view class="fuwu-name">
+			<text class="namebox">{{item.title}}</text>
+			<text class="introduction">{{item.describes}}</text>
+		</view>
+		<view class="pricebox">{{item.price}}元</view>
+		<view class="delete-fuwu"><view bindtap='selectgoods'  data-index="{{index}}" class="select-btn">选择</view></view>
+	</view>
+
+</view>

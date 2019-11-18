@@ -1,0 +1,206 @@
+<view class="order-list-box">
+	<view class="order-list-box">
+    <text class="tab-items {{currentNavtab==-1 ? 'active' : ''}}" data-idx="-1" bindtap="switchTab">全部</text>
+    <text class="tab-items {{currentNavtab==0 ? 'active' : ''}}" data-idx="0" bindtap="switchTab">24小时</text>
+    <text class="tab-items {{currentNavtab==3 ? 'active' : ''}}" data-idx="3" bindtap="switchTab">服务完成</text>
+    <text class="tab-items {{currentNavtab==2 ? 'active' : ''}}" data-idx="2" bindtap="switchTab">已支付</text>
+    <text class="tab-items {{currentNavtab==9 ? 'active' : ''}}" data-idx="9" bindtap="switchTab">已取消</text>
+	</view>
+</view>
+
+<view class="order-list">
+	<view class="order-list-items" wx:for="{{orderlist}}" wx:key="id">
+		<view class="order-number" >
+			<view>
+				<image src="../../../images/icon-xianshika.svg"></image>
+				<text>订单号：{{item.order_sn}}</text>
+			</view>
+			<view class="zhifu-fangshi">
+				<image src="../../../images/icon-dianxinashika.svg"></image>
+				<text>余额支付</text>
+			</view>
+			<view>
+				<!-- <text class="news-order">{{item.statestr}}</text> -->
+				<image hidden="{{item.state!=0}}" src="../../../images/icon-delete.svg"></image>
+			</view>
+		</view>
+		<view class="fuwuxiangmu-box">
+			<navigator url="../order-detail/order-detail?id={{item.id}}">
+				<view class="fuwuxiangmu">
+					<text class="fuwu-name">{{item.g_title}}</text>
+					<text class="fuwu-time">下单时间：{{item.order_time}}</text>
+				</view>
+			</navigator>
+			<view>
+				<navigator url="../../../lpr/pages/kehu-shuxing/kehu-shuxing?id={{item.cid}}">
+					<view class="chepai-box {{item.numberclass}}">
+						<view class="chepai">{{item.c_number}}</view>
+					</view>
+				</navigator>
+				<button bindtap="receive"  data-index="{{index}}"  hidden="{{!item.show}}" class="jiedan-btn">接单</button>
+			</view>
+		</view>
+	</view>
+
+	<!-- <view class="order-list-items">
+		<view class="order-number">
+			<view>
+				<image src="../../../images/icon-xianshika.svg"></image>
+				<text>订单号：201893849348384</text>
+			</view>
+			<view class="zhifu-fangshi">
+				<image src="../../../images/icon-dianxinashika.svg"></image>
+				<text>闲时卡支付</text>
+			</view>
+			<view>
+				<text class="news-order">新提交</text>
+				<image src="../../../images/icon-delete.svg"></image>
+			</view>
+		</view>
+		<view class="fuwuxiangmu-box">
+			<navigator url="../order-detail/order-detail">
+				<view class="fuwuxiangmu">
+					<text class="fuwu-name">内饰清洗</text>
+					<text class="fuwu-time">预约时间：2019-09-20  11:00</text>
+				</view>
+			</navigator>
+			<view>
+				<navigator url="../../../lpr/pages/kehu-shuxing/kehu-shuxing">
+					<view class="chepai-box xiaoxingche-chepai">
+						<view class="chepai">京N.78321</view>
+					</view>
+				</navigator>
+				<button class="jiedan-btn">接单</button>
+			</view>
+		</view>
+	</view>
+
+	<view class="order-list-items">	
+		<view class="order-number">
+			<view>
+				<image class="icon-xingxing" src="../../../images/icon-xingxing.svg"></image>
+				<text>订单号：201893849348384</text>
+			</view>
+			<view class="zhifu-fangshi">
+				<image src="../../../images/icon-qianyuer.svg"></image>
+				<text>余额支付</text>
+			</view>
+			<view>
+				<text class="news-order">服务完成</text>
+			</view>
+		</view>
+
+		<view class="fuwuxiangmu-box">
+			<navigator url="../order-detail/order-detail">
+				<view class="fuwuxiangmu">
+					<text class="fuwu-name">轮毂清洗</text>
+					<text class="fuwu-time">下单时间：2019-09-20  11:00</text>
+				</view>
+			</navigator>
+			<view>				
+				<navigator url="../../../lpr/pages/kehu-shuxing/kehu-shuxing">
+					<view class="chepai-box xinnengyuan-chepai">
+						<view class="chepai">京N.78321</view>
+					</view>
+				</navigator>
+			</view>
+		</view>
+	</view>
+
+	<view class="order-list-items">	
+		<view class="order-number">
+			<view>
+				<image class="icon-xingxing" src="../../../images/icon-xingxing.svg"></image>
+				<text>订单号：201893849348384</text>
+			</view>
+			<view class="zhifu-fangshi">
+				<image src="../../../images/icon-qianka.svg"></image>
+				<text>次卡支付</text>
+			</view>
+			<view>
+				<text class="news-order">服务完成</text>
+			</view>
+		</view>	
+		<view class="fuwuxiangmu-box">
+			<navigator url="../order-detail/order-detail">
+				<view class="fuwuxiangmu">
+					<text class="fuwu-name">空调除菌</text>
+					<text class="fuwu-time">下单时间：2019-09-20  11:00</text>
+				</view>
+			</navigator>
+			<view>				
+				<navigator url="../../../lpr/pages/kehu-shuxing/kehu-shuxing">
+					<view class="chepai-box junyong-chepai">
+						<view class="chepai">京N.78321</view>
+					</view>
+				</navigator>
+			</view>
+		</view>
+	</view>
+
+	<view class="order-list-items">	
+		<view class="order-number">
+			<view>
+				<image class="icon-xingxing" src="../../../images/icon-xingxing.svg"></image>
+				<text>订单号：201893849348384</text>
+			</view>
+			<view class="zhifu-fangshi">
+				<image src="../../../images/icon-qianka.svg"></image>
+				<text>次卡支付</text>
+			</view>
+			<view>
+				<text class="news-order">已支付</text>
+			</view>
+		</view>	
+		<view class="fuwuxiangmu-box">
+			<navigator url="../order-detail/order-detail">
+				<view class="fuwuxiangmu">
+					<text class="fuwu-name">整体漆面抛光</text>
+					<text class="fuwu-time">下单时间：2019-09-20  11:00</text>
+				</view>
+			</navigator>
+			<view>
+				<navigator url="../../../lpr/pages/kehu-shuxing/kehu-shuxing">
+				<view class="chepai-box daxingche-chepai">
+					<view class="chepai">京N.78321</view>
+				</view>
+				</navigator>
+			</view>
+		</view>
+	</view>
+
+	<view class="order-list-items">		
+		<view class="order-number">
+			<view>
+				<image class="icon-xingxing" src="../../../images/icon-xingxing.svg"></image>
+				<text>订单号：201893849348384</text>
+			</view>
+			<view class="zhifu-fangshi">
+				<image src="../../../images/icon-qianka.svg"></image>
+				<text>次卡支付</text>
+			</view>
+			<view>
+				<text class="news-order">已取消</text>
+			</view>
+		</view>
+		<view class="fuwuxiangmu-box">
+			<navigator url="../order-detail/order-detail">
+				<view class="fuwuxiangmu">
+					<text class="fuwu-name">打蜡</text>
+					<text class="fuwu-time">下单时间：2019-09-20  11:00</text>
+				</view>
+			</navigator>
+			<view>
+				<navigator url="../../../lpr/pages/kehu-shuxing/kehu-shuxing">
+				<view class="chepai-box dashiguan-chepai">
+					<view class="chepai">京N.78331</view>
+				</view>
+				</navigator>
+			</view>
+		</view>
+	</view> -->
+
+
+
+
+</view>

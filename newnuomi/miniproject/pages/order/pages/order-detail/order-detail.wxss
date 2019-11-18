@@ -1,0 +1,88 @@
+.order-infor{
+	background: #fff;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	margin-top: 30rpx;
+	padding: 30rpx;
+}
+
+.infor-items{
+	display: flex;
+	-webkit-display:flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	color: #999;
+	padding: 15rpx 0;
+}
+
+.wait-payment{
+	text-align: center;
+	padding: 40rpx 0;
+}
+
+.wait-payment image{
+	width: 100rpx;
+	height: 100rpx;
+	display: block;
+	margin:50rpx auto 0;
+}
+
+.wait-payment .success-txt{
+	text-align: center;
+	line-height: 80rpx;
+	font-size: 30rpx;
+	color: #0e192f;
+	display: block;
+}
+
+.all-amount{
+	font-size: 30rpx;
+	font-weight: bold;
+	border-top: 1px solid #eee;
+	color: #0e192f;
+}
+
+.red-price{
+	color: #fc3230;
+}
+
+.order-detail-box{
+	padding: 10rpx 30rpx;
+}
+
+.wait-pay-box .bottom-fiexd .btn-confirm{
+	padding: 0 100rpx;
+}
+
+.tupian-shangchuan{
+	padding: 0 0 30rpx 30rpx;
+	background: #fff;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	margin-top: 30rpx;	
+}
+
+.xiche-tupian{
+	display: flex;
+	-webkit-display:flex;
+	align-items: center;
+	-webkit-align-items: center;
+}
+
+.xiche-title{
+	line-height: 100rpx;
+	color: #0e192f;
+	font-size: 28rpx;
+
+}
+
+.xiche-tupian image{
+	flex: 1;
+	-webkit-flex:1;
+	margin-right: 30rpx;
+	height: 150rpx;
+}
+
+.order-state{
+	color: #0e192f;
+}

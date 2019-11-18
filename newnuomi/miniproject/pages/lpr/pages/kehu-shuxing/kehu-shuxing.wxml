@@ -1,0 +1,96 @@
+<view class="kehu-shuxing-box">
+	<view class="che-shuxing">
+		<view class="shuxing-items">
+			<view class="itmes-box"><image src="{{member.cover_path || ''}}"></image>{{member.brand || ""}}</view>
+			<view class="itmes-box">
+				<view class="chepai-box {{member.numberclass}}">
+					<view class="chepai">{{member.number}}</view>
+				</view>
+				<!-- <view class="chepai-box xinnengyuan-chepai">
+					<view class="chepai">京N.A98998</view>
+				</view>
+				<view class="chepai-box junyong-chepai">
+					<view class="chepai"><text class="redtxt">京A</text>.98998</view>
+				</view>
+				<view class="chepai-box daxingche-chepai">
+					<view class="chepai"><text class="redtxt">黑.A</text>98998</view>
+				</view>
+				<view class="chepai-box dashiguan-chepai">
+					<view class="chepai"><text class="redtxt">使</text> | 989998</view>
+				</view> -->
+			</view>
+		</view>
+		<view class="shuxing-items">
+			<view class="itmes-box">{{member.factory || ""}}</view>
+			<view class="itmes-box">{{member.car_type || ""}}</view>
+		</view>
+		<view class="shuxing-items">
+			<view class="itmes-box">{{member.pl || ""}}</view>
+			<view class="itmes-box">{{member.year || ""}}年 <text wx:if='{{member.month}}'>{{member.month || ""}}月</text> </view>
+		</view>
+	</view>
+
+	<view class="consumption-list">
+		<view class="consumption-title">客户数据</view>
+		<view class="consumption-items">
+			<view class="items-txt">
+				<image src="../../../images/icon-jindian.svg"></image>上次进店
+			</view>
+			<view class="items-txt">
+				<text class="number-red">{{member.info.last}}</text>天前
+			</view>
+		</view>
+		<view class="consumption-items">
+			<view class="items-txt">
+				<image src="../../../images/icon-pinlv.svg"></image>进店频次
+			</view>
+			<view class="items-txt">
+				<text class="number-red">{{member.info.frequency}}</text> 次/月
+			</view>
+		</view>
+		<view class="consumption-items">
+			<view class="items-txt">
+				<image src="../../../images/icon-xiaofei.svg"></image>月均消费
+			</view>
+			<view class="items-txt">
+				<text class="number-red">{{member.info.consume}}</text>元/月
+			</view>
+		</view>
+		<view class="consumption-items">
+			<view class="width60" class="items-txt">
+				<image src="../../../images/icon-linghongb.svg"></image>已领红包
+			</view>
+			<view class="items-txt">
+				<text class="number-red">{{member.info.envelopes}}</text>个
+			</view>
+		</view>
+		<view class="consumption-items">
+			<view class="items-txt">
+				<image src="../../../images/icon-hongbao.svg"></image>红包金额
+			</view>
+			<view class="items-txt">
+				<text class="number-red">{{member.info.envelopes_price}}</text>元
+			</view>
+		</view>
+		<view class="consumption-items accumulated-income">
+			<view class="items-txt">
+				<image src="../../../images/icon-zongjiner.svg"></image>累计收入                                                                
+			</view>
+			<view class="items-txt">
+				<text class="number-red">{{member.income}}</text>元
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="bottom-fiexd">
+	<navigator url="../../../order/pages/submit/submit?cid={{member.id}}&cls_name={{member.cls_name}}&number={{member.number}}">
+		<button class="btn-confirm blue-btn">立即下单</button>
+	</navigator>		
+  <navigator url="../../../scan/vinscan?id={{member.id}}&phone={{member.phone}}">
+	<button class="btn-confirm">扫描VIN码</button>	
+	</navigator>
+	<navigator url="../../../order/pages/order-personal/order-personal?cid={{member.id}}">
+		<button class="btn-reset">历史订单</button>
+	</navigator>
+</view>

@@ -1,0 +1,15 @@
+page{background: #fff;}
+.rule-activity .title{
+	text-align: center;
+	font-size: 30rpx;
+	color: #333;
+	line-height: 100rpx;
+	display: block;
+}
+.rule-text{
+	line-height: 60rpx;
+	font-size: 28rpx;
+	color: #666;
+	padding: 0 40rpx;
+	display: block;
+}

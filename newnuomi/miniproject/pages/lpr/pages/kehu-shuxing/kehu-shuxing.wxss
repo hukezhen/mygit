@@ -1,0 +1,86 @@
+.kehu-shuxing-box{
+	padding-bottom: 140rpx;
+}
+
+.kehu-shuxing-box .che-shuxing{
+	background: #fff;
+	border-top: 1px solid #eee;
+	margin: 30rpx 0;
+}
+
+.shuxing-items{
+	display: flex;
+	-webkit-display:flex;
+	align-items: center;
+	-webkit-align-items: center;
+	border-bottom: 1px solid #eee;
+}
+
+.itmes-box .chepai-box{
+	margin:0 auto;
+}
+
+.itmes-box{
+	flex: 1;
+	-webkit-flex:1;
+	padding: 36rpx 0;
+	text-align: center;
+}
+
+.itmes-box:nth-child(odd){
+	border-right: 1px solid #eee;
+}
+
+.itmes-box image{
+	width: 80rpx;
+	height: 80rpx;
+	vertical-align: middle;
+	margin-right: 10rpx;
+}
+
+.consumption-items{
+	padding: 30rpx;
+	display: flex;
+	-webkit-display:flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	border-bottom: 1px solid #eee;
+}
+
+.items-txt image{
+	width: 40rpx;
+	height: 40rpx;
+	vertical-align: middle;
+	margin-right: 20rpx;
+}
+
+.items-txt image.width50{
+	width: 50rpx;
+}
+
+.items-txt image.width60{
+	width: 60rpx;
+}
+
+.items-txt image.width70{
+	width: 70rpx;
+}
+
+.consumption-list{
+	background: #fff;
+	margin-top: 30rpx;
+}
+
+.number-red{
+	color: #fc3230;
+}
+
+.accumulated-income{
+	background: #f0f3fb;
+	padding: 40rpx 30rpx;
+}
+
+.consumption-title{
+	padding: 30rpx;
+	border-bottom: 1px solid #eee;
+}

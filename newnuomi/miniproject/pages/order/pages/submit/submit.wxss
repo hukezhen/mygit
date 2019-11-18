@@ -1,0 +1,112 @@
+.submit-order-box .bottom-fiexd .btn-confirm{
+	padding: 0 120rpx;
+}
+
+.chepaihao0{
+	background: #fff;
+	border-bottom: 1px solid #eee;
+	padding: 30rpx;
+	display: flex;
+	-webkit-display:flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items:center;
+	-webkit-align-items:center;
+	border-bottom:1px solid #eee;
+	border-top:1px solid #eee;
+}
+
+.sleclte-fuwu{
+	line-height: 60rpx;
+	padding-left: 30rpx;
+	color: #fc3230;
+	font-size: 24rpx;
+}
+
+.fuwu-name{
+	width: 500rpx;
+}
+
+.xiche-fuwu-liebiao{
+	background: #fff;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	padding: 30rpx 0 0 30rpx;
+	overflow: hidden;
+}
+
+.xiche-fuwu-liebiao .xiche-fuwu{
+	float: left;
+	display: block;
+	padding: 10rpx 30rpx;
+	border: 1px solid #eee;
+	color: #333;
+	font-size: 28rpx;
+	text-align: center;
+	overflow: hidden;
+	border-radius: 50rpx;
+	margin-right: 20rpx;
+	margin-bottom: 30rpx;
+}
+
+.xiche-fuwu-liebiao .xiche-fuwu.active{
+	border: 1px solid #fc3230;
+	color: #fc3230;
+}
+
+.select-fuwu{
+	padding: 30rpx;
+	border-bottom: 1px solid #eee;
+	background: #fff;
+	display: flex;
+	-webkit-display: flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+}
+
+.fuwu-title{
+	line-height: 60rpx;
+	color: #fc3230;
+	font-size: 24rpx;
+	padding: 0 30rpx;
+}
+
+.fuwu-items{
+	display: flex;
+	-webkit-display: flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: center;
+	-webkit-align-items: center;
+	background: #fff;
+	padding: 30rpx;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
+.fuwu-items .delete-fuwu image{
+	width: 40rpx;
+	height: 40rpx;
+}
+
+.namebox{
+	font-size: 28rpx;
+	font-weight: bold;
+	color: #0E192F;
+	display: block;
+	line-height: 50rpx;
+}
+
+.pricebox{
+	color: #fc3230;
+}
+
+.introduction{
+	color: #999;
+	font-size: 24rpx;
+}
+
+.jiantou image{
+	width: 30rpx;
+	height: 30rpx;
+}
