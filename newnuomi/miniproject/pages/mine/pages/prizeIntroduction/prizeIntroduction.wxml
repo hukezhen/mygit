@@ -1,9 +1,0 @@
-<view class="prize-list-box">
-  <view class="prize-items" wx:for='{{awardList}}' wx:key>
-    <image src="{{prefix+item.cover_path}}"></image>
-    <view class="right-text-box">
-      <text class="prize-name">{{item.title}}</text>
-      <!-- <text class="prize-time">奖品简介奖品简介奖品简介奖品简介奖品简介奖品简介奖品简介</text> -->
-    </view>
-  </view>
-</view>
